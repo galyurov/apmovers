@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My profile</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/profile.css">
+	<link rel="stylesheet" href="css/admin.css">
+	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body id="body">
+	<main>
+		<div class="l-navbar" id="navbar">
+			<nav class="nav">
+				<div>
+					<a href="/" class="nav__logo">
+						<i style="color:#ffffff" class='bx bx-home-alt nav__icon nav__logo-icon'></i>
+						<span class="nav__logo-text">Apmovers</span>
+					</a>
+					<div class="nav__toggle" id="nav-toggle">
+						<i class='bx bxs-chevron-right'></i>
+					</div>
+					<ul class="nav__list">
+						<a href="profile-admin.php" class="nav__link">
+							<i class='bx bx-grid-alt nav__icon'></i>
+							<span class="nav__text">Home</span>
+						</a>
+						<a href="#" class="nav__link">
+							<i class='bx bx-user nav__icon'></i>
+							<span class="nav__text">Users</span>
+						</a>
+						<a href="#" class="nav__link">
+							<i class='bx bx-message-rounded nav__icon'></i>
+							<span class="nav__text">Messages</span>
+						</a>
+						<a href="#" class="nav__link active">
+							<i class='bx bx-dollar nav__icon'></i>
+							<span class="nav__text">Pricing</span>
+						</a>
+					</ul>
+				</div>
+				<div>
+					<a href="profile-setting.php" class="nav__link">
+						<i class='bx bx-cog nav__icon'></i>
+						<span class="nav__text">Setting</span>
+					</a>
+					<a href="signout.php" class="nav__link ">
+						<i class='bx bx-log-out-circle nav__icon'></i>
+						<span class="nav__text">Log Out</span>
+					</a>
+				</div>
+			</nav>
+		</div>
+		<div class="pricing-wrap">
+			<div class="pricing-container">
+				<div class="pricing-head">
+					<h1 class="pricing-title">Move Price</h1>
+				</div>
+				<ul class="pricing-list">
+					<li class="pricing-item">
+						<div class="pricing-item-title">
+							Truck and Travel
+							<i class='bx bx-chevron-down-circle item-title-icon'></i>
+						</div>
+
+						<div class="pricing-item-content hide">
+							<form name="truckAndTravel">
+								<div class="pricing-item-block">
+									<div class="pricing-item-input">
+										<p class="item-title">Truck charges</p>
+										<p class="item-text dollar">$</p>
+										<input type="text" class="item-input" name="truckCharges" id="truckCharges">
+										<p class="item-text">per job</p>
+									</div>
+									<div class="pricing-item-info">
+										<p class="item-text">(Fixed cost per job,including parking tickets and meters,truck
+											maintenance,fuel,tolls,etc.)</p>
+									</div>
+								</div>
+								<div class="pricing-item-block">
+									<div class="pricing-item-input">
+										<p class="item-title">Charges per mile</p>
+										<p class="item-text dollar">$</p>
+										<input type="text" class="item-input" name="chargesPerMile" id="chargesPerMile">
+										<p class="item-text">per mile with</p>
+									</div>
+									<div class="pricing-item-info">
+										<input type="text" class="item-input" name="freeMile" id="freeMile">
+										<p class="item-text">free miles</p>
+									</div>
+								</div>
+								<div class="pricing-item-block">
+									<div class="pricing-item-input">
+										<p class="item-title">Local Toll Charge</p>
+										<p class="item-text dollar">$</p>
+										<input type="text" class="item-input" name="localTollCharge" id="localTollCharge">
+										<p class="item-text">per job</p>
+									</div>
+									<div class="pricing-item-info">
+										<p class="item-text">Note: This only applies for local moves across state lines.</p>
+									</div>
+								</div>
+								<div class="pricing-item-note"><i class='bx bx-info-circle'></i>
+									<p>Prices are for round trip</p>
+								</div>
+								<button type="submit" class="pricing-item-button">Save</button>
+							</form>
+						</div>
+
+					</li>
+					<li class="pricing-item">
+						<div class="pricing-item-title">
+							Inventory
+							<i class='bx bx-chevron-down-circle item-title-icon'></i>
+						</div>
+
+						<div class="pricing-item-content hide">
+							<form name="inventory">
+								<div class="pricing-item-block">
+									<div class="pricing-item-input">
+										<p class="item-title">Cost by volume</p>
+										<input type="text" class="item-input" name="costByVol" id="costByVol">
+										<p class="item-text">per c.f.</p>
+									</div>
+									<div class="pricing-item-info">
+										<input type="text" disabled class="item-input" name="costByVolLb" id="costByVolLb">
+										<p class="item-text">per lb</p>
+									</div>
+								</div>
+								<div class="pricing-item-block">
+									<div class="pricing-item-input">
+										<p class="item-title">Minimu c.f. for local</p>
+										<input type="text" class="item-input" name="cfLocal" id="cfLocal">
+									</div>
+									<div class="pricing-item-info">
+										<input type="text" disabled class="item-input" name="cfLocalLBS" id="cfLocalLBS">
+										<p class="item-text">lbs</p>
+									</div>
+								</div>
+								<div class="pricing-item-block">
+									<div class="pricing-item-input">
+										<p class="item-title">Minimum c.f. for long distance</p>
+										<input type="text" class="item-input" name="cfLong" id="cfLong">
+									</div>
+									<div class="pricing-item-info">
+										<input type="text" disabled class="item-input" name="cfLongLBS" id="cfLongLBS">
+										<p class="item-text">lbs</p>
+									</div>
+								</div>
+								<div class="pricing-item-note">
+									<div>1 c.f. = 7 Lbs. (approx)</div>
+									<div>100 c.f. = 700 Lbs. (approx)</div>
+								</div>
+								<button type="submit" class="pricing-item-button">Save</button>
+							</form>
+						</div>
+
+					</li>
+					<li class="pricing-item">
+						<div class="pricing-item-title">
+							Packing and Box Services
+							<i class='bx bx-chevron-down-circle item-title-icon'></i>
+						</div>
+
+						<div class="pricing-item-content hide">
+							<form name="packing" autocomplete="off">
+								<div class="pricing-item-block">
+									<div class="pricing-item-checkbox">
+										<input type="checkbox" name="packing" id="packing" class="item-input item-checkbox">
+										<label for="packing">Packing</label>
+										<input type="checkbox" name="unpacking" id="unpacking" class="item-input item-checkbox">
+										<label for="unpacking">Unpacking</label>
+										<input type="checkbox" name="box-delivery" id="box-delivery"
+											class="item-input item-checkbox">
+										<label for="box-delivery">Box delivery</label>
+									</div>
+								</div>
+								<div class="pricing-item-block block-table">
+									<table>
+										<tr>
+											<th></th>
+											<th>Small Box</th>
+											<th>Medium Box</th>
+											<th>Large Box</th>
+											<th>China Box</th>
+											<th>Wardrobe Box</th>
+											<th>File Box</th>
+											<th>Legal File Box</th>
+										</tr>
+										<tr>
+											<td class="column-first">Cardboard</td>
+											<td><input type="text" name="smallbox-cardboard" id="smallbox-cardboard"
+													class="item-input"></td>
+											<td><input type="text" name="mediumbox-cardboard" id="mediumbox-cardboard"
+													class="item-input"></td>
+											<td><input type="text" name="largebox-cardboard" id="largebox-cardboard"
+													class="item-input"></td>
+											<td><input type="text" name="chinabox-cardboard" id="chinabox-cardboard"
+													class="item-input"></td>
+											<td><input type="text" name="wardrobebox-cardboard" id="wardrobebox-cardboard"
+													class="item-input"></td>
+											<td><input type="text" name="filebox-cardboard" id="filebox-cardboard"
+													class="item-input"></td>
+											<td><input type="text" name="legalfilebox-cardboard" id="legalfilebox-cardboard"
+													class="item-input"></td>
+										</tr>
+										<tr>
+											<td>Cardboard + Packing</td>
+											<td><input type="text" name="smallbox-cardboard-pack" id="smallbox-cardboard-pack"
+													class="item-input">
+											</td>
+											<td><input type="text" name="mediumbox-cardboard-pack" id="mediumbox-cardboard-pack"
+													class="item-input">
+											</td>
+											<td><input type="text" name="largebox-cardboard-pack" id="largebox-cardboard-pack"
+													class="item-input">
+											</td>
+											<td><input type="text" name="chinabox-cardboard-pack" id="chinabox-cardboard-pack"
+													class="item-input">
+											</td>
+											<td><input type="text" name="wardrobebox-cardboard-pack"
+													id="wardrobebox-cardboard-pack" class="item-input">
+											</td>
+											<td><input type="text" name="filebox-cardboard-pack" id="filebox-cardboard-pack"
+													class="item-input"></td>
+											<td><input type="text" name="legalfilebox-cardboard-pack"
+													id="legalfilebox-cardboard-pack" class="item-input"></td>
+										</tr>
+										<tr>
+											<td>Cardboard + Packing + Unpacking</td>
+											<td><input type="text" name="smallbox-cardboard-pack-unpack"
+													id="smallbox-cardboard-pack-unpack" class="item-input"></td>
+											<td><input type="text" name="mediumbox-cardboard-pack-unpack"
+													id="mediumbox-cardboard-pack-unpack" class="item-input"></td>
+											<td><input type="text" name="largebox-cardboard-pack-unpack"
+													id="largebox-cardboard-pack-unpack" class="item-input"></td>
+											<td><input type="text" name="chinabox-cardboard-pack-unpack"
+													id="chinabox-cardboard-pack-unpack" class="item-input"></td>
+											<td><input type="text" name="wardrobebox-cardboard-pack-unpack"
+													id="wardrobebox-cardboard-pack-unpack" class="item-input"></td>
+											<td><input type="text" name="filebox-cardboard-pack-unpack"
+													id="filebox-cardboard-pack-unpack" class="item-input"></td>
+											<td><input type="text" name="legalfilebox-cardboard-pack-unpack"
+													id="legalfilebox-cardboard-pack-unpack" class="item-input"></td>
+										</tr>
+									</table>
+									<div class="item-title">Cardboard delivery fee</div>
+									<table>
+										<tr>
+											<th></th>
+											<th>Sunday</th>
+											<th>Monday</th>
+											<th>Tuesday</th>
+											<th>Wednesday</th>
+											<th>Thursday</th>
+											<th>Friday</th>
+											<th>Saturday</th>
+										</tr>
+										<tr>
+											<td class="column-first">Delivery Fee</td>
+											<td><input type="text" name="sunday-delivery" id="sunday-delivery"
+													   class="item-input"></td>
+											<td><input type="text" name="monday-delivery" id="monday-delivery"
+													   class="item-input"></td>
+											<td><input type="text" name="tuesday-delivery" id="tuesday-delivery"
+													   class="item-input"></td>
+											<td><input type="text" name="wednesday-delivery" id="wednesday-delivery"
+													   class="item-input"></td>
+											<td><input type="text" name="thursday-delivery" id="thursday-delivery"
+													   class="item-input"></td>
+											<td><input type="text" name="friday-delivery" id="friday-delivery"
+													   class="item-input"></td>
+											<td><input type="text" name="saturday-delivery" id="saturday-delivery"
+													   class="item-input"></td>
+										</tr>
+
+									</table>
+								</div>
+								<div class="pricing-item-block">
+
+								</div>
+
+								<button type="submit" class="pricing-item-button">Save</button>
+							</form>
+						</div>
+
+					</li>
+					<li class="pricing-item">
+						<div class="pricing-item-title">
+							Extra Stop
+							<i class='bx bx-chevron-down-circle item-title-icon'></i>
+						</div>
+						<div class="pricing-item-content hide">
+							<form name="extraStop">
+								<div class="pricing-item-checkbox">
+									<input type="checkbox" name="extra-stop" id="extra-stop" class="item-input  item-checkbox">
+									<label for="extra-stop">Support for Extra Stops</label>
+								</div>
+								<div class="pricing-item-input">
+									<p class="item-title">Cost per extra stop</p>
+									<input type="text" name="costExtraStop" id="costExtraStop" class="item-input">
+								</div>
+								<button type="submit" class="pricing-item-button">Save</button>
+							</form>
+						</div>
+					</li>
+					<li class="pricing-item">
+						<div class="pricing-item-title">
+							Building Charges
+							<i class='bx bx-chevron-down-circle item-title-icon'></i>
+						</div>
+						<div class="pricing-item-content hide">
+							<form name="buildingCharges">
+								<div class="pricing-item-block">
+									<div class="pricing-item-input">
+										<p class="item-title">Charge per flight of stairs per c.f</p>
+										<p class="item-text dollar">$</p>
+										<input type="text" name="chargePerFlight" id="chargePerFlight" class="item-input">
+									</div>
+									<div class="pricing-item-info">
+										<p class="item-text">A flight of stairs is defined as 12 steps or more.Each move included
+											up
+											to one unreported flight of stairs.</p>
+									</div>
+								</div>
+								<div class="pricing-item-input">
+									<p class="item-title">COI processing fee per building</p>
+									<p class="item-text dollar">$</p>
+									<input type="text" name="COI" id="COI" class="item-input">
+								</div>
+								<button type="submit" class="pricing-item-button">Save</button>
+							</form>
+						</div>
+					</li>
+					<li class="pricing-item">
+						<div class="pricing-item-title">
+							Additional Services
+							<i class='bx bx-chevron-down-circle item-title-icon'></i>
+						</div>
+						<div class="pricing-item-content hide">
+
+						</div>
+					</li>
+					<li class="pricing-item">
+						<div class="pricing-item-title">
+							Inventory Handling
+							<i class='bx bx-chevron-down-circle item-title-icon'></i>
+						</div>
+						<div class="pricing-item-content hide table-scrollbar">
+							<form name="inventoryHandling">
+								<div class="pricing-item-table">
+									<table class="table">
+										<tbody><tr class="price-row">
+											<th>Name</th>
+											<th>Fee</th>
+										</tr>
+
+										</tbody><tbody><tr>
+										<td><p class="table-element">Futon Mattress</p> , <p class="table-info">Single</p></td>
+										<td><input type="text" name="Futon Mattress,Single" id="Futon Mattress,Single" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Futon Mattress</p> , <p class="table-info">Full</p></td>
+										<td><input type="text" name="Futon Mattress,Full" id="Futon Mattress,Full" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Futon Mattress</p> , <p class="table-info">Queen</p></td>
+										<td><input type="text" name="Futon Mattress,Queen" id="Futon Mattress,Queen" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Futon Mattress</p> , <p class="table-info">King</p></td>
+										<td><input type="text" name="Futon Mattress,King" id="Futon Mattress,King" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Ottoman</p> , <p class="table-info">approx 18" x 18" x 18"</p></td>
+										<td><input type="text" name="Ottoman,approx 18" id="Ottoman,approx 18" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Ottoman</p> , <p class="table-info">approx 2 x 2</p></td>
+										<td><input type="text" name="Ottoman,approx 2" id="Ottoman,approx 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Ottoman</p> , <p class="table-info">bigger than 2 x 2</p></td>
+										<td><input type="text" name="Ottoman,bigger than 2" id="Ottoman,bigger than 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sofa</p> , <p class="table-info">Loveseat</p></td>
+										<td><input type="text" name="Sofa,Loveseat" id="Sofa,Loveseat" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sofa</p> , <p class="table-info">3 Seater</p></td>
+										<td><input type="text" name="Sofa,3 Seater" id="Sofa,3 Seater" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sofa</p> , <p class="table-info">4 Seater</p></td>
+										<td><input type="text" name="Sofa,4 Seater" id="Sofa,4 Seater" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sofa</p> , <p class="table-info">4 Seater Sectional</p></td>
+										<td><input type="text" name="Sofa,4 Seater Sectional" id="Sofa,4 Seater Sectional" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sofa</p> , <p class="table-info">8 Seater Sectional</p></td>
+										<td><input type="text" name="Sofa,8 Seater Sectional" id="Sofa,8 Seater Sectional" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sofa Bed</p> </td>
+										<td><input type="text" name="Sofa,Sofa Bed" id="Sofa,Sofa Bed" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Arm Chair</p> </td>
+										<td><input type="text" name="Chairs,Arm Chair" id="Chairs,Arm Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bean Bag</p></td>
+										<td><input type="text" name="Chairs,Bean Bag" id="Chairs,Bean Bag" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Chaise Lounge</p></td>
+										<td><input type="text" name="Chairs,Chaise Lounge" id="Chairs,Chaise Lounge" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Club Chair</p></td>
+										<td><input type="text" name="Chairs,Club Chair" id="Chairs,Club Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glider Chair</p></td>
+										<td><input type="text" name="Chairs,Glider Chair" id="Chairs,Glider Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Overstuffed Chair</p> </td>
+										<td><input type="text" name="Chairs,Overstuffed Chair" id="Chairs,Overstuffed Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Papasan Chair</p></td>
+										<td><input type="text" name="Chairs,Papasan Chair" id="Chairs,Papasan Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Recliner Chair</p></td>
+										<td><input type="text" name="Chairs,Recliner Chair" id="Chairs,Recliner Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Rocking Chair</p></td>
+										<td><input type="text" name="Chairs,Rocking Chair" id="Chairs,Rocking Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Coffee Table</p> , <p class="table-info">approx 3</p></td>
+										<td><input type="text" name="Coffee Table,approx 3" id="Coffee Table,approx 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Coffee Table</p> , <p class="table-info">approx 4</p></td>
+										<td><input type="text" name="Coffee Table,approx 4" id="Coffee Table,approx 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Coffee Table</p> , <p class="table-info">5 or larger</p></td>
+										<td><input type="text" name="Coffee Table,5or larger" id="Coffee Table,5or larger" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">End Table</p> , <p class="table-info">approx 1</p></td>
+										<td><input type="text" name="End Table,approx 1" id="End Table,approx 1" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">End Table</p> , <p class="table-info">approx 2</p></td>
+										<td><input type="text" name="End Table,approx 2" id="End Table,approx 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">End Table</p> , <p class="table-info">approx 3</p></td>
+										<td><input type="text" name="End Table,approx 3" id="End Table,approx 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Foyer Table</p></td>
+										<td><input type="text" name="Tables,Foyer Table" id="Tables,Foyer Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Nesting Table</p></td>
+										<td><input type="text" name="Tables,Nesting Table" id="Tables,Nesting Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Side Table</p> , <p class="table-info">approx 1</p></td>
+										<td><input type="text" name="Side Table,approx 1" id="Side Table,approx 1" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Side Table</p> , <p class="table-info">approx 2</p></td>
+										<td><input type="text" name="Side Table,approx 2" id="Side Table,approx 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Side Table</p> , <p class="table-info">approx 3</p></td>
+										<td><input type="text" name="Side Table,approx 3" id="Side Table,approx 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">TV Dinner Folding Table</p> </td>
+										<td><input type="text" name="Tables,TV Dinner Folding Table" id="Tables,TV Dinner Folding Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Coffee Table</p> , <p class="table-info">approx 3</p></td>
+										<td><input type="text" name="Glass Coffee Table,approx 3" id="Glass Coffee Table,approx 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Coffee Table</p> , <p class="table-info">approx 4</p></td>
+										<td><input type="text" name="Glass Coffee Table,approx 4" id="Glass Coffee Table,approx 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Coffee Table</p> , <p class="table-info">5 or larger</p></td>
+										<td><input type="text" name="Glass Coffee Table,5 or larger" id="Glass Coffee Table,5 or larger" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass End Table</p> , <p class="table-info">approx 1</p></td>
+										<td><input type="text" name="Glass End Table,approx 1" id="Glass End Table,approx 1" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass End Table</p> , <p class="table-info">approx 2</p></td>
+										<td><input type="text" name="Glass End Table,approx 2" id="Glass End Table,approx 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass End Table</p> , <p class="table-info">approx 3</p></td>
+										<td><input type="text" name="Glass End Table,approx 3" id="Glass End Table,approx 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Tables</p> , <p class="table-info">Glass Nesting Table</p></td>
+										<td><input type="text" name="Glass Tables,Glass Nesting Table" id="Glass Tables,Glass Nesting Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Side Table</p> , <p class="table-info">approx 1</p></td>
+										<td><input type="text" name="Glass Side Table,approx 1" id="Glass Side Table,approx 1" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Side Table</p> , <p class="table-info">approx 2</p></td>
+										<td><input type="text" name="Glass Side Table,approx 2" id="Glass Side Table,approx 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Side Table</p> , <p class="table-info">approx 3</p></td>
+										<td><input type="text" name="Glass Side Table,approx 3" id="Glass Side Table,approx 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">DLP TV</p> , <p class="table-info">Under 40 Inch</p></td>
+										<td><input type="text" name="DLP TV,Under 40 Inch" id="DLP TV,Under 40 Inch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">DLP TV</p> , <p class="table-info">40 To 60 Inch</p></td>
+										<td><input type="text" name="DLP TV,40 To 60 Inch" id="DLP TV,40 To 60 Inch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Flat Panel TV</p> , <p class="table-info">Under 32 Inch</p></td>
+										<td><input type="text" name="Flat Panel TV,Under 32 Inch" id="Flat Panel TV,Under 32 Inch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Flat Panel TV</p> , <p class="table-info">32 To 45 Inch</p></td>
+										<td><input type="text" name="Flat Panel TV,32 To 45 Inch" id="Flat Panel TV,32 To 45 Inch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Flat Panel TV</p> , <p class="table-info">46 To 55 Inch</p></td>
+										<td><input type="text" name="Flat Panel TV,46 To 55 Inch" id="Flat Panel TV,46 To 55 Inch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Flat Panel TV</p> , <p class="table-info">Over 55 Inch</p></td>
+										<td><input type="text" name="Flat Panel TV,Over 55 Inch" id="Flat Panel TV,Over 55 Inch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Tube TV</p> , <p class="table-info">Under 20 Inch</p></td>
+										<td><input type="text" name="Tube TV,Under 20 Inch" id="Tube TV,Under 20 Inch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Tube TV</p> , <p class="table-info">21 To 27 Inch</p></td>
+										<td><input type="text" name="Tube TV,21 To 27 Inch" id="Tube TV,21 To 27 Inch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Tube TV</p> , <p class="table-info">28 To 36 Inch</p></td>
+										<td><input type="text" name="Tube TV,28 To 36 Inch" id="Tube TV,28 To 36 Inch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">TV Stand</p> , <p class="table-info">approx 3 long</p></td>
+										<td><input type="text" name="TV Stand,approx 3 long" id="TV Stand,approx 3 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">TV Stand</p> , <p class="table-info">approx 4 long</p></td>
+										<td><input type="text" name="TV Stand,approx 4 long" id="TV Stand,approx 4 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">TV Stand</p> , <p class="table-info">6 or longer</p></td>
+										<td><input type="text" name="TV Stand,6 or longer" id="TV Stand,6 or longer" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Speaker</p> , <p class="table-info">less than 1 tall</p></td>
+										<td><input type="text" name="Speaker,less than 1 tall" id="Speaker,less than 1 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Speaker</p> , <p class="table-info">1 - 2 tall</p></td>
+										<td><input type="text" name="Speaker,1 - 2 tall" id="Speaker,1 - 2 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Speaker</p> , <p class="table-info">2 or taller</p></td>
+										<td><input type="text" name="Speaker,2 or taller" id="Speaker,2 or taller" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Stereo Or Video Component</p></td>
+										<td><input type="text" name="Stereo,Stereo Or Video Component" id="Stereo,Stereo Or Video Component" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Armoire</p> , <p class="table-info">approx 3 x 7</p></td>
+										<td><input type="text" name="Armoire,approx 3 x 7" id="Armoire,approx 3 x 7" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Armoire</p> , <p class="table-info">approx 4 x 7</p></td>
+										<td><input type="text" name="Armoire,approx 4 x 7" id="Armoire,approx 4 x 7" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Armoire</p> , <p class="table-info">approx 4 x 8</p></td>
+										<td><input type="text" name="Armoire,approx 4 x 8" id="Armoire,approx 4 x 8" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Cubby</p> , <p class="table-info">3 ft</p></td>
+										<td><input type="text" name="Cubby,3 ft" id="Cubby,3 ft" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Cubby</p> , <p class="table-info">9 ft</p></td>
+										<td><input type="text" name="Cubby,9 ft" id="Cubby,9 ft" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Cubby</p> , <p class="table-info">12 ft</p></td>
+										<td><input type="text" name="Cubby,12 ft" id="Cubby,12 ft" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Display Case</p></td>
+										<td><input type="text" name="Cabinets,Display Case" id="Cabinets,Display Case" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Entertainment Center</p> , <p class="table-info">approx 4 long</p></td>
+										<td><input type="text" name="Entertainment Center,approx 4 long" id="Entertainment Center,approx 4 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Entertainment Center</p> , <p class="table-info">approx 5 long</p></td>
+										<td><input type="text" name="Entertainment Center,approx 5 long" id="Entertainment Center,approx 5 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Entertainment Center</p> , <p class="table-info">6 or longer</p></td>
+										<td><input type="text" name="Entertainment Center,6 or longer" id="Entertainment Center,6 or longer" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Armoire</p> , <p class="table-info">approx 3 x 7</p></td>
+										<td><input type="text" name="Glass Armoire,approx 3 x 7" id="Glass Armoire,approx 3 x 7" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Armoire</p> , <p class="table-info">approx 4 x 7</p></td>
+										<td><input type="text" name="Glass Armoire,approx 4 x 7" id="Glass Armoire,approx 4 x 7" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Armoire</p> , <p class="table-info">approx 4 x 8</p></td>
+										<td><input type="text" name="Glass Armoire,approx 4 x 8" id="Glass Armoire,approx 4 x 8" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Entertainment Center</p> , <p class="table-info">approx 4 long</p></td>
+										<td><input type="text" name="Glass Entertainment Center,approx 4 long" id="Glass Entertainment Center,approx 4 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Entertainment Center</p> , <p class="table-info">approx 5 long</p></td>
+										<td><input type="text" name="Glass Entertainment Center,approx 5 long" id="Glass Entertainment Center,approx 5 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Entertainment Center</p> , <p class="table-info">6 or longer</p></td>
+										<td><input type="text" name="Glass Entertainment Center,6 or longer" id="Glass Entertainment Center,6 or longer" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Floor Lamp</p> , <p class="table-info">less than 5 tall</p></td>
+										<td><input type="text" name="Floor Lamp,less than 5 tall" id="Floor Lamp,less than 5 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Floor Lamp</p> , <p class="table-info">approx 7 tall</p></td>
+										<td><input type="text" name="Floor Lamp,approx 7 tall" id="Floor Lamp,approx 7 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Floor Lamp</p> , <p class="table-info">approx 9 tall</p></td>
+										<td><input type="text" name="Floor Lamp,approx 9 tall" id="Floor Lamp,approx 9 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Table Lamp</p> , <p class="table-info">1 x 1 or smaller</p></td>
+										<td><input type="text" name="Table Lamp,1 x 1 or smaller" id="Table Lamp,1 x 1 or smaller" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Table Lamp</p> , <p class="table-info">approx 2 x 2</p></td>
+										<td><input type="text" name="Table Lamp,approx 2 x 2" id="Table Lamp,approx 2 x 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Table Lamp</p> , <p class="table-info">2.5 x 2.5 x 2.5 or larger</p></td>
+										<td><input type="text" name="Table Lamp,2.5 x 2.5 x 2.5 or larger" id="Table Lamp,2.5 x 2.5 x 2.5 or larger" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Tri-Head Lamp</p></td>
+										<td><input type="text" name="Lamps,Tri-Head Lamp" id="Lamps,Tri-Head Lamp" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bookcase</p> , <p class="table-info">approx 3 x 3</p></td>
+										<td><input type="text" name="Bookcase,approx 3 x 3" id="Bookcase,approx 3 x 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bookcase</p> , <p class="table-info">approx 4 x 6</p></td>
+										<td><input type="text" name="Bookcase,approx 4 x 6" id="Bookcase,approx 4 x 6" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bookcase</p> , <p class="table-info">approx 4 x 8</p></td>
+										<td><input type="text" name="Bookcase,approx 4 x 8" id="Bookcase,approx 4 x 8" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Front Bookcase</p> , <p class="table-info">approx 3 x 3</p></td>
+										<td><input type="text" name="Glass Front Bookcase,approx 3 x 3" id="Glass Front Bookcase,approx 3 x 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Front Bookcase</p> , <p class="table-info">approx 4 x 6</p></td>
+										<td><input type="text" name="Glass Front Bookcase,approx 4 x 6" id="Glass Front Bookcase,approx 4 x 6" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Front Bookcase</p> , <p class="table-info">approx 4 x 8</p></td>
+										<td><input type="text" name="Glass Front Bookcase,approx 4 x 8" id="Glass Front Bookcase,approx 4 x 8" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Baby Grand Piano</p></td>
+										<td><input type="text" name="Pianos,Baby Grand Piano" id="Pianos,Baby Grand Piano" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Console Piano</p></td>
+										<td><input type="text" name="Pianos,Console Piano" id="Pianos,Console Piano" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Grand Piano</p></td>
+										<td><input type="text" name="Pianos,Grand Piano" id="Pianos,Grand Piano" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Piano Bench</p></td>
+										<td><input type="text" name="Pianos,Piano Bench" id="Pianos,Piano Bench" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Spinet Piano</p></td>
+										<td><input type="text" name="Pianos,Spinet Piano" id="Pianos,Spinet Piano" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Upright Piano</p></td>
+										<td><input type="text" name="Pianos,Upright Piano" id="Pianos,Upright Piano" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mirror</p> , <p class="table-info">approx 2 x 3</p></td>
+										<td><input type="text" name="Mirror,approx 2 x 3" id="Mirror,approx 2 x 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mirror</p> , <p class="table-info">approx 2.5 x 5</p></td>
+										<td><input type="text" name="Mirror,approx 2.5 x 5" id="Mirror,approx 2.5 x 5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mirror</p> , <p class="table-info">approx 4 x 8</p></td>
+										<td><input type="text" name="Mirror,approx 4 x 8" id="Mirror,approx 4 x 8" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Painting</p> , <p class="table-info">approx 1.5 x 2</p></td>
+										<td><input type="text" name="Painting,approx 1.5 x 2" id="Painting,approx 1.5 x 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Painting</p> , <p class="table-info">approx 2.5 x 4</p></td>
+										<td><input type="text" name="Painting,approx 2.5 x 4" id="Painting,approx 2.5 x 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Painting</p> , <p class="table-info">approx 4 x 6</p></td>
+										<td><input type="text" name="Painting,approx 4 x 6" id="Painting,approx 4 x 6" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Picture</p> , <p class="table-info">approx 1.5 x 2</p></td>
+										<td><input type="text" name="Picture,approx 1.5 x 2" id="Picture,approx 1.5 x 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Picture</p> , <p class="table-info">approx 2.5 x 4</p></td>
+										<td><input type="text" name="Picture,approx 2.5 x 4" id="Picture,approx 2.5 x 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Picture</p> , <p class="table-info">approx 4 x 6</p></td>
+										<td><input type="text" name="Picture,approx 4 x 6" id="Picture,approx 4 x 6" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Picture Crate</p></td>
+										<td><input type="text" name="Picture Crate" id="Picture Crate" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">CD Rack</p> </td>
+										<td><input type="text" name="CD Rack" id="CD Rack" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Fan</p> , <p class="table-info">Table</p></td>
+										<td><input type="text" name="Fan,Table" id="Fan,Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Fan</p> , <p class="table-info">Standing</p></td>
+										<td><input type="text" name="Fan,Standing" id="Fan,Standing" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Fireplace Equipment</p></td>
+										<td><input type="text" name="Fireplace Equipment" id="Fireplace Equipment" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Grandfather Clock</p></td>
+										<td><input type="text" name="Grandfather Clock" id="Grandfather Clock" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Rug</p> , <p class="table-info">Runner</p></td>
+										<td><input type="text" name="Rug,Runner" id="Rug,Runner" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Rug</p> , <p class="table-info">4 long rolled</p></td>
+										<td><input type="text" name="Rug,4 long rolled" id="Rug,4 long rolled" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Rug</p> , <p class="table-info">7 long rolled</p></td>
+										<td><input type="text" name="Rug,7 long rolled" id="Rug,7 long rolled" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Rug</p> , <p class="table-info">9 long rolled</p></td>
+										<td><input type="text" name="Rug,9 long rolled" id="Rug,9 long rolled" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Captains Bed</p></td>
+										<td><input type="text" name="Beds,Captains Bed" id="Beds,Captains Bed" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Daybed</p></td>
+										<td><input type="text" name="Beds,Daybed" id="Beds,Daybed" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Folding Cots</p></td>
+										<td><input type="text" name="Beds,Folding Cots" id="Beds,Folding Cots" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Footboard</p> </td>
+										<td><input type="text" name="Beds,Footboard" id="Beds,Footboard" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Headboard</p></td>
+										<td><input type="text" name="Beds,Headboard" id="Beds,Headboard" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress and Box Spring</p> , <p class="table-info">Single</p></td>
+										<td><input type="text" name="Mattress and Box Spring,Single" id="Mattress and Box Spring,Single" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress and Box Spring</p> , <p class="table-info">Full</p></td>
+										<td><input type="text" name="Mattress and Box Spring,Full" id="Mattress and Box Spring,Full" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress and Box Spring</p> , <p class="table-info">Queen</p></td>
+										<td><input type="text" name="Mattress and Box Spring,Queen" id="Mattress and Box Spring,Queen" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress and Box Spring</p> , <p class="table-info">King</p></td>
+										<td><input type="text" name="Mattress and Box Spring,King" id="Mattress and Box Spring,King" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress and Box Spring</p> , <p class="table-info">California King</p></td>
+										<td><input type="text" name="Mattress and Box Spring,California King" id="Mattress and Box Spring,California King" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Metal Bed Frame</p> , <p class="table-info">Collapsible</p></td>
+										<td><input type="text" name="Metal Bed Frame,Collapsible" id="Metal Bed Frame,Collapsible" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Murphy Bed</p></td>
+										<td><input type="text" name="Beds,Murphy Bed" id="Beds,Murphy Bed" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Trundle</p></td>
+										<td><input type="text" name="Beds,Trundle" id="Beds,Trundle" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Wood Bed Frame</p></td>
+										<td><input type="text" name="Beds,Wood Bed Frame" id="Beds,Wood Bed Frame" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress</p> , <p class="table-info">Single "size"</p></td>
+										<td><input type="text" name="Mattress,Single" id="Mattress,Single " class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress</p> , <p class="table-info">Full "size"</p></td>
+										<td><input type="text" name="Mattress,Full " id="Mattress,Full " class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress</p> , <p class="table-info">Queen "size"</p></td>
+										<td><input type="text" name="Mattress,Queen " id="Mattress,Queen " class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress</p> , <p class="table-info">King "size"</p></td>
+										<td><input type="text" name="Mattress,King " id="Mattress,King " class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mattress</p> , <p class="table-info">California King</p></td>
+										<td><input type="text" name="Mattress,California King" id="Mattress,California King" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dresser</p> , <p class="table-info">approx 2 x 4</p></td>
+										<td><input type="text" name="Dresser,approx 2 x 4" id="Dresser,approx 2 x 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dresser</p> , <p class="table-info">approx 3 x 5</p></td>
+										<td><input type="text" name="Dresser,approx 3 x 5" id="Dresser,approx 3 x 5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dresser</p> , <p class="table-info">approx 5 x 5</p></td>
+										<td><input type="text" name="Dresser,approx 5 x 5" id="Dresser,approx 5 x 5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Lingerie Chest</p></td>
+										<td><input type="text" name="Cabinets,Lingerie Chest" id="Cabinets,Lingerie Chest" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Vanity</p></td>
+										<td><input type="text" name="Cabinets,Vanity" id="Cabinets,Vanity" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Wardrobe Closet</p></td>
+										<td><input type="text" name="Cabinets,Wardrobe Closet" id="Cabinets,Wardrobe Closet" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Wardrobe Closet with Mirrors</p></td>
+										<td><input type="text" name="Cabinets,Wardrobe Closet with Mirrors" id="Cabinets,Wardrobe Closet with Mirrors" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Night Table</p></td>
+										<td><input type="text" name="Tables,Night Table" id="Tables,Night Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Nightstand</p></td>
+										<td><input type="text" name="Tables,Nightstand" id="Tables,Nightstand" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Clothes Steamer</p></td>
+										<td><input type="text" name="Clothes Steamer" id="Clothes Steamer" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Clothing Rack</p></td>
+										<td><input type="text" name="Clothing Rack" id="Clothing Rack" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Garbage Pail</p></td>
+										<td><input type="text" name="Garbage Pail" id="Garbage Pail" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Hamper</p></td>
+										<td><input type="text" name="Hamper" id="Hamper" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Shoe Rack</p></td>
+										<td><input type="text" name="Shoe Rack" id="Shoe Rack" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Suitcase</p></td>
+										<td><input type="text" name="Suitcase" id="Suitcase" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Buffet</p></td>
+										<td><input type="text" name="Tables,Buffet" id="Tables,Buffet" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Console Table</p></td>
+										<td><input type="text" name="Tables,Console Table" id="Tables,Console Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dining Table</p> , <p class="table-info">Seats 4</p></td>
+										<td><input type="text" name="Dining Table,Seats 4" id="Dining Table,Seats 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dining Table</p> , <p class="table-info">Seats 6</p></td>
+										<td><input type="text" name="Dining Table,Seats 6" id="Dining Table,Seats 6" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dining Table</p> , <p class="table-info">Seats 8</p></td>
+										<td><input type="text" name="Dining Table,Seats 8" id="Dining Table,Seats 8" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Tables</p> , <p class="table-info">Glass Buffet</p></td>
+										<td><input type="text" name="Glass Tables,Glass Buffet" id="Glass Tables,Glass Buffet" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Tables</p> , <p class="table-info">Glass Console Table</p></td>
+										<td><input type="text" name="Glass Tables,Glass Console Table" id="Glass Tables,Glass Console Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Dining Table</p> , <p class="table-info">Seats 4</p></td>
+										<td><input type="text" name="Glass Dining Table,Seats 4" id="Glass Dining Table,Seats 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Dining Table</p> , <p class="table-info">Seats 6</p></td>
+										<td><input type="text" name="Glass Dining Table,Seats 6" id="Glass Dining Table,Seats 6" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Dining Table</p> , <p class="table-info">Seats 8</p></td>
+										<td><input type="text" name="Glass Dining Table,Seats 8" id="Glass Dining Table,Seats 8" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dining Chair</p> </td>
+										<td><input type="text" name="Chairs,Dining Chair" id="Chairs,Dining Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">China Cabinet</p> , <p class="table-info">approx 3 x 7 tall</p></td>
+										<td><input type="text" name="China Cabinet,approx 3 x 7 tall" id="China Cabinet,approx 3 x 7 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">China Cabinet</p> , <p class="table-info">approx 3.5 x 7 tall</p></td>
+										<td><input type="text" name="China Cabinet,approx 3.5 x 7 tall" id="China Cabinet,approx 3.5 x 7 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">China Cabinet</p> , <p class="table-info">approx 4 x 8 tall</p></td>
+										<td><input type="text" name="China Cabinet,approx 4 x 8 tall" id="China Cabinet,approx 4 x 8 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Credenza</p> , <p class="table-info">approx 5 long</p></td>
+										<td><input type="text" name="Credenza,approx 5 long" id="Credenza,approx 5 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Credenza</p> , <p class="table-info">approx 7 long</p></td>
+										<td><input type="text" name="Credenza,approx 7 long" id="Credenza,approx 7 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Credenza</p> , <p class="table-info">approx 9 long</p></td>
+										<td><input type="text" name="Credenza,approx 9 long" id="Credenza,approx 9 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass China Cabinet</p> , <p class="table-info">approx 3 x 7 tall</p></td>
+										<td><input type="text" name="Glass China Cabinet,approx 3 x 7 tall" id="Glass China Cabinet,approx 3 x 7 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass China Cabinet</p> , <p class="table-info">approx 3.5 x 7 tall</p></td>
+										<td><input type="text" name="Glass China Cabinet,approx 3.5 x 7 tall" id="Glass China Cabinet,approx 3.5 x 7 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass China Cabinet</p> , <p class="table-info">approx 4 x 8 tall</p></td>
+										<td><input type="text" name="Glass China Cabinet,approx 4 x 8 tall" id="Glass China Cabinet,approx 4 x 8 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Chandelier</p> , <p class="table-info">approx 1 cube</p></td>
+										<td><input type="text" name="Chandelier,approx 1 cube" id="Chandelier,approx 1 cube" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Chandelier</p> , <p class="table-info">approx 2 x 3</p></td>
+										<td><input type="text" name="Chandelier,approx 2 x 3" id="Chandelier,approx 2 x 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Chandelier</p> , <p class="table-info">approx 3 x 3 x 5</p></td>
+										<td><input type="text" name="Chandelier,approx 3 x 3 x 5" id="Chandelier,approx 3 x 3 x 5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Kitchen Table</p></td>
+										<td><input type="text" name="Tables,Glass Kitchen Table" id="Tables,Glass Kitchen Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Kitchen Table</p></td>
+										<td><input type="text" name="Tables,Kitchen Table" id="Tables,Kitchen Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bar Stool</p></td>
+										<td><input type="text" name="Chairs,Bar Stool" id="Chairs,Bar Stool" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">High Chair</p></td>
+										<td><input type="text" name="Chairs,High Chair" id="Chairs,High Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Kitchen Chair</p></td>
+										<td><input type="text" name="Chairs,Kitchen Chair" id="Chairs,Kitchen Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Small Stool</p></td>
+										<td><input type="text" name="Chairs,Small Stool" id="Chairs,Small Stool" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Kitchen Cabinet</p> </td>
+										<td><input type="text" name="Cabinets,Kitchen Cabinet" id="Cabinets,Kitchen Cabinet" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Blender</p></td>
+										<td><input type="text" name="Appliances,Blender" id="Appliances,Blender" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bread Maker</p></td>
+										<td><input type="text" name="Appliances,Bread Maker" id="Appliances,Bread Maker" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Chest Freezer</p></td>
+										<td><input type="text" name="Appliances,Chest Freezer" id="Appliances,Chest Freezer" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Coffee Maker</p></td>
+										<td><input type="text" name="Appliances,Coffee Maker" id="Appliances,Coffee Maker" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Crock Pot</p></td>
+										<td><input type="text" name="Appliances,Crock Pot" id="Appliances,Crock Pot" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dishwasher</p></td>
+										<td><input type="text" name="Appliances,Dishwasher" id="Appliances,Dishwasher" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Food Processor</p></td>
+										<td><input type="text" name="Appliances,Food Processor" id="Appliances,Food Processor" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Juicer</p></td>
+										<td><input type="text" name="Appliances,Juicer" id="Appliances,Juicer" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Microwave</p></td>
+										<td><input type="text" name="Appliances,Microwave" id="Appliances,Microwave" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Oven</p></td>
+										<td><input type="text" name="Appliances,Oven" id="Appliances,Oven" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Refrigerator</p> , <p class="table-info">Mini</p></td>
+										<td><input type="text" name="Refrigerator,Mini" id="Refrigerator,Mini" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Refrigerator</p> , <p class="table-info">Wine</p></td>
+										<td><input type="text" name="Refrigerator,Wine" id="Refrigerator,Wine" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Refrigerator</p> , <p class="table-info">under 5 tall</p></td>
+										<td><input type="text" name="Refrigerator,under 5 tall" id="Refrigerator,under 5 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Refrigerator</p> , <p class="table-info">under 6.5 tall</p></td>
+										<td><input type="text" name="Refrigerator,under 6.5 tall" id="Refrigerator,under 6.5 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Refrigerator</p> , <p class="table-info">taller than 7</p></td>
+										<td><input type="text" name="Refrigerator,taller than 7" id="Refrigerator,taller than 7" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Refrigerator</p> , <p class="table-info">wider than 5</p></td>
+										<td><input type="text" name="Refrigerator,wider than 5" id="Refrigerator,wider than 5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Toaster Oven</p></td>
+										<td><input type="text" name="Appliances,Toaster Oven" id="Appliances,Toaster Oven" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Backer Rack</p></td>
+										<td><input type="text" name="Backer Rack" id="Backer Rack" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Butcher Block</p></td>
+										<td><input type="text" name="Butcher Block" id="Butcher Block" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Garbage Bin</p></td>
+										<td><input type="text" name="Garbage Bin" id="Garbage Bin" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Garbage Can</p></td>
+										<td><input type="text" name="Garbage Can" id="Garbage Can" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Microwave Cart</p></td>
+										<td><input type="text" name="Microwave Cart" id="Microwave Cart" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Water Cooler</p></td>
+										<td><input type="text" name="Water Cooler" id="Water Cooler" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Wive Rack</p></td>
+										<td><input type="text" name="Wive Rack" id="Wive Rack" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bassinet</p></td>
+										<td><input type="text" name="Beds,Bassinet" id="Beds,Bassinet" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bunk Bed</p> </td>
+										<td><input type="text" name="Beds,Bunk Bed" id="Beds,Bunk Bed" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Children's Bed</p></td>
+										<td><input type="text" name="Beds,Childrens Bed" id="Beds,Childrens Bed" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Crib</p> </td>
+										<td><input type="text" name="Beds,Crib" id="Beds,Crib" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Toddler's Bed</p></td>
+										<td><input type="text" name="Beds,Toddlers Bed" id="Beds,Toddlers Bed" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Changing Table</p></td>
+										<td><input type="text" name="Tables,Changing Table" id="Tables,Changing Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Children's Table</p></td>
+										<td><input type="text" name="Tables,Childrens Table" id="Tables,Childrens Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Children's Chair</p></td>
+										<td><input type="text" name="Chairs,Childrens Chair" id="Chairs,Childrens Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dollhouse</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Toys,Dollhouse" id="Toys,Dollhouse" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Play Set</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Toys,Play Set" id="Toys,Play Set" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Playpen</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Toys,Playpen" id="Toys,Playpen" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Toy Car</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Toys,Toy Car" id="Toys,Toy Car" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Car Seat</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Car Seat" id="Car Seat" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Stroller</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Stroller" id="Stroller" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Toy Bin</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Toy Bin" id="Toy Bin" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Toy Trunk</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Toy Trunk" id="Toy Trunk" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Conference Table</p> , <p class="table-info">6 long</p></td>
+										<td><input type="text" name="Conference Table,6 long" id="Conference Table,6 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Conference Table</p> , <p class="table-info">8 long</p></td>
+										<td><input type="text" name="Conference Table,8 long" id="Conference Table,8 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Conference Table</p> , <p class="table-info">10 long</p></td>
+										<td><input type="text" name="Conference Table,10 long" id="Conference Table,10 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Conference Table</p> , <p class="table-info">12 long</p></td>
+										<td><input type="text" name="Conference Table,12 long" id="Conference Table,12 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Desk</p> , <p class="table-info">approx 4 x 2.5</p></td>
+										<td><input type="text" name="Desk,approx 4 x 2.5" id="Desk,approx 4 x 2.5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Desk</p> , <p class="table-info">approx 6 x 2.5</p></td>
+										<td><input type="text" name="Desk,approx 6 x 2.5" id="Desk,approx 6 x 2.5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Desk</p> , <p class="table-info">approx 8 x 3</p></td>
+										<td><input type="text" name="Desk,approx 8 x 3" id="Desk,approx 8 x 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Desk</p> , <p class="table-info">with hutch</p></td>
+										<td><input type="text" name="Desk,with hutch" id="Desk,with hutch" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Desk</p> , <p class="table-info">with return</p></td>
+										<td><input type="text" name="Desk,with return" id="Desk,with return" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Drafting Table</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Tables and Desks,Drafting Table" id="Tables and Desks,Drafting Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Conference Table</p> , <p class="table-info">6 long</p></td>
+										<td><input type="text" name="Glass Conference Table,6 long" id="Glass Conference Table,6 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Conference Table</p> , <p class="table-info">8 long</p></td>
+										<td><input type="text" name="Glass Conference Table,8 long" id="Glass Conference Table,8 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Conference Table</p> , <p class="table-info">10 long</p></td>
+										<td><input type="text" name="Glass Conference Table,10 long" id="Glass Conference Table,10 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Conference Table</p> , <p class="table-info">12 long</p></td>
+										<td><input type="text" name="Glass Conference Table,12 long" id="Glass Conference Table,12 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Desk</p> , <p class="table-info">approx 4 x 2.5</p></td>
+										<td><input type="text" name="Glass Desk,approx 4 x 2.5" id="Glass Desk,approx 4 x 2.5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Desk</p> , <p class="table-info">approx 6 x 2.5</p></td>
+										<td><input type="text" name="Glass Desk,approx 6 x 2.5" id="Glass Desk,approx 6 x 2.5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Desk</p> , <p class="table-info">approx 8 x 3</p></td>
+										<td><input type="text" name="Glass Desk,approx 8 x 3" id="Glass Desk,approx 8 x 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Desk</p> , <p class="table-info">with return</p></td>
+										<td><input type="text" name="Glass Desk,with return" id="Glass Desk,with return" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Work Table</p> , <p class="table-info">approx 2.5 x 2.5</p></td>
+										<td><input type="text" name="Work Table,approx 2.5 x 2.5" id="Work Table,approx 2.5 x 2.5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Work Table</p> , <p class="table-info">approx 4 x 2.5</p></td>
+										<td><input type="text" name="Work Table,approx 4 x 2.5" id="Work Table,approx 4 x 2.5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Work Table</p> , <p class="table-info">approx 6 x 3</p></td>
+										<td><input type="text" name="Work Table,approx 6 x 3" id="Work Table,approx 6 x 3" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Conference Chair</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Chairs,Conference Chair" id="Chairs,Conference Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Executive Chair</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Chairs,Executive Chair" id="Chairs,Executive Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Office Chair</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Chairs,Office Chair" id="Chairs,Office Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Computer</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Computer,Small" id="Computer,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Computer</p> , <p class="table-info">Medium</p></td>
+										<td><input type="text" name="Computer,Medium" id="Computer,Medium" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Computer</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Computer,Large" id="Computer,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Monitor</p> , <p class="table-info">approx 2 x 1</p></td>
+										<td><input type="text" name="Monitor,approx 2 x 1" id="Monitor,approx 2 x 1" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Monitor</p> , <p class="table-info">approx 3 x 1.5</p></td>
+										<td><input type="text" name="Monitor,approx 3 x 1.5" id="Monitor,approx 3 x 1.5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Monitor</p> , <p class="table-info">approx 3.5 x 1.5</p></td>
+										<td><input type="text" name="Monitor,approx 3.5 x 1.5" id="Monitor,approx 3.5 x 1.5" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Fax Machine</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Equipment,Fax Machine" id="Equipment,Fax Machine" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Garbage Pail</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Equipment,Garbage Pail" id="Equipment,Garbage Pail" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Laminating Machine</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Equipment,Laminating Machine" id="Equipment,Laminating Machine" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Paper Shredder</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Equipment,Paper Shredder" id="Equipment,Paper Shredder" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Printer</p> , <p class="table-info">less than 1.5 cube</p></td>
+										<td><input type="text" name="Printer,less than 1.5 cube" id="Printer,less than 1.5 cube" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Printer</p> , <p class="table-info">approx 1.5 cube</p></td>
+										<td><input type="text" name="Printer,approx 1.5 cube" id="Printer,approx 1.5 cube" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Printer</p> , <p class="table-info">approx 2 cube or more</p></td>
+										<td><input type="text" name="Printer,approx 2 cube or more" id="Printer,approx 2 cube or more" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Printer Stand</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Equipment,Printer Stand" id="Equipment,Printer Stand" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Scanner</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Equipment,Scanner" id="Equipment,Scanner" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Drawer Unit</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Cabinets,Drawer Unit" id="Cabinets,Drawer Unit" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">File Cabinet</p> , <p class="table-info">2 Drawer Vertical</p></td>
+										<td><input type="text" name="File Cabinet,2 Drawer Vertical" id="File Cabinet,2 Drawer Vertical" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">File Cabinet</p> , <p class="table-info">2 Drawer Vertical Deep</p></td>
+										<td><input type="text" name="File Cabinet,2 Drawer Vertical Deep" id="File Cabinet,2 Drawer Vertical Deep" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">File Cabinet</p> , <p class="table-info">4 Drawer Vertical</p></td>
+										<td><input type="text" name="File Cabinet,4 Drawer Vertical" id="File Cabinet,4 Drawer Vertical" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">File Cabinet</p> , <p class="table-info">2 Drawer Lateral</p></td>
+										<td><input type="text" name="File Cabinet,2 Drawer Lateral" id="File Cabinet,2 Drawer Lateral" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">File Cabinet</p> , <p class="table-info">4 Drawer Vertical Deep</p></td>
+										<td><input type="text" name="File Cabinet,4 Drawer Vertical Deep" id="File Cabinet,4 Drawer Vertical Deep" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">File Cabinet</p> , <p class="table-info">4 Drawer Lateral</p></td>
+										<td><input type="text" name="File Cabinet,4 Drawer Lateral" id="File Cabinet,4 Drawer Lateral" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor End Table</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Outdoor End Table,Small" id="Outdoor End Table,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor End Table</p> , <p class="table-info">Medium</p></td>
+										<td><input type="text" name="Outdoor End Table,Medium" id="Outdoor End Table,Medium" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor End Table</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Outdoor End Table,Large" id="Outdoor End Table,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Glass End Table</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Outdoor Glass End Table,Small" id="Outdoor Glass End Table,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Glass End Table</p> , <p class="table-info">Medium</p></td>
+										<td><input type="text" name="Outdoor Glass End Table,Medium" id="Outdoor Glass End Table,Medium" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Glass End Table</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Outdoor Glass End Table,Large" id="Outdoor Glass End Table,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Glass Table</p> , <p class="table-info">Seats 4</p></td>
+										<td><input type="text" name="Outdoor Glass Table,Seats 4" id="Outdoor Glass Table,Seats 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Glass Table</p> , <p class="table-info">Seats 6</p></td>
+										<td><input type="text" name="Outdoor Glass Table,Seats 6" id="Outdoor Glass Table,Seats 6" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Glass Table</p> , <p class="table-info">Seats 8</p></td>
+										<td><input type="text" name="Outdoor Glass Table,Seats 8" id="Outdoor Glass Table,Seats 8" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Table</p> , <p class="table-info">Seats 4</p></td>
+										<td><input type="text" name="Outdoor Table,Seats 4" id="Outdoor Table,Seats 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Table</p> , <p class="table-info">Seats 6</p></td>
+										<td><input type="text" name="Outdoor Table,Seats 6" id="Outdoor Table,Seats 6" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Table</p> , <p class="table-info">Seats 8</p></td>
+										<td><input type="text" name="Outdoor Table,Seats 8" id="Outdoor Table,Seats 8" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Chair</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Chairs,Outdoor Chair" id="Chairs,Outdoor Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Lounge Chair</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Chairs,Outdoor Lounge Chair" id="Chairs,Outdoor Lounge Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Sofa</p> , <p class="table-info">Loveseat</p></td>
+										<td><input type="text" name="Outdoor Sofa,Loveseat" id="Outdoor Sofa,Loveseat" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Outdoor Sofa</p> , <p class="table-info">3 Seater</p></td>
+										<td><input type="text" name="Outdoor Sofa,3 Seater" id="Outdoor Sofa,3 Seater" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Plant</p> , <p class="table-info">under 4 tall</p></td>
+										<td><input type="text" name="Plant,under 4 tall" id="Plant,under 4 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Plant</p> , <p class="table-info">approx 6 tall</p></td>
+										<td><input type="text" name="Plant,approx 6 tall" id="Plant,approx 6 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Plant</p> , <p class="table-info">over 8 tall</p></td>
+										<td><input type="text" name="Plant,over 8 tall" id="Plant,over 8 tall" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Grill</p> , <p class="table-info">approx 2.5 long</p></td>
+										<td><input type="text" name="Grill,approx 2.5 long" id="Grill,approx 2.5 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Grill</p> , <p class="table-info">approx 3.5 long</p></td>
+										<td><input type="text" name="Grill,approx 3.5 long" id="Grill,approx 3.5 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Grill</p> , <p class="table-info">approx 5 long</p></td>
+										<td><input type="text" name="Grill,approx 5 long" id="Grill,approx 5 long" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Clarinet</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Instruments,Clarinet" id="Instruments,Clarinet" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Drums</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Instruments,Drums" id="Instruments,Drums" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Guitar</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Instruments,Guitar" id="Instruments,Guitar" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Guitar Amplifier</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Instruments,Guitar Amplifier" id="Instruments,Guitar Amplifier" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Saxophone</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Instruments,Saxophone" id="Instruments,Saxophone" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Trombone</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Instruments,Trombone" id="Instruments,Trombone" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Trumpet</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Instruments,Trumpet" id="Instruments,Trumpet" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Violin</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Instruments,Violin" id="Instruments,Violin" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bench</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Chairs,Bench" id="Chairs,Bench" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Folding Chair</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Chairs,Folding Chair" id="Chairs,Folding Chair" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bathroom Cabinet</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Cabinets,Bathroom Cabinet" id="Cabinets,Bathroom Cabinet" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Cabinet</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Cabinets,Glass Cabinet" id="Cabinets,Glass Cabinet" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bicycle</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Sports and Hobbies,Bicycle" id="Sports and Hobbies,Bicycle" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Children's Bicycle</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Sports and Hobbies,Childrens Bicycle" id="Sports and Hobbies,Childrens Bicycle" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dumbbells</p> , <p class="table-info">31lb or more (1 pair)</p></td>
+										<td><input type="text" name="Dumbbells,31lb or more (1 pair)" id="Dumbbells,31lb or more (1 pair)" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dumbbells</p> , <p class="table-info">10lb or less (1 pair)</p></td>
+										<td><input type="text" name="Dumbbells,10lb or less (1 pair)" id="Dumbbells,10lb or less (1 pair)" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dumbbells</p> , <p class="table-info">11lb - 30lb (1 pair)</p></td>
+										<td><input type="text" name="Dumbbells,11lb - 30lb (1 pair)" id="Dumbbells,11lb - 30lb (1 pair)" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Elliptical</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Sports and Hobbies,Elliptical" id="Sports and Hobbies,Elliptical" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Exercise Bike</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Sports and Hobbies,Exercise Bike" id="Sports and Hobbies,Exercise Bike" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Golf Bag</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Sports and Hobbies,Golf Bag" id="Sports and Hobbies,Golf Bag" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Skis</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Sports and Hobbies,Skis" id="Sports and Hobbies,Skis" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Snowboard</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Sports and Hobbies,Snowboard" id="Sports and Hobbies,Snowboard" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Surfboard</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Sports and Hobbies,Surfboard" id="Sports and Hobbies,Surfboard" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Treadmill</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Sports and Hobbies,Treadmill" id="Sports and Hobbies,Treadmill" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Air Conditioner</p> , <p class="table-info">approx 1 cube</p></td>
+										<td><input type="text" name="Air Conditioner,approx 1 cube" id="Air Conditioner,approx 1 cube" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Air Conditioner</p> , <p class="table-info">approx 1.5 x 1.5 x 4</p></td>
+										<td><input type="text" name="Air Conditioner,approx 1.5 x 1.5 x 4" id="Air Conditioner,approx 1.5 x 1.5 x 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Air Conditioner</p> , <p class="table-info">approx 2 x 4</p></td>
+										<td><input type="text" name="Air Conditioner,approx 2 x 4" id="Air Conditioner,approx 2 x 4" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Air Purifier</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Home Appliances,Air Purifier" id="Home Appliances,Air Purifier" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Dryer</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Home Appliances,Dryer" id="Home Appliances,Dryer" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Iron</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Home Appliances,Iron" id="Home Appliances,Iron" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Ironing Board</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Home Appliances,Ironing Board" id="Home Appliances,Ironing Board" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sewing Machine</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Home Appliances,Sewing Machine" id="Home Appliances,Sewing Machine" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Space Heater</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Home Appliances,Space Heater" id="Home Appliances,Space Heater" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Vacuum Cleaner</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Home Appliances,Vacuum Cleaner" id="Home Appliances,Vacuum Cleaner" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Washer/Dryer Combo</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Home Appliances,Washer/Dryer Combo" id="Home Appliances,Washer/Dryer Combo" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Washing Machine</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Home Appliances,Washing Machine" id="Home Appliances,Washing Machine" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Stereo Or Video Component</p></td>
+										<td><input type="text" name="Stereo Equipment,Stereo Or Video Component" id="Stereo Equipment,Stereo Or Video Component" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Foosball Table</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Games,Foosball Table" id="Games,Foosball Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Pinball Machine</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Games,Pinball Machine" id="Games,Pinball Machine" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Ping Pong Table</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Games,Ping Pong Table" id="Games,Ping Pong Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Pool Table</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Games,Pool Table" id="Games,Pool Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Basket</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Basket" id="Basket" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Bike Rack</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Bike Rack" id="Bike Rack" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Broom</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Broom" id="Broom" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Cat Litter Box</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Cat Litter Box" id="Cat Litter Box" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Cat Tree</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Cat Tree,Small" id="Cat Tree,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Cat Tree</p> , <p class="table-info">Medium</p></td>
+										<td><input type="text" name="Cat Tree,Medium" id="Cat Tree,Medium" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Cat Tree</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Cat Tree,Large" id="Cat Tree,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Coat Rack</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Coat Rack" id="Coat Rack" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Easel</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Easel,Small" id="Easel,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Easel</p> , <p class="table-info">Medium</p></td>
+										<td><input type="text" name="Easel,Medium" id="Easel,Medium" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Easel</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Easel,Large" id="Easel,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Faux Fireplace</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Faux Fireplace" id="Faux Fireplace" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Folding Screen</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Folding Screen" id="Folding Screen" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Gun Safe</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Gun Safe" id="Gun Safe" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Hoe</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Hoe" id="Hoe" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Ladder</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Ladder,Small" id="Ladder,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Ladder</p> , <p class="table-info">Medium</p></td>
+										<td><input type="text" name="Ladder,Medium" id="Ladder,Medium" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Ladder</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Ladder,Large" id="Ladder,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Lawn Mover</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Lawn Mover" id="Lawn Mover" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Magazine Rock</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Magazine Rock" id="Magazine Rock" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mannequin</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Mannequin" id="Mannequin" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Metal Locker</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Metal Locker" id="Metal Locker" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Milk Crate</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Milk Crate" id="Milk Crate" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Mop</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Mop" id="Mop" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Rake</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Rake" id="Rake" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Safe</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Safe" id="Safe" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Shopping Cart</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Shopping Cart" id="Shopping Cart" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Shovel</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Shovel" id="Shovel" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Snow Blower</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Snow Blower" id="Snow Blower" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Tool Box</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Tool Box" id="Tool Box" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Tool Chest</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Tool Chest,Small" id="Tool Chest,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Tool Chest</p> , <p class="table-info">Medium</p></td>
+										<td><input type="text" name="Tool Chest,Medium" id="Tool Chest,Medium" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Tool Chest</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Tool Chest,Large" id="Tool Chest,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Card Table</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Tables,Card Table" id="Tables,Card Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Folding Table</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Tables,Folding Table" id="Tables,Folding Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Table</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Glass Table,Small" id="Glass Table,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Table</p> , <p class="table-info">Medium</p></td>
+										<td><input type="text" name="Glass Table,Medium" id="Glass Table,Medium" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Glass Table</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Glass Table,Large" id="Glass Table,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sewing Machine Table</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Tables,Sewing Machine Table" id="Tables,Sewing Machine Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Table</p> , <p class="table-info">Small(approx 3)</p></td>
+										<td><input type="text" name="Table,Small(approx 3)" id="Table,Small(approx 3)" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Table</p> , <p class="table-info">Medium (approx 4)</p></td>
+										<td><input type="text" name="Table,Medium (approx 4)" id="Table,Medium (approx 4)" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Table</p> , <p class="table-info">Large (approx 5 x 2)</p></td>
+										<td><input type="text" name="Table,Large (approx 5 x 2)" id="Table,Large (approx 5 x 2)" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Utility Table</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Tables,Utility Table" id="Tables,Utility Table" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sculpture</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Sculpture,Small" id="Sculpture,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sculpture</p> , <p class="table-info">Medium</p></td>
+										<td><input type="text" name="Sculpture,Medium" id="Sculpture,Medium" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Sculpture</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Sculpture,Large" id="Sculpture,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Commercial Bin</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Travel and Storage,Commercial Bin" id="Travel and Storage,Commercial Bin" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Duffle Bag</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Travel and Storage,Duffle Bag" id="Travel and Storage,Duffle Bag" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Plastic Bin</p> , <p class="table-info">approx 1 x 2</p></td>
+										<td><input type="text" name="Plastic Bin,approx 1 x 2" id="Plastic Bin,approx 1 x 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Plastic Bin</p> , <p class="table-info">approx 2 x 2</p></td>
+										<td><input type="text" name="Plastic Bin,approx 2 x 2" id="Plastic Bin,approx 2 x 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Plastic Bin</p> , <p class="table-info">approx 3 x 2</p></td>
+										<td><input type="text" name="Plastic Bin,approx 3 x 2" id="Plastic Bin,approx 3 x 2" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Rental Bin</p> , <p class="table-info">27" x 12" x 17"</p></td>
+										<td><input type="text" name="Rental Bin,27" id="Rental Bin,27" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Rental Bin</p> , <p class="table-info">20" x 15" x 28"</p></td>
+										<td><input type="text" name="Rental Bin,20" id="Rental Bin,20" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Suitcase</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Travel and Storage,Suitcase" id="Travel and Storage,Suitcase" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Trash Bag</p> , <p class="table-info">Small</p></td>
+										<td><input type="text" name="Trash Bag,Small" id="Trash Bag,Small" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Trash Bag</p> , <p class="table-info">Large</p></td>
+										<td><input type="text" name="Trash Bag,Large" id="Trash Bag,Large" class="item-input"></td>
+									</tr><tr>
+										<td><p class="table-element">Trunk</p> , <p class="table-info"></p></td>
+										<td><input type="text" name="Travel and Storage,Trunk" id="Travel and Storage,Trunk" class="item-input"></td>
+									</tr></tbody></table>
+								</div>
+
+								<button type="submit" class="pricing-item-button">Save</button>
+							</form>
+						</div>
+					</li>
+					<li class="pricing-item">
+						<div class="pricing-item-title">
+							Storage
+							<i class='bx bx-chevron-down-circle item-title-icon'></i>
+						</div>
+						<div class="pricing-item-content hide">
+							<form name="storage">
+								<div class="pricing-item-checkbox">
+									<input type="checkbox" name="storage" id="storage" class="item-input  item-checkbox">
+									<label for="storage">Storage</label>
+								</div>
+								<div class="pricing-item-block">
+									<div class="pricing-item-input">
+										<p class="item-title">Storage Cost Per C/F</p>
+										<input type="text" class="item-input" name="storageCost" id="storageCost">
+									</div>
+								</div>
+								<div class="pricing-item-checkbox">
+									<input type="checkbox" name="storage-transit" id="storage-transit"
+										class="item-input  item-checkbox">
+									<label for="storage-transit">Storage In Transit</label>
+								</div>
+								<div class="pricing-item-checkbox">
+									<input type="checkbox" name="storage-moves" id="storage-moves"
+										class="item-input item-checkbox">
+									<label for="storage-moves">Moves To Storage</label>
+								</div>
+								<button type="submit" class="pricing-item-button">Save</button>
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</main>
+	<script src="js/profile.js"></script>
+	<script src="js/profile-pricing.js"></script>
+</body>
+
+</html>

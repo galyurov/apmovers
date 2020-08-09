@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css">
+    <link type="text/css" rel="stylesheet" href="css/header.css">
+    <link type="text/css" rel="stylesheet" href="css/input.css">
+    <link type="text/css" rel="stylesheet" href="css/result.css">
+    <link type="text/css" rel="stylesheet" href="css/2.css">
+</head>
+
+
+<body>
+
+<header class="site-header">
+    <div class="header-wrap">
+        <div class="container">
+            <div class="header">
+                <div class="header-logo">
+                    <a href="#"><img src="img/logo.png" alt=""></a>
+                </div>
+                <nav class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="long-distance.html" class="nav-link">Long Distance</a></li>
+                        <li class="nav-item"><a href="local-move.html" class="nav-link">Local</a></li>
+                        <li class="nav-item"><a href="comercial.html" class="nav-link">Commercial Move</a></li>
+                        <li class="nav-item"><a href="pack-unpack.html" class="nav-link">Packing & Unpacking</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="result-container">
+        <div class="result-wrap">
+            <div class="result-estimate">
+                <h2 class="result-title">Binding Moving Estimate</h2>
+                <div class="result-block">
+                    <div class="result-info-title">
+                        <p class="title-text text-head">Always Professional Moving Inc</p>
+                        <p class="title-text">815 Elizabeth Ave Suite 404</p>
+                        <p class="title-text">Elizabeth, NJ 07201</p>
+                        <p class="title-text">US DOT: 2587472,  MC: 910105</p>
+                        <p class="title-text">Registration #: 39PM00113300 </p>
+                    </div>
+                    <div class="result-info-text">
+                        <div class="info-wrap">
+                            <p class="title-text">Customer Rep:</p>
+                            <p class="title-text">Phone:</p>
+                            <p class="title-text">Direct:</p>
+                            <p class="title-text">Email:</p>
+                            <p class="title-text">Web:</p>
+                        </div>
+                        <div class="info-wrap">
+                            <p class="title-text" id="info-repres">Natalie</p>
+                            <p class="title-text" id="info-phone">908-409-8555</p>
+                            <p class="title-text" id="info-direct">908-266-4021</p>
+                            <p class="title-text" id="info-email"><a class="client-email" href="mailto:natalie@alwayspromove.com">natalie@alwayspromove.com</a></p>
+                            <p class="title-text" id="info-web"><a class="client-email" href="http://www.alwayspromove.com">http://www.alwayspromove.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="result-estimate">
+                <div class="title-wrap">
+                    <h2 class="result-title">Moving From</h2>
+                    <h2 class="result-title">Moving To</h2>
+                </div>
+                <div class="result-block">
+                    <div class="result-about local-wrap">
+                        <div class="result-about-text">
+                            <div class="result-client">
+                                <p id="client-name" class="result-about-title"></p>
+                                <p id="client-phone" class="result-about-title"></p>
+                                <p id="client-email" class="result-about-title"></p>
+                            </div>
+                            <p id="result-adress-from" class="result-about-title"></p>
+                            <p id="result-stairs-from" class="result-about-title"></p>
+                        </div>
+
+                        <div class="from-img"></div>
+                    </div>
+                    <div class="result-about local-wrap b0">
+                        <div class="result-about-text">
+                            <p id="result-adress-to" class="result-about-title"></p>
+                            <p id="result-stairs-to" class="result-about-title"></p>
+                        </div>
+                        <div class="to-img"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="result-estimate">
+                <div class="title-wrap">
+                    <h2 class="result-title">Relocation Details</h2>
+                    <h2 class="result-title">Relocation Rate</h2>
+                </div>
+                <div class="result-block">
+                    <div class="result-about">
+                        <table class="result-table">
+                            <tr class="result-tr">
+                                <td>Estimate Date:</td>
+                                <td class="estimate-date"></td>
+                            </tr>
+                            <tr class="result-tr">
+                                <td>Move Type:</td>
+                                <td class="move-type"></td>
+                            </tr>
+                            <tr class="result-tr">
+                                <td>Estimated Volume:</td>
+                                <td class="volume"></td>
+                            </tr>
+                            <tr class="result-tr">
+                                <td>Move Day:</td>
+                                <td class="move-day"></td>
+                            </tr>
+                            <tr class="result-tr">
+                                <td>Move Date:</td>
+                                <td class="move-date"></td>
+                            </tr>
+                            <tr class="result-tr">
+                                <td>Move Time:</td>
+                                <td class="move-time"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="result-about b0">
+                        <table class="result-table">
+                            <tr class="result-tr">
+                                <td>Moving:</td>
+                                <td class="result-total-moving sum-price"></td>
+                            </tr>
+                            <tr class="result-tr">
+                                <td>Travel:</td>
+                                <td class="result-total-travel sum-price"></td>
+                            </tr>
+                            <tr class="result-tr result-total-text">
+                                <td>Total:</td>
+                                <td class="result-total-total"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="result-estimate">
+                <div class="title-wrap">
+                    <h2 class="result-title">Inventory & Boxes</h2>
+                </div>
+                <div class="result-about b0">
+                    <table class="result-inventory">
+                        <tbody>
+                        <tr>
+                            <th colspan="2">Item</th>
+                            <th>Handling Fee</th>
+                            <th>Volume Fee</th>
+                            <th>QTY</th>
+                            <th>Total Price</th>
+                        </tr>
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="result-sticky-block">
+            <div class="result-sticky-button">
+                <form name="writeOrderInDb" action="">
+                    <button type="submit">Book this move</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+<script src="js/auth.js"></script>
+<script src="js/result.js"></script>
+
+</html>

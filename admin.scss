@@ -1,0 +1,155 @@
+.pricing {
+	&-container {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	&-list {
+		box-shadow: 4px 4px 7px 1px rgba(0, 0, 0, 0.44);
+	}
+	&-title {
+		font-size: 30px;
+		padding: 5px 0;
+	}
+	&-item {
+		border: 1px #bebebe solid;
+		border-bottom: none;
+		&-title {
+			position: relative;
+			font-size: 20px;
+			padding: 10px 10px;
+			background: #f3f3f3;
+			cursor: pointer;
+			&:after {
+				content: "";
+			}
+		}
+		&-input {
+			margin: 0 10px;
+			padding: 10px 0;
+			display: flex;
+		}
+		&-block {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			align-items: center;
+			border-top: 1px #bebebe solid;
+			margin: 0 10px;
+		}
+		&-info {
+			display: flex;
+		}
+		&-note {
+			font-size: 14px;
+			color: rgb(76, 173, 11);
+			margin-left: 10px;
+			font-weight: 600;
+			p {
+				display: inline;
+				line-height: 20px;
+				vertical-align: bottom;
+			}
+			div {
+				margin: 5px 0;
+			}
+		}
+		&-button {
+			margin: 10px;
+			padding: 5px 15px;
+			background: #f5a623;
+			border: none;
+			border-radius: 3px;
+			color: #12192c;
+			font-size: 14px;
+			cursor: pointer;
+			transition: 0.2s;
+			&:hover {
+				background: #12192c;
+				color: #ffffff;
+			}
+		}
+		&-checkbox {
+			margin: 10px;
+		}
+	}
+}
+.hide {
+	display: none;
+}
+table,
+th,
+td {
+	border: 1px solid grey;
+	padding: 10px;
+}
+.column-first {
+	padding: 10px 0;
+	width: 240px;
+}
+.block-table {
+	grid-template-columns: 100%;
+	& th {
+		font-size: 12px;
+	}
+	& td {
+		padding: 10px;
+		& input {
+			width: 60px;
+		}
+	}
+}
+.table-scrollbar {
+	max-height: 600px;
+	overflow: overlay;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+.dollar {
+	color: #808080;
+}
+.bx-info-circle {
+	font-size: 20px;
+}
+.item {
+	&-input {
+		width: 50px;
+		border-radius: 3px;
+		border: 1px solid #808080;
+		padding: 0 5px;
+	}
+	&-checkbox {
+		width: auto;
+	}
+	&-text {
+		font-size: 14px;
+		margin: 0 5px;
+		line-height: 22px;
+	}
+	&-title {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 22px;
+		margin-right: 5px;
+		&-icon {
+			font-size: 28px;
+			right: 5px;
+			top: 6px;
+			position: absolute;
+			cursor: pointer;
+		}
+	}
+}
+.table-element{
+	display: inline-block;
+}
+.table-info{
+	display: inline-block;
+	font-size: 12px;
+	color: #808080;
+}
+.mt{
+	margin-top: 15px;
+}
+.table {
+	margin-left: 30px;
+}

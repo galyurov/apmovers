@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="google-site-verification" content="H05VeKz68f3-nerKd3Cqy7xI0qTFqucgXReNxttFWhc" />
+	<title>Title</title>
+	<link rel="stylesheet" href="css/calculator.css">
+	<link rel="stylesheet" href="css/2.css">
+	<link type="text/css" rel="stylesheet" href="css/reset.css">
+	<link type="text/css" rel="stylesheet" href="css/header.css">
+	<link type="text/css" rel="stylesheet" href="css/input.css">
+	<link type="text/css" rel="stylesheet" href="css/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+
+<body onload="currentDate()">
+
+	<header class="site-header">
+		<div class="header-wrap">
+			<div class="container">
+				<div class="header">
+					<div class="header-logo">
+						<a href="#"><img src="img/logo.png" alt=""></a>
+					</div>
+					<nav class="nav-menu">
+						<ul class="nav-list">
+							<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+							<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+							<li class="nav-item"><a href="long-distance.html" class="nav-link">Long Distance</a></li>
+							<li class="nav-item"><a href="local-move.html" class="nav-link">Local</a></li>
+							<li class="nav-item"><a href="comercial.html" class="nav-link">Commercial Move</a></li>
+							<li class="nav-item"><a href="pack-unpack.html" class="nav-link">Packing & Unpacking</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div>
+		<div class="calculator">
+			<div class="wrap">
+				<form autocomplete="off" id="params" name="params">
+					<h2 class="wrap-title">No Phone Calls. Get Real Prices Now.</h2>
+					<div class="input-wrap">
+						<div class="input-from-wrap">
+							<h3 class="detail-title">Moving From:</h3>
+							<div class="input-address">
+								<svg class="location-icon" width="35" height="35" viewBox="0 0 354 512" version="1.1"
+									xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<title>Slice 1</title>
+									<defs>
+										<polygon id="path-1"
+											points="220.833333 121.458333 86.45625 121.458333 148.179167 59.7354167 132.5 44.1666667 44.1666667 132.5 132.5 220.833333 148.06875 205.264583 86.45625 143.541667 220.833333 143.541667">
+										</polygon>
+										<rect id="path-3" x="0" y="0" width="552.083333" height="552.083333"></rect>
+									</defs>
+									<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+										<g id="location-(1)" fill="#000000" fill-rule="nonzero">
+											<path
+												d="M177.001,512 C165.825,512 155.817,506.204 150.231,496.495 C150.172,496.393 150.115,496.29 150.058,496.187 L23.096,263.801 C-7.21,208.33 -6.341,142.489 25.421,87.677 C56.494,34.053 111.686,1.292 173.06,0.04 C175.682,-0.014 178.318,-0.014 180.938,0.04 C242.313,1.292 297.505,34.053 328.579,87.677 C360.341,142.489 361.21,208.329 330.904,263.801 L203.942,496.187 C203.885,496.29 203.828,496.393 203.769,496.495 C198.184,506.203 188.177,512 177.001,512 Z M177,32 C175.901,32 174.805,32.011 173.711,32.033 C123.612,33.055 78.526,59.854 53.107,103.721 C27,148.776 26.278,202.883 51.177,248.457 L177,478.757 L302.822,248.458 C327.721,202.883 327,148.776 300.891,103.721 C275.472,59.855 230.386,33.055 180.287,32.033 C179.196,32.011 178.099,32 177,32 Z"
+												id="Shape"></path>
+										</g>
+										<rect id="Rectangle" fill="#FFFFFF" x="144" y="141" width="19" height="38"></rect>
+										<rect id="Rectangle" fill="#FFFFFF" x="194" y="141" width="19" height="38"></rect>
+										<g id="ic-arrow-back" transform="translate(48.000000, 54.000000)">
+											<mask id="mask-2" fill="white">
+												<use xlink:href="#path-1"></use>
+											</mask>
+											<g id="Mask"></g>
+											<g id="Colors/Black" mask="url(#mask-2)">
+												<g transform="translate(-143.541667, -143.541667)">
+													<mask id="mask-4" fill="white">
+														<use xlink:href="#path-3"></use>
+													</mask>
+													<use id="Black" stroke="none" fill="#000000" fill-rule="evenodd"
+														xlink:href="#path-3">
+													</use>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+								<input name="origin" required class="input" id="origin" onFocus="geolocate()" type="text"
+									placeholder="Address, city, or zip" name="origin">
+							</div>
+							<div class="detail-inputs-wrap">
+								<select class="detail-stairs" id="select-stairs-from" name="detail-stairs-from" form="params">
+									<option value="e">Elevator</option>
+									<option value="0" selected>No stairs - ground floor</option>
+									<option value="2">Stairs - 2nd floor</option>
+									<option value="3">Stairs - 3rd floor</option>
+									<option value="4">Stairs - 4th floor</option>
+									<option value="5">Stairs - 5th floor</option>
+									<option value="6">Stairs - 6th floor</option>
+								</select>
+								<input type="text" name="apt-from" id="apt-from" placeholder="Apt" class="detail-apt">
+							</div>
+							<div class="detail-inputs-wrap size-and-date-block">
+								<div class="input-size">
+									<p class="size-text">Move Size:</p>
+									<svg class="location-icon house-icon" width="35" viewBox="0 0 488 480" version="1.1"
+										xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<title>Slice 1</title>
+										<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<g id="insurance" fill="#000000" fill-rule="nonzero">
+												<path
+													d="M468.08,184.4 C474.534336,182.572481 479.912143,178.095821 482.88,172.08 L484.56,168.8 C490.057808,157.58302 486.104723,144.024631 475.44,137.52 L452,123.44 L452,46.56 C462.919755,42.5977484 469.434306,31.3837437 467.467189,19.9351222 C465.500072,8.48650066 455.616039,0.0901220299 444,0 L380,0 C366.761578,0.0395376133 356.039538,10.7615776 356,24 C356.000133,34.1119362 362.381586,43.1229322 371.92,46.48 L371.92,75.44 L256.32,6.08 C248.739367,1.52079931 239.260633,1.52079931 231.68,6.08 L12.56,137.52 C1.89527733,144.024631 -2.05780794,157.58302 3.44,168.8 L5.12,172.08 C8.08785737,178.095821 13.4656639,182.572481 19.92,184.4 C22.0756838,185.037498 24.3120286,185.360825 26.56,185.36 C29.819839,185.281624 33.0304382,184.546995 36,183.2 L36,432 L28,432 C14.745166,432 4,442.745166 4,456 C4,469.254834 14.745166,480 28,480 L460,480 C473.254834,480 484,469.254834 484,456 C484,442.745166 473.254834,432 460,432 L452,432 L452,183.28 C457.063773,185.523587 462.754091,185.919928 468.08,184.4 Z M380,16 L444,16 C448.418278,16 452,19.581722 452,24 C452,28.418278 448.418278,32 444,32 L380,32 C375.581722,32 372,28.418278 372,24 C372,19.581722 375.581722,16 380,16 Z M436,48 L436,113.84 L387.92,85.04 L387.92,48 L436,48 Z M460,448 C464.418278,448 468,451.581722 468,456 C468,460.418278 464.418278,464 460,464 L28,464 C23.581722,464 20,460.418278 20,456 C20,451.581722 23.581722,448 28,448 L460,448 Z M52,432 L52,174.08 L239.84,60.96 C242.405054,59.439962 245.594946,59.439962 248.16,60.96 L436,174.08 L436,432 L52,432 Z M256.4,47.28 C248.784427,42.6400105 239.215573,42.6400105 231.6,47.28 L30.72,168.24 C28.7876707,169.37607 26.472521,169.665463 24.32,169.04 C22.1860386,168.437946 20.410582,166.953547 19.44,164.96 L17.76,161.68 C15.9490161,157.922868 17.259595,153.40482 20.8,151.2 L239.92,19.76 C242.435543,18.2685269 245.564457,18.2685269 248.08,19.76 L467.2,151.2 C470.740405,153.40482 472.050984,157.922868 470.24,161.68 L468.56,164.96 C467.589418,166.953547 465.813961,168.437946 463.68,169.04 C461.527479,169.665463 459.212329,169.37607 457.28,168.24 L256.4,47.28 Z"
+													id="Shape"></path>
+											</g>
+											<g id="sofa" transform="translate(119.000000, 208.000000)" fill="#000000"
+												fill-rule="nonzero">
+												<path
+													d="M239.013672,56.6486428 L235.14209,56.6486428 L235.14209,31.6508389 C235.14209,29.6295031 233.502441,27.9907669 231.47998,27.9907669 C229.45752,27.9907669 227.817871,29.6295031 227.817871,31.6508389 L227.817871,56.6486428 L223.946289,56.6486428 C217.888184,56.6486428 212.959961,61.5741238 212.959961,67.6288589 L212.959961,85.1547478 C125.782715,85.1547478 129.852539,85.0825224 128.661621,85.2982227 L128.661621,16.8363313 C128.661621,11.5892521 132.933105,7.32014406 138.183105,7.32014406 L218.296387,7.32014406 C222.945312,7.32014406 226.891113,10.6351933 227.678711,15.2039392 C228.022461,17.1959944 229.916016,18.5316767 231.909668,18.189094 C233.902832,17.8455352 235.240234,15.9525459 234.896484,13.9604907 C233.501465,5.87075554 226.52002,0 218.295898,0 L138.183594,0 C132.848633,0 128.088867,2.49421709 125,6.37389344 C121.911133,2.49421709 117.151367,0 111.816406,0 L31.7036133,0 C22.4150391,0 14.8579102,7.55292464 14.8579102,16.8363313 L14.8579102,56.6486428 L10.9863281,56.6486428 C4.92822266,56.6486428 0,61.5741238 0,67.6288589 L0,135.526611 C0,145.617674 8.21386719,153.826971 18.3105469,153.826971 L29.715332,153.826971 L29.715332,189.718126 C29.715332,195.387821 34.3305664,200 40.0029297,200 C45.3759766,200 49.8837891,195.803605 50.2646484,190.446724 L52.8696289,153.826483 L73.7348633,153.826483 C75.7573242,153.826483 77.3969727,152.187747 77.3969727,150.166411 C77.3969727,148.145075 75.7573242,146.506339 73.7348633,146.506339 C68.1943359,146.506339 23.8510742,146.506339 18.3105469,146.506339 C12.2524414,146.506339 7.32421875,141.580858 7.32421875,135.526123 L7.32421875,67.6288589 C7.32421875,65.6104512 8.96679688,63.9687869 10.9863281,63.9687869 L26.0532227,63.9687869 C27.8198242,63.9687869 29.2988281,65.2258996 29.640625,66.8919644 C29.6894531,67.1301131 29.715332,67.376558 29.715332,67.6288589 L29.715332,85.1547478 L23.8178711,85.1547478 C18.8964844,85.1547478 14.8925781,89.1564266 14.8925781,94.0750754 L14.8925781,115.208331 C14.8925781,120.12698 18.8964844,124.128171 23.8178711,124.128171 L226.182129,124.128171 C231.103516,124.128171 235.107422,120.126492 235.107422,115.207843 L235.107422,94.0745874 C235.107422,89.1559386 231.103516,85.1542598 226.182129,85.1542598 L220.28418,85.1542598 L220.28418,67.6283709 C220.28418,67.37607 220.310059,67.1296251 220.358887,66.8914764 C220.701172,65.2249236 222.179687,63.9682989 223.946289,63.9682989 L239.013184,63.9682989 C241.032715,63.9682989 242.675293,65.6099632 242.675293,67.6283709 L242.675293,135.526123 C242.675293,141.580858 237.74707,146.506339 231.688965,146.506339 C225.858398,146.506339 95.7333984,146.506339 90.8242187,146.506339 C88.8017578,146.506339 87.1621094,148.145075 87.1621094,150.166411 C87.1621094,152.187747 88.8017578,153.826483 90.8242187,153.826483 L197.129395,153.826483 L199.734375,190.446724 C200.115234,195.803605 204.623047,200 209.996094,200 C215.668945,200 220.28418,195.387333 220.28418,189.718126 L220.28418,153.826971 L231.689453,153.826971 C241.786133,153.826971 250,145.617674 250,135.526611 L250,67.6288589 C250,61.5741238 245.071777,56.6486428 239.013672,56.6486428 Z M45.5273437,153.826971 L42.9594727,189.92797 C42.8496094,191.471056 41.5512695,192.679856 40.003418,192.679856 C38.3691406,192.679856 37.0400391,191.351006 37.0400391,189.718126 L37.0400391,153.826971 L45.5273437,153.826971 Z M227.783203,115.207843 C227.783203,116.090165 227.064941,116.807539 226.182129,116.807539 C222.959473,116.807539 133.07666,116.807539 128.662109,116.807539 L128.662109,107.118108 L128.662109,94.0745874 C128.662109,93.192266 129.380371,92.4748919 130.263184,92.4748919 L226.182129,92.4748919 C227.064941,92.4748919 227.783203,93.192754 227.783203,94.0745874 L227.783203,115.207843 Z M26.0532227,56.6486428 L22.1816406,56.6486428 L22.1816406,16.8363313 C22.1816406,11.5892521 26.453125,7.32014406 31.703125,7.32014406 L111.816406,7.32014406 C117.066406,7.32014406 121.337891,11.5892521 121.337891,16.8363313 L121.337891,85.2982227 C120.161621,85.0844745 125.439453,85.1547478 37.0395508,85.1547478 L37.0395508,67.6288589 C37.0395508,61.5741238 32.1113281,56.6486428 26.0532227,56.6486428 Z M22.2167969,115.207843 L22.2167969,94.0745874 C22.2167969,93.192266 22.9350586,92.4744039 23.8178711,92.4744039 L119.736816,92.4744039 C120.619629,92.4744039 121.337891,93.192266 121.337891,94.0745874 L121.337891,107.118108 L121.337891,116.807539 L23.8178711,116.807539 C22.9350586,116.807539 22.2167969,116.090165 22.2167969,115.207843 Z M212.960449,189.718126 C212.960449,191.351494 211.630859,192.679856 209.996582,192.679856 C208.44873,192.679856 207.150391,191.471056 207.040527,189.92797 L204.472656,153.826971 L212.960449,153.826971 L212.960449,189.718126 Z"
+													id="Shape"></path>
+											</g>
+										</g>
+									</svg>
+									<div data-id="184117" class="size-choice dropdown-item-first">
+										<span class="dropdown-title">1 Bedroom, Small</span>
+										<span class="dropdown-subitem">(600-800 sq ft)</span></div>
+									<div class="dropdown-size">
+										<div data-id="184113" class="dropdown-item small-line"><span class="small-line">One
+												Item</span>
+										</div>
+										<div data-id="184114" class="dropdown-item small-line"><span class="small-line">Just a few
+												item</span></div>
+										<div class="dropdown-item" data-id="184115">
+											<span class="dropdown-title">Studio</span>
+											<span class="dropdown-subitem">(400-600 sq ft)</span>
+										</div>
+										<div class="dropdown-item" data-id="184116">
+											<span class="dropdown-title">Studio Alcove</span>
+											<span class="dropdown-subitem">(600-700 sq ft)</span>
+										</div>
+										<div class="dropdown-item" data-id="184117">
+											<span class="dropdown-title">1 Bedroom, Small</span>
+											<span class="dropdown-subitem">(600-800 sq ft)</span>
+										</div>
+										<div class="dropdown-item" data-id="184118">
+											<span class="dropdown-title">1 Bedroom, Large</span>
+											<span class="dropdown-subitem">(800-1000 sq ft)</span>
+										</div>
+										<div class="dropdown-item" data-id="184119">
+											<span class="dropdown-title">2 Bedroom</span>
+											<span class="dropdown-subitem">(1000 to 1500 sq ft)</span>
+										</div>
+										<div class="dropdown-item" data-id="184120">
+											<span class="dropdown-title">3 Bedroom</span>
+											<span class="dropdown-subitem">(1500 to 2000 sq ft)</span>
+										</div>
+										<div class="dropdown-item" data-id="184121">
+											<span class="dropdown-title">4+ Bedroom</span>
+											<span class="dropdown-subitem">(over 2000 sq ft)</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="input-date">
+									<p class="date-text">Move Date:</p>
+									<svg version="1.1" class=" location-icon date-icon" id="calendar"
+										xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+										y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+										xml:space="preserve">
+										<g>
+											<g>
+												<path d="M452,40h-24V0h-40v40H124V0H84v40H60C26.916,40,0,66.916,0,100v352c0,33.084,26.916,60,60,60h392
+				c33.084,0,60-26.916,60-60V100C512,66.916,485.084,40,452,40z M472,452c0,11.028-8.972,20-20,20H60c-11.028,0-20-8.972-20-20V188
+				h432V452z M472,148H40v-48c0-11.028,8.972-20,20-20h24v40h40V80h264v40h40V80h24c11.028,0,20,8.972,20,20V148z" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="76" y="230" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="156" y="230" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="236" y="230" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="316" y="230" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="396" y="230" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="76" y="310" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="156" y="310" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="236" y="310" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="316" y="310" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="76" y="390" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="156" y="390" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="236" y="390" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="316" y="390" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+											<g>
+												<rect x="396" y="310" width="40" height="40" />
+											</g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+										<g>
+										</g>
+									</svg>
+									<input class="date-input" type="text" name="datepicker" id="datepicker">
+								</div>
+							</div>
+							<div id="detailsSetsFrom" class="details-add-sets">
+								<div class="add-sets">
+									<label for="coi-building-from" class="toggle coi">
+										<span class="add-checkbox time-restr">
+											<input class="checkbox-toggle" id="coi-building-from" name="coi-building-from"
+												type="checkbox">
+										</span>
+										<span class="checkbox-label coi">Does this building require a COI?</span>
+									</label>
+								</div>
+								<div class="add-sets">
+									<label for="time-restr-from" class="toggle restr">
+										<span class="add-checkbox time-restr">
+											<input class="checkbox-toggle time-restr-from" id="time-restr-from" type="checkbox"
+												name="time-restr-from">
+										</span>
+										<span class="checkbox-label time-restr">Is there a time window
+											restriction?</span>
+									</label>
+								</div>
+								<div class="add-sets">
+									<label id="add-checkbox-label" data-type="toggle-inputs" for="add-checkbox"
+										class="toggle add">
+										<span class="add-checkbox">
+											<input data-id="pick-up" data-value="Pick Up" class="checkbox-toggle add"
+												id="add-checkbox" name="add-checkbox" type="checkbox">
+										</span>
+										<span class="checkbox-label add">Additional pick up stop</span>
+									</label>
+									<div class="detail-inputs hide">
+										<h3 class="detail-title">Extra Pick Up:</h3>
+										<div class="detail-inputs-wrap">
+											<input id="inputAdd-pick-up" type="text" placeholder="Address, city, or zip"
+												class="detail-input" onfocus="geolocate()">
+											<input id="apt-add-pick-up" type="text" placeholder="Apt" class="detail-apt">
+										</div>
+										<select form="params" id="select-Add-pick-up" class="detail-stairs">
+											<option value="e">Elevator</option>
+											<option value="0" selected="">No stairs - ground floor</option>
+											<option value="2">Stairs - 2nd floor</option>
+											<option value="3">Stairs - 3rd floor</option>
+											<option value="4">Stairs - 4th floor</option>
+											<option value="5">Stairs - 5th floor</option>
+											<option value="6">Stairs - 6th floor</option>
+										</select>
+										<div class="add-sets">
+											<label for="coi-building-add-pick-up" class="toggle coi-add-pick-up">
+												<span class="add-checkbox time-restr">
+													<input class="checkbox-toggle" id="coi-building-add-pick-up"
+														name="coi-building-from" type="checkbox">
+												</span>
+												<span class="checkbox-label coi">Does this building require a COI?</span>
+											</label>
+										</div>
+										<div class="add-sets">
+											<label for="time-restr-add-pick-up" class="toggle restr-add-pick-up">
+												<span class="add-checkbox time-restr">
+													<input class="checkbox-toggle time-restr-from" id="time-restr-add-pick-up"
+														type="checkbox" name="time-restr-from">
+												</span>
+												<span class="checkbox-label time-restr">Is there a time window
+													restriction?</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="add-sets">
+									<label data-type="toggle-storage" for="storage-checkbox" class="toggle storage">
+										<span class="add-checkbox">
+											<input class="checkbox-toggle storage" id="storage-checkbox" name="storage-checkbox"
+												type="checkbox">
+										</span>
+										<span class="checkbox-label storage">Would You like to add storage?</span>
+									</label>
+									<div class="storage-wrap hide">
+										<div class="storage-control">
+											<label class="move-to-storage">
+												<input id="radioLong" onclick="choiceStorageType('long')" value="long"
+													class="storage-input" type="radio" name="choice-storage">
+												<span>Move to storage</span><br>
+												<span class="storage-label">Includes moving in and first month storage</span>
+											</label>
+										</div>
+										<div class="storage-control">
+											<label class="move-to-storage">
+												<input id="radioShort" onclick="choiceStorageType('short')" value="short"
+													class="storage-input" type="radio" name="choice-storage" checked="true">
+												<span>Move to storage for a short time (up to 45 days)</span><br>
+												<span class="storage-label">Includes moving in, storage and moving out</span>
+											</label>
+										</div>
+										<div class="storage-date">
+											<span class="storage-date-text">Out of storage delivery date</span>
+											<div class="input-date">
+												<svg version="1.1" class=" location-icon date-icon storage-date-icon" id="calendar"
+													xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+													x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+													xml:space="preserve">
+													<g>
+														<g>
+															<path d="M452,40h-24V0h-40v40H124V0H84v40H60C26.916,40,0,66.916,0,100v352c0,33.084,26.916,60,60,60h392
+				c33.084,0,60-26.916,60-60V100C512,66.916,485.084,40,452,40z M472,452c0,11.028-8.972,20-20,20H60c-11.028,0-20-8.972-20-20V188
+				h432V452z M472,148H40v-48c0-11.028,8.972-20,20-20h24v40h40V80h264v40h40V80h24c11.028,0,20,8.972,20,20V148z" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="76" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="156" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="236" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="316" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="396" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="76" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="156" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="236" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="316" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="76" y="390" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="156" y="390" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="236" y="390" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="316" y="390" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="396" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+												</svg>
+												<input class="date-input" type="text" name="storage-datepicker"
+													id="storage-datepicker">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="input-from-wrap">
+							<h3 class="detail-title moving-to-title">Moving To:</h3>
+							<div class="wrap-drop-off">
+								<div id="dropOff" class="input-address">
+									<svg class="location-icon" width="35" viewBox="0 0 354 512" version="1.1"
+										xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<title>Slice 1</title>
+										<defs>
+											<polygon id="path-1"
+												points="220.833333 121.458333 86.45625 121.458333 148.179167 59.7354167 132.5 44.1666667 44.1666667 132.5 132.5 220.833333 148.06875 205.264583 86.45625 143.541667 220.833333 143.541667">
+											</polygon>
+											<rect id="path-3" x="0" y="0" width="552.083333" height="552.083333"></rect>
+										</defs>
+										<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<g id="location-(1)" fill="#000000" fill-rule="nonzero">
+												<path
+													d="M177.001,512 C165.825,512 155.817,506.204 150.231,496.495 C150.172,496.393 150.115,496.29 150.058,496.187 L23.096,263.801 C-7.21,208.33 -6.341,142.489 25.421,87.677 C56.494,34.053 111.686,1.292 173.06,0.04 C175.682,-0.014 178.318,-0.014 180.938,0.04 C242.313,1.292 297.505,34.053 328.579,87.677 C360.341,142.489 361.21,208.329 330.904,263.801 L203.942,496.187 C203.885,496.29 203.828,496.393 203.769,496.495 C198.184,506.203 188.177,512 177.001,512 Z M177,32 C175.901,32 174.805,32.011 173.711,32.033 C123.612,33.055 78.526,59.854 53.107,103.721 C27,148.776 26.278,202.883 51.177,248.457 L177,478.757 L302.822,248.458 C327.721,202.883 327,148.776 300.891,103.721 C275.472,59.855 230.386,33.055 180.287,32.033 C179.196,32.011 178.099,32 177,32 Z"
+													id="Shape"></path>
+											</g>
+											<rect id="Rectangle" fill="#FFFFFF" x="144" y="141" width="19" height="38"></rect>
+											<rect id="Rectangle" fill="#FFFFFF" x="194" y="141" width="19" height="38"></rect>
+											<g id="ic-arrow-back"
+												transform="translate(180.500000, 186.500000) rotate(180.000000) translate(-180.500000, -186.500000) translate(48.000000, 54.000000)">
+												<mask id="mask-2" fill="white">
+													<use xlink:href="#path-1"></use>
+												</mask>
+												<g id="Mask"></g>
+												<g id="Colors/Black" mask="url(#mask-2)">
+													<g transform="translate(-143.541667, -143.541667)">
+														<mask id="mask-4" fill="white">
+															<use xlink:href="#path-3"></use>
+														</mask>
+														<use id="Black" stroke="none" fill="#000000" fill-rule="evenodd"
+															xlink:href="#path-3">
+														</use>
+													</g>
+												</g>
+											</g>
+										</g>
+									</svg>
+									<input class="input" required id="destination" name="destination" onFocus="geolocate()"
+										type="text" placeholder="Address, city, or zip">
+								</div>
+								<div class="detail-inputs-wrap">
+									<select class="detail-stairs" id="select-stairs-to" name="detail-stairs-to" form="params">
+										<option value="e">Elevator</option>
+										<option value="0" selected>No stairs - ground floor</option>
+										<option value="2">Stairs - 2nd floor</option>
+										<option value="3">Stairs - 3rd floor</option>
+										<option value="4">Stairs - 4th floor</option>
+										<option value="5">Stairs - 5th floor</option>
+										<option value="6">Stairs - 6th floor</option>
+									</select>
+									<input type="text" placeholder="Apt" id="apt-to" name="apt-to" class="detail-apt">
+								</div>
+								<div id="detailsSetsTo" class="details-add-sets">
+									<div class="add-sets">
+										<label for="coi-building-to" class="toggle coi-to">
+											<span class="add-checkbox time-restr">
+												<input class="checkbox-toggle" id="coi-building-to" name="coi-building-to"
+													type="checkbox">
+											</span>
+											<span class="checkbox-label coi">Does this building require a COI?</span>
+										</label>
+									</div>
+									<div class="add-sets">
+										<label for="time-restr-to" class="toggle restr-to">
+											<span class="add-checkbox time-restr">
+												<input class="checkbox-toggle time-restr-to" name="time-restr-to" id="time-restr-to"
+													type="checkbox">
+											</span>
+											<span class="checkbox-label time-restr">Is there a time window
+												restriction?</span>
+										</label>
+									</div>
+									<div id="add-drop-off-block" class="add-sets">
+										<label id="toggle-drop-off" data-type="toggle-inputs" for="add-drop-checkbox"
+											class="toggle add-drop toggle-inputs">
+											<span class="add-checkbox">
+												<input data-id="drop" data-value="Drop Off" class="checkbox-toggle add"
+													name="add-drop-checkbox" id="add-drop-checkbox" type="checkbox">
+											</span>
+											<span class="checkbox-label add">Additional drop off stop</span>
+										</label>
+										<div class="detail-inputs hide">
+											<h3 class="detail-title">Extra Drop Off:</h3>
+											<div class="detail-inputs-wrap">
+												<input id="inputAdd-drop" type="text" placeholder="Address, city, or zip"
+													class="detail-input" onfocus="geolocate()">
+												<input id="apt-add-drop" type="text" placeholder="Apt" class="detail-apt">
+											</div>
+											<select form="params" id="select-Add-drop" class="detail-stairs">
+												<option value="e">Elevator</option>
+												<option value="0" selected="">No stairs - ground floor</option>
+												<option value="2">Stairs - 2nd floor</option>
+												<option value="3">Stairs - 3rd floor</option>
+												<option value="4">Stairs - 4th floor</option>
+												<option value="5">Stairs - 5th floor</option>
+												<option value="6">Stairs - 6th floor</option>
+											</select>
+											<div class="add-sets">
+												<label for="coi-building-add-drop" class="toggle coi">
+													<span class="add-checkbox time-restr">
+														<input class="checkbox-toggle" id="coi-building-add-drop"
+															name="coi-building-from" type="checkbox">
+													</span>
+													<span class="checkbox-label coi">Does this building require a COI?</span>
+												</label>
+											</div>
+											<div class="add-sets">
+												<label for="time-restr-add-drop" class="toggle restr">
+													<span class="add-checkbox time-restr">
+														<input class="checkbox-toggle time-restr-from" id="time-restr-add-drop"
+															type="checkbox" name="time-restr-from">
+													</span>
+													<span class="checkbox-label time-restr">Is there a time window
+														restriction?</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+
+
+					<button type="submit" class="button" id="searchButton">Set items</button>
+				</form>
+			</div>
+		</div>
+		<div id="inventory-block" class="inventory-wrap hide">
+			<div class="inventory-head">
+				<div>
+					<h2 class="head-title">Tell us what you're moving </h2>
+					<span>We gives you a guaranteed price based on the size of your inventory.</span>
+				</div>
+			</div>
+			<div class="inventory">
+				<div class="inventory-sidebar">
+
+					<ul class="sidebar-list">
+						<div class="counter">
+							<div class="counter-items"><span class="qty"></span> Items <span class="all-sizes"></span> c.f.
+							</div>
+						</div>
+						<li class="sidebar-item my-inventory">
+							<div data-name="inventory" class="sidebar-content  sidebar-active">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="-4 -5 32 32">
+									<style>
+										.st0 {
+											fill: #2cb1e4
+										}
+									</style>
+									<path class="st0"
+										d="M24.1 10V8h-1.8V6.2h-5.6V2.5H.3V17h3.3c.1 1.2 1.1 2.1 2.3 2.1 1.2 0 2.2-.9 2.3-2.1h9.3c.1 1.2 1.1 2.1 2.3 2.1 1.2 0 2.1-.9 2.3-2h3.8V10h-1.8zm-12-2.7l-4.5 5.6-.5.7-.6-.6-1.6-1.6c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l1 1 3.9-5c.2-.3.8-.4 1.1-.1.3.2.4.8.1 1.1z" />
+								</svg>
+								<div class="sidebar-title">My Inventory</div>
+							</div>
+						</li>
+						<li class="sidebar-item boxes">
+							<div data-name="Boxes" class="sidebar-content">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="0 0 50 50"> >
+									<path fill="#C2976A" d="M9.565 17.932l-2.424-5.768 17.292-1.224 2.367 5.215z" />
+									<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="26.762" y1="14.707" x2="44.575"
+										y2="14.707">
+										<stop offset="0" stop-color="#8a603c" />
+										<stop offset=".048" stop-color="#916642" />
+										<stop offset=".235" stop-color="#a57a53" />
+										<stop offset=".439" stop-color="#b58a60" />
+										<stop offset=".673" stop-color="#be9468" />
+										<stop offset="1" stop-color="#c2986b" />
+									</linearGradient>
+									<path fill="url(#a)" d="M41.164 18.157l3.411-5.408-13.911-1.493-3.902 4.899z" />
+									<linearGradient id="b" gradientUnits="userSpaceOnUse" x1="18.227" y1="36.391" x2="18.227"
+										y2="16.155">
+										<stop offset="0" stop-color="#c2986b" />
+										<stop offset=".327" stop-color="#be9468" />
+										<stop offset=".561" stop-color="#b58a60" />
+										<stop offset=".765" stop-color="#a57a53" />
+										<stop offset=".952" stop-color="#916642" />
+										<stop offset="1" stop-color="#8a603c" />
+									</linearGradient>
+									<path fill="url(#b)" d="M9.685 17.91v18.481l17.083-3.909V16.155z" />
+									<path fill="#8A603C" d="M26.768 16.155v16.466l12.065 1.493 2.384-16z" />
+									<path fill="#5A5A5D"
+										d="M24.685 15.361v3.922l12.878 2.123v-.86l1.491.118v-3.891l-12.703-1.664z" />
+									<linearGradient id="c" gradientUnits="userSpaceOnUse" x1="38.301" y1="17.142" x2="25.41"
+										y2="17.142">
+										<stop offset="0" stop-color="#e3e3e3" />
+										<stop offset="1" stop-color="#a3a3a3" />
+									</linearGradient>
+									<path fill="url(#c)"
+										d="M38.301 16.93l-11.789-1.572-1.102.105 11.29 1.613-.005 1.849 1.594-.223z" />
+									<path fill="#909090"
+										d="M20.214 15.781v3.921l12.877 2.124v-.861l1.49.118v-3.891L21.88 15.528z" />
+									<linearGradient id="d" gradientUnits="userSpaceOnUse" x1="33.828" y1="17.561" x2="20.939"
+										y2="17.561">
+										<stop offset="0" stop-color="#e3e3e3" />
+										<stop offset="1" stop-color="#a3a3a3" />
+									</linearGradient>
+									<path fill="url(#d)"
+										d="M33.828 17.349l-11.787-1.572-1.102.105 11.29 1.613-.006 1.849 1.595-.223z" />
+									<path fill="#5A5A5D"
+										d="M15.742 16.2v3.922l12.878 2.123v-.861l1.49.118v-3.891l-12.701-1.664z" />
+									<linearGradient id="e" gradientUnits="userSpaceOnUse" x1="29.357" y1="17.98" x2="16.467"
+										y2="17.98">
+										<stop offset="0" stop-color="#e3e3e3" />
+										<stop offset="1" stop-color="#a3a3a3" />
+									</linearGradient>
+									<path fill="url(#e)"
+										d="M29.357 17.768l-11.788-1.572-1.102.105 11.291 1.613-.006 1.85 1.594-.224z" />
+									<path fill="#909090"
+										d="M11.27 16.619v3.922l12.879 2.123v-.861l1.491.119V18.03l-12.702-1.664z" />
+									<linearGradient id="f" gradientUnits="userSpaceOnUse" x1="24.886" y1="18.398" x2="11.996"
+										y2="18.398">
+										<stop offset="0" stop-color="#e3e3e3" />
+										<stop offset="1" stop-color="#a3a3a3" />
+									</linearGradient>
+									<path fill="url(#f)"
+										d="M24.886 18.188l-11.788-1.573-1.102.105 11.289 1.613-.004 1.849 1.594-.223z" />
+									<path fill="#5F3C19" d="M22.319 39.199V19.756L9.685 17.932v18.553z" />
+									<path fill="#8A603C" d="M22.371 19.763L9.565 17.932l-7.157 4.997 13.174 2.707z" />
+									<linearGradient id="g" gradientUnits="userSpaceOnUse" x1="31.795" y1="39.199" x2="31.795"
+										y2="18.158">
+										<stop offset="0" stop-color="#8a603c" />
+										<stop offset=".048" stop-color="#916642" />
+										<stop offset=".235" stop-color="#a57a53" />
+										<stop offset=".439" stop-color="#b58a60" />
+										<stop offset=".673" stop-color="#be9468" />
+										<stop offset="1" stop-color="#c2986b" />
+									</linearGradient>
+									<path fill="url(#g)" d="M22.319 19.763v19.436l18.951-2.714V18.157z" />
+									<linearGradient id="h" gradientUnits="userSpaceOnUse" x1="22.371" y1="22.305" x2="47.407"
+										y2="22.305">
+										<stop offset="0" stop-color="#8a603c" />
+										<stop offset=".048" stop-color="#916642" />
+										<stop offset=".235" stop-color="#a57a53" />
+										<stop offset=".439" stop-color="#b58a60" />
+										<stop offset=".673" stop-color="#be9468" />
+										<stop offset="1" stop-color="#c2986b" />
+									</linearGradient>
+									<path fill="url(#h)" d="M27.89 26.452l-5.519-6.689 18.834-1.606 6.202 5.95z" />
+								</svg>
+								<div class="sidebar-title">Boxes</div>
+								<span class="sidebar-number">0</span>
+							</div>
+						</li>
+						<li class="sidebar-item dropdown">
+							<div class="sidebar-content">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="0 0 50 50">
+									<path fill="#333"
+										d="M7.464 32.472c-.062.19.318 4.124.318 4.124l.635.381 2.221-.381.443-3.554" />
+									<path fill="#595A5C" d="M7.464 32.472c-.062.19.318 4.124.318 4.124l.635.381.316-7.487" />
+									<path fill="#333"
+										d="M21.866 37.433c-.062.19.318 4.124.318 4.124l.635.38 2.221-.38.443-3.553" />
+									<path fill="#595A5C" d="M21.866 37.433c-.062.19.318 4.124.318 4.124l.635.38.314-6.812" />
+									<path fill="#333"
+										d="M41.526 35.375c-.066.191.316 3.45.316 3.45l.635.381 2.221-.381.443-3.553" />
+									<path fill="#595A5C" d="M41.526 34.701c-.066.191.316 4.124.316 4.124l.635.381.316-6.812" />
+									<path fill="#764E2A"
+										d="M24.562 36.178l3.758 2.292s-.057.263-2.426 1.695c0 0-14.062-4.279-14.014-5.431l.178-2.732 12.504 4.176z" />
+									<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="35.739" y1="40.174" x2="35.739"
+										y2="33.084">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".253" stop-color="#906340" />
+										<stop offset=".54" stop-color="#9c704b" />
+										<stop offset=".843" stop-color="#b3885d" />
+										<stop offset="1" stop-color="#c3996b" />
+									</linearGradient>
+									<path fill="url(#a)"
+										d="M24.327 35.874v3.276s.211 1.166 2.443 1.01l19.429-2.942s.977-.116.953-1.105v-3.027l-22.825 2.788z" />
+									<path fill="#333" d="M35.315 31.867l.321 2.602 1.207.445 1.267-.305.067-3.693z" />
+									<path fill="#764E2A"
+										d="M24.462 14.934l12.777.15s2.207-.24 2.014 1.586l-.574 15.266-1.967.529-2.207-7.342-9.938-1.868-.105-8.321z" />
+									<linearGradient id="b" gradientUnits="userSpaceOnUse" x1="37.765" y1="32.53" x2="37.765"
+										y2="15.074">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".253" stop-color="#906340" />
+										<stop offset=".54" stop-color="#9c704b" />
+										<stop offset=".843" stop-color="#b3885d" />
+										<stop offset="1" stop-color="#c3996b" />
+									</linearGradient>
+									<path fill="url(#b)"
+										d="M37.239 15.084s2.207-.24 2.014 1.586l-.578 15.38-2.41.479.625-16.227.349-1.218z" />
+									<path fill="#C3996B"
+										d="M36.89 16.303l-12.785-.938.418-.681 12.717.401s1.871-.216 1.994 1.063" />
+									<linearGradient id="c" gradientUnits="userSpaceOnUse" x1="6.956" y1="8.552" x2="23.212"
+										y2="24.808">
+										<stop offset="0" stop-color="#c3996b" />
+										<stop offset=".363" stop-color="#b1855c" />
+										<stop offset="1" stop-color="#8b5f3d" />
+									</linearGradient>
+									<path fill="url(#c)"
+										d="M4.456 10.384c2.529-.754 7.854-1.35 18.771-1.107 0 0 2.973 5.221 3.744 14.483 0 0-13.582 1.151-14.207 1.536l-8.057-3.445-2.01-9.229 1.759-2.238z" />
+									<path fill="#764E2A"
+										d="M2.614 12.508s-.098-1.813 1.842-2.126l1.443 11.846-1.066.752-2.219-10.472z" />
+									<linearGradient id="d" gradientUnits="userSpaceOnUse" x1="45.086" y1="32.676" x2="10.893"
+										y2="26.061">
+										<stop offset="0" stop-color="#c3996b" />
+										<stop offset=".157" stop-color="#b3885d" />
+										<stop offset=".46" stop-color="#9c704b" />
+										<stop offset=".747" stop-color="#906340" />
+										<stop offset="1" stop-color="#8b5f3d" />
+									</linearGradient>
+									<path fill="url(#d)"
+										d="M11.218 24.729s5.563-1.348 15.783-1.396c0 0 18.146 3.294 20.354 5.647l-.818 2.238s-5.528 3.046-19.011 3.91c2.105.52-17.691-8.675-16.256-4.637l-.052-5.762z" />
+									<linearGradient id="e" gradientUnits="userSpaceOnUse" x1="8.157" y1="20.548" x2="15.269"
+										y2="20.548">
+										<stop offset="0" stop-color="#909090" />
+										<stop offset="1" stop-color="#b3b3b3" />
+									</linearGradient>
+									<path fill="url(#e)"
+										d="M8.157 16.46s3.133-.438 5.201-.25 2.129 4.827 1.693 6.896c-.441 2.066-2.008 1.817-2.008 1.817L8.157 16.46z" />
+									<path fill="#7C5534"
+										d="M24.327 32.442l3.992 2.615s-.814.251-3.184 1.683c0 0-14.254-4.357-14.205-5.509l1.658-2.514 11.739 3.725z" />
+									<linearGradient id="f" gradientUnits="userSpaceOnUse" x1="12.781" y1="26.14" x2="5.08"
+										y2="25.743">
+										<stop offset="0" stop-color="#c3996b" />
+										<stop offset=".157" stop-color="#b3885d" />
+										<stop offset=".46" stop-color="#9c704b" />
+										<stop offset=".747" stop-color="#906340" />
+										<stop offset="1" stop-color="#8b5f3d" />
+									</linearGradient>
+									<path fill="url(#f)"
+										d="M12.321 16.755s-4.992-.432-6.145-1.15c0 0-2.156-.192-2.109 1.247 0 0 1.289 12.232 1.812 15.639 0 0 .102 1.633 1.059 2.063l3.848 1.653s2.398.287 3.215-.193l-.959-17.675s.238-1.342-.721-1.584z" />
+									<path fill="#C3996B"
+										d="M13.024 17.911s.256-.914-.703-1.155c0 0-4.711-.978-6.145-1.15 0 0-2.156-.192-2.109 1.247 0 0 1.4.36 5.484 1.059.001-.001 1.868.465 3.473-.001z" />
+									<linearGradient id="g" gradientUnits="userSpaceOnUse" x1="35.769" y1="36.826" x2="35.769"
+										y2="28.999">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".253" stop-color="#906340" />
+										<stop offset=".54" stop-color="#9c704b" />
+										<stop offset=".843" stop-color="#b3885d" />
+										<stop offset="1" stop-color="#c3996b" />
+									</linearGradient>
+									<path fill="url(#g)"
+										d="M24.208 32.442v3.295s-.277 1.437 2.562 1.01l19.612-2.942s.904.045.953-1.105V29l-23.127 3.442z" />
+								</svg>
+								<div class="sidebar-title">Living Room</div>
+								<span class="sidebar-number">0</span>
+							</div>
+							<ul class="categories-list hide" data-name="Living Room">
+								<li class="sidebar-subitem"><span class="subitem-text">Sofas and Couches</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Chairs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Glass Tables</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">TVs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Stereo</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Cabinets</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Lamps</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Bookcases</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Pianos</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Mirrors</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Paintings & Pictures</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Odds & Ends</span></li>
+							</ul>
+						</li>
+						<li class="sidebar-item dropdown">
+							<div class="sidebar-content">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="0 0 50 50">
+									<path fill="#333" d="M21.596 41.947l-.605 1.332s2.695 1.605 7.326.182l-.514-1.725" />
+									<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="17.591" y1="33.761" x2="32.084"
+										y2="33.761">
+										<stop offset="0" stop-color="#a3a3a3" />
+										<stop offset="1" stop-color="#e3e3e3" />
+									</linearGradient>
+									<path fill="url(#a)"
+										d="M31.887 36.206c-.84-3.408-3.744-5.292-5.318-8.592a8.4 8.4 0 0 1-.777-2.797l-.99.034-.992-.034a8.365 8.365 0 0 1-.77 2.797c-1.572 3.3-4.413 5.184-5.253 8.592-1.546 6.272 6.585 6.495 7.091 6.501v-.061h-.08.08v.061c.505-.006 8.556-.229 7.009-6.501z" />
+									<path fill="#A8AAAD"
+										d="M26.553 27.614s-1.137 1.572-4.133 1.072c0 0 1.219-1.722 1.162-2.942l2.279-.332s.217 1.794.692 2.202z" />
+									<ellipse fill="#603A17" cx="25.065" cy="7.313" rx="10.511" ry="1.199" />
+									<ellipse fill="#FFF" cx="24.945" cy="10.699" rx="2.748" ry="3.274" />
+									<linearGradient id="b" gradientUnits="userSpaceOnUse" x1="12.025" y1="16.713" x2="37.914"
+										y2="16.713">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".057" stop-color="#906440" />
+										<stop offset=".429" stop-color="#aa7f57" />
+										<stop offset=".756" stop-color="#bc9266" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#b)"
+										d="M35.576 7.315c-.002.66-4.707 1.198-10.512 1.198-5.804 0-10.51-.538-10.51-1.199 0-.054.043-.109.105-.16l-.105.02-2.529 17.723c1.68.227 6.81 1.377 12.873 1.377 6.25 0 11.504-1.161 13.016-1.398L35.576 7.315z" />
+								</svg>
+								<div class="sidebar-title">Bedroom</div>
+								<span class="sidebar-number">0</span>
+							</div>
+							<ul class="categories-list hide" data-name="Bedroom">
+								<li class="sidebar-subitem"><span class="subitem-text">Beds</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Mattress Only</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Cabinets</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">TVs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Stereo</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Lamps</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Chairs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Mirrors</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Bookcases</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Paintings & Pictures</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Odds & Ends</span></li>
+							</ul>
+						</li>
+						<li class="sidebar-item dropdown">
+							<div class="sidebar-content">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="0 0 50 50">
+									<path fill="#C3996C" d="M35.839 42.733l.051-.844-2.804.816v.791z" />
+									<path fill="#603A17" d="M36.109 37.497l-.021-.724-11.704 1.169.272 1.953z" />
+									<path fill="#8B5F3D" d="M33.434 36.015l2.654.758-11.61 1.417-2.386-.845z" />
+									<path fill="#8B5F3D"
+										d="M16.688 36.187l6.889.712 2.632.789 9.538 4.201-2.851.85-9.532-4.229-2.166-.656-8.018-1.077z" />
+									<path fill="#603A17" d="M13.24 37.304l19.846 6.192v-.757l-9.628-4.229-2.208-.655-8-1.078z" />
+									<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="-146.477" y1="25.06" x2="26.401"
+										y2="25.06">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".078" stop-color="#9d714b" />
+										<stop offset=".182" stop-color="#ad8259" />
+										<stop offset=".312" stop-color="#b98f63" />
+										<stop offset=".494" stop-color="#c0976a" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#a)" d="M23.281 11.617v26.886l3.119-.789V13.409z" />
+									<path fill="#C3996C" d="M23.463 40.541l.015-2.069-10.001 3.422v.989z" />
+									<path fill="#603A17" d="M21.194 37.851l2.179.621-10.061 3.602-2.012-.82z" />
+									<path fill="#8B5F3D" d="M13.336 42.06l.002.823-2.011-.815-.027-.814z" />
+									<path fill="#8B5F3D"
+										d="M23.281 38.502l.085-.03-.085-.024v-24.74l-2.227-3.16v27.305l-9.821 3.401 2.045.82 9.939-3.553.064.014z" />
+									<path fill="#8B5F3D" d="M2.337 11.699l16.98 3.421-.046 2.451-16.934-3.549z" />
+									<linearGradient id="b" gradientUnits="userSpaceOnUse" x1="32.919" y1="17.571" x2="32.919"
+										y2="13.06">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".078" stop-color="#9d714b" />
+										<stop offset=".182" stop-color="#ad8259" />
+										<stop offset=".312" stop-color="#b98f63" />
+										<stop offset=".494" stop-color="#c0976a" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#b)" d="M19.398 17.571l-.013-2.442 27.068-2.069v2.403z" />
+									<linearGradient id="c" gradientUnits="userSpaceOnUse" x1="8.479" y1="-29.685" x2="38.233"
+										y2="-29.685" gradientTransform="rotate(-2.144 1221.56 -291.708)">
+										<stop offset="0" stop-color="#b3b3b3" />
+										<stop offset="1" stop-color="#909090" />
+									</linearGradient>
+									<path fill="url(#c)" d="M19.046 16.218l-.025-1.417 29.66-2.329v1.425z" />
+									<linearGradient id="d" gradientUnits="userSpaceOnUse" x1="-9.417" y1="-31.227" x2="8.507"
+										y2="-31.227" gradientTransform="rotate(-2.144 1221.56 -291.708)">
+										<stop offset="0" stop-color="#909090" />
+										<stop offset="1" stop-color="#b3b3b3" />
+									</linearGradient>
+									<path fill="url(#d)" d="M1 11.148l18.021 3.653.025 1.417L1 12.49z" />
+									<path fill="#909090" d="M1 11.148l18.021 3.698 29.66-2.374L28.479 9.15z" />
+								</svg>
+								<div class="sidebar-title">Dining Room</div>
+								<span class="sidebar-number">0</span>
+							</div>
+							<ul class="categories-list hide" data-name="Dining Room">
+								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Glass Tables</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Chairs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Cabinets</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Paintings & Pictures</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Odds & Ends</span></li>
+							</ul>
+						</li>
+						<li class="sidebar-item dropdown">
+							<div class="sidebar-content">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="0 0 50 50">
+									<path fill="#D2D3D4"
+										d="M38.622 42.139c2.18-1.621 1.764-4.443-.529-5.223-.668-.23-1.236-.279-1.236-.279l-19.07-1.817.1-25.324-6.458-.656-.166.252v30.121s2.488 5.045 16.26 5.045c5.943 0 9.427-.879 11.099-2.119z" />
+									<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="27.154" y1="33.451" x2="27.154"
+										y2="40.736">
+										<stop offset="0" stop-color="#525252" />
+										<stop offset="1" stop-color="#8c8c8c" />
+									</linearGradient>
+									<path fill="url(#a)"
+										d="M37.937 36.232c0-1.535-4.867-2.781-10.822-2.781-5.952 0-10.82 1.246-10.82 2.781v1.621h.178c-.01 0-.016.068-.016.113 0 1.535 4.827 2.77 10.781 2.77 5.953 0 10.777-1.229 10.777-2.764 0-.045-.004-.119-.012-.119h-.066v-1.621z" />
+									<linearGradient id="b" gradientUnits="userSpaceOnUse" x1="27.154" y1="32.492" x2="27.154"
+										y2="39.766">
+										<stop offset="0" stop-color="#a3a3a3" />
+										<stop offset="1" stop-color="#e3e3e3" />
+									</linearGradient>
+									<path fill="url(#b)"
+										d="M37.937 35.275c0-1.537-4.867-2.783-10.822-2.783-5.952 0-10.82 1.246-10.82 2.783v1.572h.178c-.01 0-.016.09-.016.135 0 1.537 4.827 2.783 10.781 2.783 5.953 0 10.777-1.246 10.777-2.783a.484.484 0 0 0-.012-.135h-.066v-1.572z" />
+									<path fill="#292929"
+										d="M33.433 20.075l3.188.242s1.209.092 1.109 1.338l-3.311-.252-.986-1.328z" />
+									<path fill="#141414"
+										d="M40.452 22.551c-1.008-1.041-3.148-1.252-3.148-1.252l-2.809-.248 1.34 2.559.576-.061c.334-.01.631.01.895.051 2.812.443 2.475 6.822.254 7.098-.494.061-.895-.062-.895-.062l-1.086.436.957 1.778s3.027.371 4.148-1.272c1.647-2.408 1.741-6.997-.232-9.027z" />
+									<path fill="#E7E7E7"
+										d="M33.032 19.733H21.039s-3.739 2.879-3.739 5.5v9.583c0 1.537 4.486 2.781 9.814 2.781 5.33 0 9.814-1.244 9.814-2.781v-9.583c.001-2.621-3.896-5.5-3.896-5.5z" />
+									<linearGradient id="c" gradientUnits="userSpaceOnUse" x1="17.3" y1="31.553" x2="36.929"
+										y2="31.553">
+										<stop offset="0" stop-color="#c3996b" />
+										<stop offset=".157" stop-color="#b3885d" />
+										<stop offset=".46" stop-color="#9c704b" />
+										<stop offset=".747" stop-color="#906340" />
+										<stop offset="1" stop-color="#8b5f3d" />
+									</linearGradient>
+									<path fill="url(#c)"
+										d="M36.694 27.284c-.084-1.008-4.402-1.775-9.693-1.775-5.34 0-9.701.951-9.701 2.004v7.304c0 1.537 4.471 2.781 9.814 2.781 5.346 0 9.814-1.244 9.814-2.781v-7.533h-.234z" />
+									<linearGradient id="d" gradientUnits="userSpaceOnUse" x1="17.366" y1="33.02" x2="36.757"
+										y2="33.02">
+										<stop offset="0" stop-color="#a3a3a3" />
+										<stop offset="1" stop-color="#e3e3e3" />
+									</linearGradient>
+									<path fill="url(#d)"
+										d="M26.981 32.947c-5.326 0-9.559-1.135-9.59-2.142h-.025l.025 2.416c0 1.189 4.334 2.154 9.682 2.154s9.684-.965 9.684-2.154l-.02-2.556c-.033 1.183-4.425 2.282-9.756 2.282z" />
+									<path fill="#141414"
+										d="M35.286 22.098l-.02-.07c-.256-.729-1.299-1.832-2.256-2.266 0 0-.766.35-1.043.434-.143.043-.082.312.033.607-1.387-.236-3.098-.379-4.959-.379-1.803 0-3.467.135-4.828.357.111-.289.164-.543.023-.586-.277-.084-1.042-.434-1.042-.434-.959.434-2.188 1.641-2.443 2.371-.043.125-.039.213-.006.277.184 1.014 3.821 1.824 8.296 1.824 4.59 0 8.309-.852 8.309-1.904a.494.494 0 0 0-.064-.231z" />
+									<ellipse fill="#603A17" cx="27.016" cy="27.45" rx="9.657" ry="1.84" />
+									<path fill="#2B2B2B"
+										d="M33.665 20.424c0 .969-2.941 1.748-6.57 1.748s-6.573-.779-6.573-1.748c0-.963 2.944-1.746 6.573-1.746s6.57.783 6.57 1.746z" />
+									<linearGradient id="e" gradientUnits="userSpaceOnUse" x1="21.224" y1="14.432" x2="35.819"
+										y2="14.432">
+										<stop offset="0" stop-color="#a3a3a3" />
+										<stop offset="1" stop-color="#e3e3e3" />
+									</linearGradient>
+									<path fill="url(#e)"
+										d="M37.042 9.446l-1.414 7.264s-.27 1.885-2.016 2.826c-2.492 1.34-12.014 1.629-15.808-.152V8.975l17.086-.742 2.152 1.213z" />
+									<path fill="#D2D3D4"
+										d="M18.307 9.667v8.051l2.014 2.473v20.183s-6.438-.959-8.052-3.836l-.891-27.446 3.352.049 3.226.414" />
+									<path opacity=".28"
+										d="M37.042 9.446s-12.848 4.389-25.41-.152l6.104-.453 4.741-.203 13.977.504.588.304z" />
+									<linearGradient id="f" gradientUnits="userSpaceOnUse" x1="24.284" y1="13.133" x2="24.284"
+										y2="4.952" gradientTransform="rotate(-1.146 1.917 -.465)">
+										<stop offset="0" stop-color="#a3a3a3" />
+										<stop offset="1" stop-color="#e3e3e3" />
+									</linearGradient>
+									<path fill="url(#f)"
+										d="M11.009 9.057c-.689-.262-.268-.936.773-1.275 0 0 .908-2.574 12.307-2.576 4.189 0 8.357.576 10.611 1.648 0 0 1.502.623 2.057 1.127 0 0 1.461.252 1.512 1.01 0 0-.201.178-.725.359-2.297.805-21.6 1.578-26.535-.293z" />
+									<path fill="none" stroke="#8C8C8C" stroke-width=".404"
+										d="M36.503 12.069s-7.162 2.926-18.263.807" />
+								</svg>
+								<div class="sidebar-title">Kitchen</div>
+								<span class="sidebar-number">0</span>
+							</div>
+							<ul class="categories-list hide" data-name="Kitchen">
+								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Chairs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Cabinets</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Appliances</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Odds & Ends</span></li>
+							</ul>
+						</li>
+						<li class="sidebar-item dropdown">
+							<div class="sidebar-content">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="0 0 50 50">
+									<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="43.229" y1="38.397" x2="43.229"
+										y2="8.626">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".263" stop-color="#8f6340" />
+										<stop offset=".536" stop-color="#9b6f4a" />
+										<stop offset=".814" stop-color="#af845b" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#a)"
+										d="M47.991 13.463v24.934l-.414-.143v-8.875l-7.888-4.285v8.055l-.832-.529V17.36l.029-.006-.42-8.291c0-.001 5.789-2.487 9.525 4.4z" />
+									<path fill="#764E2A"
+										d="M47.991 24.889l-9.122.205-.111-3.461-.936-12.57s6.434-2.486 10.169 4.4v11.426z" />
+									<path fill="#C3996B" d="M3.986 32.965l-1.66.168v-8.162h1.66z" />
+									<linearGradient id="b" gradientUnits="userSpaceOnUse" x1="40.727" y1="33.141" x2="40.727"
+										y2="27.877">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".078" stop-color="#9d714b" />
+										<stop offset=".182" stop-color="#ad8259" />
+										<stop offset=".312" stop-color="#b98f63" />
+										<stop offset=".494" stop-color="#c0976a" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#b)" d="M41.765 33.01l-2.076.131v-5.264h2.076z" />
+									<linearGradient id="c" gradientUnits="userSpaceOnUse" x1="20.934" y1="24.002" x2="20.934"
+										y2="17.264">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".078" stop-color="#9d714b" />
+										<stop offset=".182" stop-color="#ad8259" />
+										<stop offset=".312" stop-color="#b98f63" />
+										<stop offset=".494" stop-color="#c0976a" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#c)"
+										d="M3.582 24.002l35.959-.408-.022-5.727-1.535-.603-35.658 1.002v4.058z" />
+									<path fill="#764E2A"
+										d="M46.331 38.707l-.415-.428v-9.701l.415-.041zm-6.792-20.84l-37.1.865-.607-.709 36.23-.845z" />
+									<path fill="#C3996B" d="M37.328 10.025l.623 6.649.076 1.402 1.662.031v-8.082z" />
+									<path fill="#8B5F3D" d="M38.027 10.025h-.828v7.176l.828.684z" />
+									<path fill="#C3996B" d="M32.89 10.025l.621 6.7.014 1.427 1.598.057v-8.184z" />
+									<path fill="#8B5F3D" d="M33.462 10.025h-.416v7.278l.416.683z" />
+									<path fill="#C3996B" d="M28.449 10.439l.623 6.545-.051 1.354 1.535-.02v-7.879z" />
+									<path fill="#8B5F3D" d="M28.894 10.439h-.414v6.971l.414.682z" />
+									<path fill="#C3996B" d="M24.011 10.439l.621 6.594.094 1.375 1.678.004v-7.973z" />
+									<path fill="#8B5F3D" d="M24.744 10.439h-.83v7.065l.83.684z" />
+									<path fill="#C3996B" d="M19.571 10.439l.623 6.649.031 1.4 1.612.033v-8.082z" />
+									<path fill="#8B5F3D" d="M20.176 10.439h-.414v7.174l.414.682z" />
+									<path fill="#C3996B" d="M15.132 10.439l.477 6.803v1.377l1.661.008v-8.188z" />
+									<path fill="#8B5F3D" d="M15.609 10.439h-.414v7.282l.414.683z" />
+									<path fill="#C3996B" d="M10.689 10.855l.627 6.555-.1 1.354 1.489-.016v-7.893z" />
+									<path fill="#8B5F3D" d="M11.458 10.855h-.83v6.989l.83.679z" />
+									<path fill="#C3996B" d="M6.253 10.855l.623 6.581.045 1.367 1.631-.002v-7.946z" />
+									<path fill="#8B5F3D" d="M6.892 10.855h-.83v7.04l.83.681z" />
+									<path fill="#C3996B" d="M2.644 10.855l-.207 6.702-.018 1.427 1.567.059v-8.188z" />
+									<path fill="#764E2A" d="M47.991 23.725l-36.509.578.266-.768 35.358-.783z" />
+									<path fill="#C3996B"
+										d="M48.407 14.178h-1.246v9.133l-35.703.886.036 14.887h.002l1.625-.022v-9.81l32.795-.678v9.709l.415.41v.014l2.076-.127z" />
+									<path fill="#8B5F3D" d="M47.161 14.178h-.83v8.595l.83.684z" />
+									<path fill="#C3996B" d="M41.931 14.592l.623 7.904.059 1.326 1.642-.041v-9.189z" />
+									<path fill="#8B5F3D" d="M42.595 14.592h-.83v8.281l.83.682z" />
+									<path fill="#C3996B" d="M37.492 14.592l.623 7.957-.006 1.357 1.58-.017v-9.297z" />
+									<path fill="#8B5F3D" d="M38.027 14.592h-.414v8.388l.414.684z" />
+									<path fill="#C3996B" d="M33.05 14.592l.625 8.006-.068 1.379 1.516.007v-9.392z" />
+									<path fill="#8B5F3D" d="M33.876 14.592h-.83v8.484l.83.682z" />
+									<path fill="#C3996B" d="M28.613 14.592l.625 8.058.074 1.407 1.658.035v-9.5z" />
+									<path fill="#8B5F3D" d="M29.31 14.592h-.83v8.592l.83.681z" />
+									<path fill="#C3996B" d="M24.175 15.006l.619 7.906.016 1.328 1.594-.041v-9.193z" />
+									<path fill="#8B5F3D" d="M24.744 15.006h-.416v8.285l.416.684z" />
+									<path fill="#C3996B" d="M19.735 15.006l.622 7.967-.051 1.359 1.531-.012v-9.314z" />
+									<path fill="#8B5F3D" d="M20.176 15.006h-.414v8.408l.414.682z" />
+									<path fill="#C3996B" d="M15.296 15.006l.623 7.992.092 1.373 1.675.002v-9.367z" />
+									<path fill="#8B5F3D" d="M16.025 15.006h-.83v8.461l.83.679z" />
+									<path fill="#C3996B" d="M10.857 15.422l.623 7.906.027 1.326 1.614-.041v-9.191z" />
+									<path fill="#C3996B" d="M48.407 15.307v-1.844l-1.026.058-35.923.477v1.682l.581.517z" />
+									<path fill="#764E2A" d="M47.938 13.521l-36.544.778-.314-.354 36.465-1.009z" />
+									<path fill="#C3996B" d="M39.689 11.268V9.422l-1.092-.36-36.687.936v1.514l.652.55z" />
+									<path fill="#764E2A" d="M39.558 9.422l-37.221.754-.146-.268 36.287-.846z" />
+									<path fill="#764E2A"
+										d="M4.001 25.102l7.303-10.844 1.518-.18s-2.561-6.873-10.188-4.08l1.367 15.104z" />
+									<path fill="#764E2A"
+										d="M1.91 9.998v22.623l.416.512v-7.719l8.303 4.283v8.861l.83.672V14.162c-.001 0-2.907-6.455-9.549-4.164z" />
+								</svg>
+								<div class="sidebar-title">Kids Room</div>
+								<span class="sidebar-number">0</span>
+							</div>
+							<ul class="categories-list hide" data-name="Kids Room">
+								<li class="sidebar-subitem"><span class="subitem-text">Beds</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Chairs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Toys</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Odds & Ends</span></li>
+							</ul>
+						</li>
+						<li class="sidebar-item dropdown">
+							<div class="sidebar-content">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="0 0 50 50">
+									<path fill="#333" d="M40.331 38.326v-28.11l7.821.649v26.506z" />
+									<path fill="#595A5C"
+										d="M41.251 11.082l5.981.511v1.487l-5.981-.307zm0 2.345l5.981.35v1.486l-5.981-.281zm0 2.727l5.981.224v-.453l-5.981-.297z" />
+									<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="33.892" y1="24.271" x2="40.331"
+										y2="24.271">
+										<stop offset="0" stop-color="#424143" />
+										<stop offset="1" stop-color="#595a5c" />
+									</linearGradient>
+									<path fill="url(#a)" d="M33.892 10.523l6.439-.307v28.11l-6.439-1.407z" />
+									<path fill="#292728"
+										d="M29.419 37.408c-.049-.924-4.668-1.516-10.321-1.322s-10.196 1.1-10.147 2.023l-.01.514c.049.924 4.672 1.516 10.323 1.322 5.653-.195 10.196-1.102 10.146-2.025l.009-.512z" />
+									<linearGradient id="b" gradientUnits="userSpaceOnUse" x1="18.626" y1="25.484" x2="39.102"
+										y2="25.484" gradientTransform="rotate(-.693 1039.91 831.581)">
+										<stop offset="0" stop-color="#424143" />
+										<stop offset="1" stop-color="#595a5c" />
+									</linearGradient>
+									<path fill="url(#b)"
+										d="M19.098 36.103c5.653-.195 10.272.398 10.321 1.322.051.922-4.492 1.828-10.146 2.023-5.653.194-10.276-.398-10.323-1.322-.049-.923 4.494-1.83 10.148-2.023z" />
+									<linearGradient id="c" gradientUnits="userSpaceOnUse" x1="15.898" y1="34.812" x2="21.542"
+										y2="34.812">
+										<stop offset=".253" stop-color="#424143" />
+										<stop offset=".554" stop-color="#595a5c" />
+										<stop offset="1" stop-color="#424143" />
+									</linearGradient>
+									<path fill="url(#c)"
+										d="M21.472 32.337h-5.52v4.602h-.055c.205.459 1.392.33 2.823.33s2.614.129 2.821-.33h-.07v-4.602z" />
+									<linearGradient id="d" gradientUnits="userSpaceOnUse" x1="1.731" y1="30.494" x2="35.929"
+										y2="30.494">
+										<stop offset="0" stop-color="#424143" />
+										<stop offset="1" stop-color="#595a5c" />
+									</linearGradient>
+									<path fill="url(#d)" d="M35.929 31.492L6.372 25.169 1.731 35.818l33.799-3.842z" />
+									<path fill="#393839" d="M35.731 31.492L2.612 35.113V7.277l33.119 1.635z" />
+									<path fill="#393839" d="M35.731 31.492L2.562 35.113l-.196-3.035 33.365-3.077z" />
+									<linearGradient id="e" gradientUnits="userSpaceOnUse" x1="4.452" y1="20.282" x2="34.351"
+										y2="20.282">
+										<stop offset="0" stop-color="#909090" />
+										<stop offset="1" stop-color="#b3b3b3" />
+									</linearGradient>
+									<path fill="url(#e)" d="M4.452 9.089l29.899 1.293v18.407L4.452 31.474z" />
+									<path fill="#292728" d="M1.69 35.818l.922-.705V7.277l-.922.043z" />
+									<linearGradient id="f" gradientUnits="userSpaceOnUse" x1="20.066" y1="31.654" x2="20.856"
+										y2="31.654">
+										<stop offset="0" stop-color="#909090" />
+										<stop offset="1" stop-color="#b3b3b3" />
+									</linearGradient>
+									<path fill="url(#f)"
+										d="M20.456 31.035c-.219 0-.396.281-.39.623.002.342.181.617.399.615s.395-.281.391-.623c-.005-.342-.183-.617-.4-.615z" />
+									<path opacity=".2" fill="#FFF"
+										d="M27.409 10.066l-5.234 19.799-8.994.81 5.604-20.976zm-9.362-.367l-5.419 21.013-2.506.223 5.676-21.348z" />
+									<linearGradient id="g" gradientUnits="userSpaceOnUse" x1="44.368" y1="21.1" x2="45.399"
+										y2="21.1">
+										<stop offset="0" stop-color="#909090" />
+										<stop offset="1" stop-color="#b3b3b3" />
+									</linearGradient>
+									<ellipse fill="url(#g)" cx="44.884" cy="21.101" rx=".516" ry=".752" />
+								</svg>
+								<div class="sidebar-title">Office</div>
+								<span class="sidebar-number">0</span>
+							</div>
+							<ul class="categories-list hide" data-name="Office">
+								<li class="sidebar-subitem"><span class="subitem-text">Tables & Desks</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Chairs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Computers</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Monitors</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Equipment</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Cabinets</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Bookcase</span></li>
+							</ul>
+						</li>
+						<li class="sidebar-item dropdown">
+							<div class="sidebar-content">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="0 0 50 50">
+									<path fill="#8B5F3D"
+										d="M21.493 11.259c-6.127 7.143-8.08 21.584-8.08 21.584l-.738.148c.787-11.186 3.708-18.098 6.048-21.957l2.77.225z" />
+									<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="1245.264" y1="-396.44"
+										x2="1256.071" y2="-396.44"
+										gradientTransform="matrix(-1.4932 .3582 .3147 1.3118 2006.97 93.847)">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".042" stop-color="#916541" />
+										<stop offset=".23" stop-color="#a67a53" />
+										<stop offset=".436" stop-color="#b58b60" />
+										<stop offset=".671" stop-color="#bf9669" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#a)"
+										d="M20.845 11.777c-6.154 7.037-8.17 21.215-8.17 21.215l-4.064-1.07c2.729-11.127 4.176-13.785 8.985-21.543l3.249 1.398z" />
+									<path fill="#909090"
+										d="M19.854 6.773c-2.197 0-3.979 2.922-3.979 6.525 0 3.605 1.782 6.527 3.979 6.527 2.196 0 3.978-2.922 3.978-6.527-.001-3.603-1.782-6.525-3.978-6.525zm-.227 3.74c-.512 0-.924-.645-.924-1.438s.412-1.436.924-1.436c.51 0 .923.643.923 1.436s-.413 1.438-.923 1.438z" />
+									<linearGradient id="b" gradientUnits="userSpaceOnUse" x1="15.335" y1="13.316" x2="23.294"
+										y2="13.316">
+										<stop offset="0" stop-color="#909090" />
+										<stop offset="1" stop-color="#b3b3b3" />
+									</linearGradient>
+									<path fill="url(#b)"
+										d="M19.314 6.789c-2.197 0-3.979 2.922-3.979 6.527 0 3.604 1.782 6.527 3.979 6.527 2.198 0 3.979-2.924 3.979-6.527.001-3.606-1.78-6.527-3.979-6.527zm-.228 3.74c-.51 0-.922-.645-.922-1.436 0-.793.412-1.436.922-1.436.512 0 .924.643.924 1.436 0 .791-.412 1.436-.924 1.436z" />
+									<path fill="#8B5F3D"
+										d="M22.61 18.587c12.02 5.844 24.97 21.439 25.04 21.523.648.025 1.752-.322 1.199-1.902-.598-1.705-9.64-18.801-25.743-25.895 0 0-3.056-1.799-5.368.424l-2.399 2.668" />
+									<linearGradient id="c" gradientUnits="userSpaceOnUse" x1="16.438" y1="26.118" x2="48.065"
+										y2="26.118">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".042" stop-color="#916541" />
+										<stop offset=".23" stop-color="#a67a53" />
+										<stop offset=".436" stop-color="#b58b60" />
+										<stop offset=".671" stop-color="#bf9669" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#c)"
+										d="M22.917 19.406c12.01 5.84 19.156 18.383 19.715 19.285a.042.042 0 0 1 .008.012c.449.711 4.724 1.973 5.235 1.26.971-1.352-2.05-5.561-2.729-6.629-2.859-4.488-6.898-9.354-11.246-13.322-2.145-1.957-4.617-3.727-7.127-5.199-1.543-.906-4.621-2.824-6.322-2.74 0 0-2.384-.33-4.013 2.836l6.479 4.497z" />
+									<linearGradient id="d" gradientUnits="userSpaceOnUse" x1="47.383" y1="28.045" x2="16.171"
+										y2="28.045">
+										<stop offset="0" stop-color="#b3b3b3" />
+										<stop offset="1" stop-color="#909090" />
+									</linearGradient>
+									<path fill="url(#d)"
+										d="M16.171 15.326l5.531-.123 24.519 21.916s1.701 1.318.986 2.084l-10.306 1.684" />
+									<path fill="#8B5F3D"
+										d="M18.613 14.478l-7.214.574-.052.912 10.359-.769zm-2.973 5.363l-8.914.354.031-.453 8.914-.356z" />
+									<linearGradient id="e" gradientUnits="userSpaceOnUse" x1="68.992" y1="72.154" x2="77.949"
+										y2="72.154" gradientTransform="rotate(3.97 801.45 -849.204)">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".042" stop-color="#916541" />
+										<stop offset=".23" stop-color="#a67a53" />
+										<stop offset=".436" stop-color="#b58b60" />
+										<stop offset=".671" stop-color="#bf9669" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#e)" d="M13.04 18.779l-6.314.125.031.838 8.914-.356z" />
+									<path fill="#8B5F3D" d="M13.7 27.056l-10.359.772.002-.455 10.359-.772z" />
+									<linearGradient id="f" gradientUnits="userSpaceOnUse" x1="-2.522" y1="29.738" x2="7.833"
+										y2="29.738" gradientTransform="translate(5.982 -3.112)">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".042" stop-color="#916541" />
+										<stop offset=".23" stop-color="#a67a53" />
+										<stop offset=".436" stop-color="#b58b60" />
+										<stop offset=".671" stop-color="#bf9669" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#f)" d="M10.61 25.886l-7.214.574-.053.913 10.359-.772z" />
+									<path fill="#8B5F3D"
+										d="M12.345 16.158c-4.506 7.025-6.422 19.023-6.422 19.023l-.738.149c.846-11.994 4.482-19.402 6.924-23.105l.236 3.933z" />
+									<linearGradient id="g" gradientUnits="userSpaceOnUse" x1="1250.362" y1="-396.355"
+										x2="1261.171" y2="-396.355"
+										gradientTransform="matrix(-1.4932 .3582 .3147 1.3118 2006.97 93.847)">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".042" stop-color="#916541" />
+										<stop offset=".23" stop-color="#a67a53" />
+										<stop offset=".436" stop-color="#b58b60" />
+										<stop offset=".671" stop-color="#bf9669" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#g)"
+										d="M13.354 14.115C7.202 21.15 5.185 35.33 5.185 35.33l-4.064-1.07c1.857-9.037 4.26-14.648 9.068-22.408l3.165 2.263z" />
+									<path fill="#8B5F3D"
+										d="M12.497 12.355s17.096 9.307 26.373 28.061c.633 1.277.777 1.732-.541 2.039-.734.174-1.531-.076-2.152-.502-1.574-1.084-3.541-4.521-4.771-5.971-3.344-3.943-7.445-9.129-11.567-12.332-2.402-1.865-5.095-3.689-7.835-5.021l.493-6.274z" />
+									<linearGradient id="h" gradientUnits="userSpaceOnUse" x1="11.343" y1="27.781" x2="38.587"
+										y2="27.781">
+										<stop offset="0" stop-color="#8b5f3d" />
+										<stop offset=".042" stop-color="#916541" />
+										<stop offset=".23" stop-color="#a67a53" />
+										<stop offset=".436" stop-color="#b58b60" />
+										<stop offset=".671" stop-color="#bf9669" />
+										<stop offset="1" stop-color="#c3996c" />
+									</linearGradient>
+									<path fill="url(#h)"
+										d="M12.622 13.056S27.81 21.681 37.21 39.054c.693 1.283 2.145 3.348.873 3.443-.945.068-4.984-.268-5.912-1.959-.006-.01-8.779-16.01-20.828-21.869l1.279-5.613z" />
+									<path fill="#909090"
+										d="M9.003 7.304c-2.199 0-3.98 2.922-3.98 6.527 0 3.604 1.781 6.525 3.98 6.525 2.197 0 3.979-2.922 3.979-6.525-.001-3.605-1.782-6.527-3.979-6.527zm-.229 3.738c-.51 0-.922-.643-.922-1.436s.412-1.436.922-1.436c.512 0 .924.643.924 1.436s-.412 1.436-.924 1.436z" />
+									<linearGradient id="i" gradientUnits="userSpaceOnUse" x1="4.483" y1="13.847" x2="12.442"
+										y2="13.847">
+										<stop offset="0" stop-color="#909090" />
+										<stop offset="1" stop-color="#b3b3b3" />
+									</linearGradient>
+									<path fill="url(#i)"
+										d="M8.464 7.32c-2.199 0-3.98 2.922-3.98 6.527 0 3.604 1.781 6.527 3.98 6.527 2.197 0 3.979-2.924 3.979-6.527-.001-3.605-1.782-6.527-3.979-6.527zm-.227 3.738c-.512 0-.924-.643-.924-1.436s.412-1.436.924-1.436c.51 0 .922.643.922 1.436s-.412 1.436-.922 1.436z" />
+								</svg>
+								<div class="sidebar-title">Outdoor</div>
+								<span class="sidebar-number">0</span>
+							</div>
+							<ul class="categories-list hide" data-name="Outdoor">
+								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Chairs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Sofas</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Plants</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Grills</span></li>
+							</ul>
+						</li>
+						<li class="sidebar-item dropdown">
+							<div class="sidebar-content">
+								<svg class="sidebar-img" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									viewBox="0 0 50 50">
+									<path fill="#4F4D50"
+										d="M1.157 33.554c1.165.132 9.54 1.97 9.54 1.97 4.209.841 5.809.296 9.45-1.613 4.562-2.39 12.042-6.04 16.796-8.055a174.438 174.438 0 0 1 10.164-3.904c1.796-.77 2.25-1.547 2.158-2.194.159-1.099-1.396-1.925-1.396-1.925-2.172-1.152-5.909.027-7.92.953-3.118 1.432-6.208 2.701-9.386 3.988-7.369 2.981-14.795 5.82-22.197 8.721-5.016 2.061-7.21 1.746-7.21 1.746" />
+									<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="1.157" y1="26.474" x2="49.278"
+										y2="26.474">
+										<stop offset="0" stop-color="#909090" />
+										<stop offset="1" stop-color="#b3b3b3" />
+									</linearGradient>
+									<path fill="url(#a)"
+										d="M1.157 33.239s2.194.314 7.21-1.746c7.402-2.901 14.828-5.74 22.197-8.721 3.178-1.287 6.268-2.556 9.386-3.988 2.011-.925 5.748-2.105 7.92-.953 0 0 3.628 1.927-.763 3.807a171.612 171.612 0 0 0-10.164 3.904c-4.754 2.013-12.234 5.662-16.796 8.055-3.642 1.909-5.241 2.452-9.45 1.612 0 .001-8.375-1.836-9.54-1.97z" />
+									<path fill="#333"
+										d="M27.157 28.498c0-.753-1.792-1.364-4.09-1.364-2.301 0-4.094.611-4.094 1.364v.371c0 .753 1.793 1.366 4.094 1.366 2.298 0 4.09-.612 4.09-1.366v-.371z" />
+									<path fill="#231F20"
+										d="M23.014 27.133c-.197 0-.388.005-.577.013-.494-1.973.396-5.599.396-5.599 1.145-3.679-3.813-3.56-4.777-.762-.92 2.669 1.075 1.657.819 7.564a.362.362 0 0 0-.012.241 9.293 9.293 0 0 1-.015.278l.141-.024c.467.587 2.089 1.021 4.025 1.021 2.299 0 4.164-.611 4.164-1.368 0-.753-1.866-1.364-4.164-1.364zm-2.224-5.071c-.5.115-.991-.172-1.1-.64-.107-.468.209-.942.708-1.057.498-.115.992.172 1.098.64.108.469-.208.942-.706 1.057z" />
+									<path fill="#333"
+										d="M26.364 27.733c-.819-1.115-1.561-1.306-2.104-.821.121.13.232.358.232.358l1.872.463z" />
+									<path fill="#333"
+										d="M21.326 29.924l1.368.099s.791-3.129 2.876-3.129c-.446-.485-3.057-1.134-4.244 3.03z" />
+									<path fill="#333"
+										d="M22.538 23.352s1.471 3.136 1.86 3.485l-1.473.503-.852-2.944.465-1.044z" />
+									<ellipse fill="#231F20" cx="18.494" cy="25.546" rx=".555" ry=".735" />
+									<path fill="#333"
+										d="M18.034 24.546c-.002.371-.377 1.013-.041 1.569.946 1.554 2.14 3.165 3.245 3.957l1.456-.049s-2.382-2.829-3.794-4.742c3.377.434 3.75-.817 3.75-.817.274-.376-.104-1.375-.104-1.375-1.066 1.547-4.327.404-4.327.404l-.185 1.053zm17.306.044c0-.755-1.578-1.366-3.66-1.366-2.085 0-3.661.611-3.661 1.366v.368c0 .755 1.576 1.368 3.661 1.368 2.082 0 3.66-.613 3.66-1.368v-.368z" />
+									<path fill="#333"
+										d="M34.702 23.824c-.742-1.116-1.415-1.306-1.907-.821.109.13.212.357.212.357l1.695.464z" />
+									<path fill="#231F20"
+										d="M31.665 23.224c-.178 0-.352.006-.521.013-.448-1.973.358-5.601.358-5.601 1.037-3.677-3.456-3.56-4.328-.761-.832 2.67.975 1.659.742 7.563a.464.464 0 0 0-.023.152c0 .029.007.06.013.091-.006.093-.007.183-.013.276l.126-.022c.425.585 1.895 1.02 3.646 1.02 2.084 0 3.773-.612 3.773-1.366 0-.755-1.689-1.365-3.773-1.365zm-2.014-5.071a.811.811 0 0 1-.994-.642.9.9 0 0 1 .638-1.055.815.815 0 0 1 .997.64.903.903 0 0 1-.641 1.057z" />
+									<path fill="#333"
+										d="M30.136 26.012l1.24.099s.719-3.125 2.607-3.125c-.406-.488-2.772-1.137-3.847 3.026z" />
+									<path fill="#333"
+										d="M31.235 19.44s1.333 3.136 1.684 3.485l-1.333.503-.771-2.944.42-1.044z" />
+									<ellipse fill="#231F20" cx="27.571" cy="21.637" rx=".504" ry=".735" />
+									<path fill="#333"
+										d="M27.153 20.636c0 .372-.34 1.013-.034 1.567.854 1.556 1.937 3.167 2.938 3.958l1.318-.051s-2.156-2.829-3.436-4.742c3.059.435 3.396-.813 3.396-.813.248-.38-.094-1.377-.094-1.377-.967 1.547-3.92.404-3.92.404l-.168 1.054z" />
+								</svg>
+								<div class="sidebar-title">Other</div>
+								<span class="sidebar-number">0</span>
+							</div>
+							<ul class="categories-list hide" data-name="Other">
+								<li class="sidebar-subitem"><span class="subitem-text">Instruments</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Chairs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Cabinets</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Sports & Hobbies</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Home Appliances</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Stereo Equipment</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Games</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Odds & Ends</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Rugs</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Art & Sculptures</span></li>
+								<li class="sidebar-subitem"><span class="subitem-text">Travel & Storage</span></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="inventory-items">
+					<div class="items-wrap">
+						<ul class="items">
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="details-wrap hide">
+			<form name="details-form" id="details-form">
+				<div class="details-content">
+					<div class="details-requests">
+						<h3 class="detail-title">Special Requests & Instuctions</h3>
+						<textarea name="details-request" class="details-request" id="details-request"
+							placeholder="We want you to have the best moving experience. Let us know if there's anything we can do to make your move day seamless."></textarea>
+					</div>
+					<div class="details-phone">
+						<h3 class="detail-title">Name</h3>
+						<input class='detail-input' required type="text" name="details-name" id="details-name">
+						<h3 class="detail-title">Phone Number</h3>
+						<input class='detail-input' required type="tel" name="details-phone" id="details-phone">
+						<h3 class="detail-title">Email</h3>
+						<input class='detail-input' required type="email" name="details-email" id="details-email">
+					</div>
+					<button type="submit" name="button-order" class=" button order-move">Book your move</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script>
+		$(function () {
+			$("#datepicker").datepicker();
+			$("#storage-datepicker").datepicker();
+			$("#details-phone").mask("(999) 999-9999");
+		});
+	</script>
+	<script src="js/calculator.js"></script>
+	<script src="js/jquerymaskedinpumin.js"></script>
+	<script src="js/auth.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwWXleWh8d8A2lS2TbRAqqGp5-HLKyTh4&libraries=places&callback=initAutocomplete"
+		async defer></script>
+</body>
+
+</html>

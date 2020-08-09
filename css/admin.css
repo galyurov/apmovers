@@ -1,0 +1,165 @@
+.pricing-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.pricing-list {
+  box-shadow: 4px 4px 7px 1px rgba(0, 0, 0, 0.44);
+}
+.pricing-title {
+  font-size: 30px;
+  padding: 5px 0;
+}
+.pricing-item {
+  border: 1px #bebebe solid;
+  border-bottom: none;
+}
+.pricing-item-title {
+  position: relative;
+  font-size: 20px;
+  padding: 10px 10px;
+  background: #f3f3f3;
+  cursor: pointer;
+}
+.pricing-item-title:after {
+  content: "";
+}
+.pricing-item-input {
+  margin: 0 10px;
+  padding: 10px 0;
+  display: flex;
+}
+.pricing-item-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  border-top: 1px #bebebe solid;
+  margin: 0 10px;
+}
+.pricing-item-info {
+  display: flex;
+}
+.pricing-item-note {
+  font-size: 14px;
+  color: #4cad0b;
+  margin-left: 10px;
+  font-weight: 600;
+}
+.pricing-item-note p {
+  display: inline;
+  line-height: 20px;
+  vertical-align: bottom;
+}
+.pricing-item-note div {
+  margin: 5px 0;
+}
+.pricing-item-button {
+  margin: 10px;
+  padding: 5px 15px;
+  background: #f5a623;
+  border: none;
+  border-radius: 3px;
+  color: #12192c;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.pricing-item-button:hover {
+  background: #12192c;
+  color: #ffffff;
+}
+.pricing-item-checkbox {
+  margin: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+table,
+th,
+td {
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+.column-first {
+  padding: 10px 0;
+  width: 240px;
+}
+
+.block-table {
+  grid-template-columns: 100%;
+}
+.block-table th {
+  font-size: 12px;
+}
+.block-table td {
+  padding: 10px;
+}
+.block-table td input {
+  width: 60px;
+}
+
+.table-scrollbar {
+  max-height: 600px;
+  overflow: overlay;
+}
+.table-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.dollar {
+  color: #808080;
+}
+
+.bx-info-circle {
+  font-size: 20px;
+}
+
+.item-input {
+  width: 50px;
+  border-radius: 3px;
+  border: 1px solid #808080;
+  padding: 0 5px;
+}
+.item-checkbox {
+  width: auto;
+}
+.item-text {
+  font-size: 14px;
+  margin: 0 5px;
+  line-height: 22px;
+}
+.item-title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  margin-right: 5px;
+}
+.item-title-icon {
+  font-size: 28px;
+  right: 5px;
+  top: 6px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.table-element {
+  display: inline-block;
+}
+
+.table-info {
+  display: inline-block;
+  font-size: 12px;
+  color: #808080;
+}
+
+.mt {
+  margin-top: 15px;
+}
+
+.table {
+  margin-left: 30px;
+}
+
+/*# sourceMappingURL=admin.css.map */
