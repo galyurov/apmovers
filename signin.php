@@ -3,11 +3,7 @@ session_start();
 $login  = $_POST['login'];
 $pass  = md5($_POST['pass']);
 
-$servername = "localhost:3306";
-$database = "register-database";
-$username = "root";
-$password = "root";
-$conn = mysqli_connect($servername, $username, $password, $database);
+$conn = mysqli_connect('n4g643522066891.db.43522066.60b.hostedresource.net:3312', 'n4g643522066891', 'f9B|/!CBF','n4g643522066891');
 $sql = "SELECT * FROM `users` WHERE `login` = '$login' AND `pass` = '$pass'";
 
 $check_users = mysqli_query($conn,$sql);

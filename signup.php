@@ -8,12 +8,8 @@ $pass  = $_POST['pass'];
 
 $pass = md5($pass);
 
-$servername = "localhost:3306";
-$database = "register-database";
-$username = "root";
-$password = "root";
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
+$conn = mysqli_connect('n4g643522066891.db.43522066.60b.hostedresource.net:3312', 'n4g643522066891', 'f9B|/!CBF','n4g643522066891');
 // Check connection
 if (!$conn) {
 	$_SESSION['error']= "Connection failed: " . mysqli_connect_error();

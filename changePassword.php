@@ -8,11 +8,9 @@ $pass = md5($pass);
 $new_pass  = md5($new_pass);
 $conf_pass  = md5($conf_pass);
 
-$servername = "localhost:3306";
-$database = "register-database";
-$username = "root";
-$password = "root";
-$conn = mysqli_connect($servername, $username, $password, $database);
+
+
+$conn = mysqli_connect('n4g643522066891.db.43522066.60b.hostedresource.net:3312', 'n4g643522066891', 'f9B|/!CBF','n4g643522066891');
 $sql = "UPDATE users set  pass ='$new_pass' WHERE email='$email'";
 
 $change_pass = mysqli_query($conn,$sql);
