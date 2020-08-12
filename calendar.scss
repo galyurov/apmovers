@@ -37,6 +37,7 @@
 
 		&-number {
 			padding: 5px 10px 15px;
+			font-weight: 600;
 		}
 		&-block {
 			padding: 18px 4px;
@@ -47,6 +48,9 @@
 			justify-content: space-between;
 			border-radius: 3px;
 		}
+	}
+	&-set{
+		display: flex;
 	}
 	&-border {
 		margin: 2px 0;

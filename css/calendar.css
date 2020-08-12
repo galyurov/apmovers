@@ -36,6 +36,7 @@
 }
 .calendar-day-number {
   padding: 5px 10px 15px;
+  font-weight: 600;
 }
 .calendar-day-block {
   padding: 18px 4px;
@@ -45,6 +46,9 @@
   padding: 5px 10px;
   justify-content: space-between;
   border-radius: 3px;
+}
+.calendar-set {
+  display: flex;
 }
 .calendar-border {
   margin: 2px 0;
