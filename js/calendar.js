@@ -4,7 +4,9 @@ Date.prototype.daysInMonth = function () {
 
 let calendar = document.getElementById('calendar');
 
-let monthText = document.querySelector('.calendar-month-text')
+let monthText = document.querySelector('.calendar-month-text');
+
+let selectYear = document.getElementById('year')
 
 class Calendar {
     constructor(month,year) {
@@ -31,18 +33,21 @@ class Calendar {
         monthText.textContent = monthArr[this.month];
         monthText.dataset.month = this.month;
     }
+    insertYearInSelect(){
+        selectYear.innerHTML = `<option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option>`
+    }
     render() {
         calendar.innerHTML = ``;
-        for (let i = 1; i <= this.getDaysInMonth(this.month) + this.getFirstDayOfMonth(this.month).getDay(); i++) {
-            if (i - 1 < this.getFirstDayOfMonth(this.month).getDay()) {
+        for (let i = 1; i <= 42; i++) {
+            if (i - 1 < this.getFirstDayOfMonth().getDay() || i > this.getDaysInMonth()+this.getFirstDayOfMonth().getDay()) {
                 let block = document.createElement('div');
-                block.innerHTML = `<div></div>`;
+                block.classList.add('another-month-day');
                 calendar.appendChild(block);
             } else {
                 let block = document.createElement('div');
                 block.classList.add('calendar-day');
-                block.dataset.day = i - this.getFirstDayOfMonth(this.month).getDay();
-                if(block.dataset.day == new Date().getDate() && monthText.dataset.month == new Date().getMonth()){
+                block.dataset.day = i - this.getFirstDayOfMonth().getDay();
+                if(block.dataset.day == new Date().getDate() && monthText.dataset.month == new Date().getMonth() && this.year == new Date().getFullYear()){
                     block.classList.add('currentDay');
                 }
                 block.innerHTML =
@@ -62,19 +67,37 @@ class Calendar {
 let monthBlock = document.querySelector('.calendar-month')
 
 monthBlock.addEventListener('click', (event)=>{
-    if(event.target.dataset.type === 'prev' && monthText.dataset.month>0 && monthText.dataset.month<=11){
+    if(event.target.dataset.type === 'prev' && monthText.dataset.month > 0 && monthText.dataset.month <= 11){
         calendarClass.setMonth(monthText.dataset.month-1)
         calendarClass.insertCurrentMonth()
         calendarClass.render();
+    }else if(event.target.dataset.type === 'prev' && monthText.dataset.month == 0 && selectYear.value > 2020){
+        calendarClass.setMonth(monthText.dataset.month = 11)
+        calendarClass.setYear(calendarClass.getFirstDayOfMonth().getFullYear()-1)
+        calendarClass.insertCurrentMonth()
+        selectYear.value = calendarClass.getFirstDayOfMonth().getFullYear()
+        calendarClass.render();
     }
-    if(event.target.dataset.type === 'next' && monthText.dataset.month>=0 && monthText.dataset.month<11){
-        console.log('+++')
+    if(event.target.dataset.type === 'next' && monthText.dataset.month >= 0 && monthText.dataset.month < 11){
         calendarClass.setMonth(+monthText.dataset.month+1)
         calendarClass.insertCurrentMonth()
         calendarClass.render();
+    } else if(event.target.dataset.type === 'next' && monthText.dataset.month == 11 && selectYear.value < 2025){
+        calendarClass.setMonth(monthText.dataset.month = 0)
+        calendarClass.setYear(+calendarClass.getFirstDayOfMonth().getFullYear()+1)
+        calendarClass.insertCurrentMonth()
+        selectYear.value = calendarClass.getFirstDayOfMonth().getFullYear()
+        calendarClass.render();
     }
 })
+
 let calendarClass = new Calendar(new Date().getMonth(),new Date().getFullYear());
 calendarClass.insertCurrentMonth();
+calendarClass.insertYearInSelect();
 calendarClass.render();
+
+selectYear.addEventListener('change',event=>{
+    calendarClass.setYear(+event.target.value)
+    calendarClass.render();
+})
 

@@ -9,7 +9,7 @@ function arselect($arr) {
 		print $key .'=>'. $val . ';';
 		mysqli_query($link,"UPDATE pricing set  `value` ='$val' WHERE `name`='$key'");
 	}
-	}
+}
 
 arselect($data);
 
