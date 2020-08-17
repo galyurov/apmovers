@@ -1430,7 +1430,7 @@ function choiceSize(event) {
 
 function currentDate() {
 	let dateinputs = ['datepicker', 'storage-datepicker'];
-	let options = { month: '2-digit', day: '2-digit', year: 'numeric' };
+	let options = { month: 'numeric', day: 'numeric', year: 'numeric' };
 	for (let item of dateinputs) {
 		document.getElementById(item).value = new Date().toLocaleString('en-US', options);
 	}

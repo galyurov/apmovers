@@ -100,6 +100,9 @@
 		border: 1px grey solid;
 		border-left: none;
 		border-right: none;
+		&:last-child {
+			padding-left: 5px;
+		}
 	}
 	&-sticky-button{
 		position: sticky;
@@ -144,6 +147,11 @@
 }
 .b0 {
 	border: none;
+}
+.result-tr{
+	& td:last-child{
+		padding-left: 5px;
+	}
 }
 .inventory {
 	&-row td{
@@ -218,4 +226,3 @@
 .info-wrap{
 	margin: 0 5px;
 }
-

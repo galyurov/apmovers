@@ -1,5 +1,8 @@
 let obj = {};
-let prices = {}
+let prices = {};
+let dates = {}
+
+const moveDate = document.querySelector('.move-date')
 window.addEventListener('load', () => {
 	if (localStorage.savedInfo) {
 		obj = JSON.parse(localStorage.savedInfo);
@@ -31,7 +34,9 @@ function calculateTotalSum(total) {
 		arr.push(value.textContent.replace(' ', '').replace('$', ''))
 	})
 	arr = arr.reduce((sum, current) => +sum + (+current), 0).toFixed(2)
+
 	return total.textContent = arr + " $"
+
 }
 
 async function getPricesFromDb() {
@@ -46,7 +51,6 @@ async function getPricesFromDb() {
 		})
 		.catch((error) => console.error(error))
 
-
 }
 
 function calculateMovePrice() {
@@ -60,8 +64,8 @@ function calculateMovePrice() {
 	return movePrice
 }
 
-function setParametersInHtml() {
-	const moveDate = document.querySelector('.move-date')
+async function setParametersInHtml() {
+	let percent= 0;
 	const moveDay = document.querySelector('.move-day')
 	const estimateDate = document.querySelector('.estimate-date')
 	const estimateVolume = document.querySelector('.volume')
@@ -82,7 +86,7 @@ function setParametersInHtml() {
 
 	moveDate.textContent = obj.searchParam.datepicker
 	moveDay.textContent = getWeekDay(moveDate.textContent)
-	estimateDate.textContent = new Date().toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
+	estimateDate.textContent = new Date().toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' });
 	estimateVolume.textContent = `${volSum()} cf. (${volSum() * 7} lbs)`
 
 
@@ -101,14 +105,29 @@ function setParametersInHtml() {
 		moveType.textContent = `Long Distance Move, ${obj.searchParam.range} mile`
 	}
 
+	await fetch('getDatesFromDB.php?get', {
+		method: 'GET'
+	})
+		.then((response) => response.json()
+		)
+		.then((result)=>{
+			dates = result
+			if (dates[moveDate.textContent]){
+			 	return percent = (dates[moveDate.textContent][0] ? dates[moveDate.textContent][0] : dates['calendar-rate'][0] )/100
+			} else {
+				return percent = (dates['calendar-rate'][0])/100
+			}
+
+		})
+
 	// insert items in inventory block
 	for (let key in obj.choisedItems) {
 		let row = document.createElement('tr')
 		const itemClass = obj.choisedItems[key].class;
 		const name = obj.choisedItems[key].name;
 		const subName = obj.choisedItems[key].subname ? obj.choisedItems[key].subname : '';
-		const handlingFee = prices[obj.choisedItems[key].cat] ? prices[obj.choisedItems[key].cat] : 0;
-		const volumeFee = (obj.choisedItems[key].size * prices.costByVol).toFixed(2);
+		const handlingFee = prices[obj.choisedItems[key].cat] ? +prices[obj.choisedItems[key].cat]+(+prices[obj.choisedItems[key].cat]*percent) : 0;
+		const volumeFee = ((obj.choisedItems[key].size * prices.costByVol)+(obj.choisedItems[key].size * prices.costByVol*percent)).toFixed(2);
 		const qty = obj.choisedItems[key].qty;
 		const itemTotal = ((+handlingFee + +volumeFee) * +qty).toFixed(2);
 		row.classList.add('inventory-row')
@@ -144,7 +163,6 @@ function setParametersInHtml() {
 		arrPrice.push(value.textContent)
 	})
 	let totalMoving = arrPrice.reduce((sum, current) => +sum + (+current), 0).toFixed(2)
-
 	let travelPrice = calculateMovePrice()
 
 	// Additional price if add Pick Up Or Drop Off
@@ -202,7 +220,7 @@ function setParametersInHtml() {
 	}
 	//
 	// Calculate and insert travel price
-	travel.textContent = `${travelPrice} $`
+	travel.textContent = `${travelPrice+(travelPrice*percent)} $`
 
 	// Insert location image and info
 
@@ -261,9 +279,10 @@ async function writeOrderToDB(values) {
 	})
 		.then(response => response.json())
 		.then(response => {
+			console.log(response.name)
 			document.cookie = `aporder = ${response.name}; path=/;max-age=259200`
 			let hash = getCookie('aphash')
-			saveOrderToUser(response.name, hash, values.searchParam['details-email']);
+			saveOrderToUser(response.name,values.searchParam['details-name'], values.searchParam['details-email']);
 
 		})
 }
@@ -276,10 +295,10 @@ async function writeOrderToDB(values) {
 
 // 		})
 // }
-function saveOrderToUser(order, hash = null, email) {
+function saveOrderToUser(order, name, email) {
 	fetch('saveOrderToUser.php', {
 		method: 'POST',
-		body: JSON.stringify({ order, hash, email })
+		body: JSON.stringify({ order, name, email })
 	})
 		.then((promise) => console.log(promise))
 		.catch((error) => console.log(error))

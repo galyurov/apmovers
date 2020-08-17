@@ -1420,8 +1420,12 @@
 
 	<script>
 		$(function () {
-			$("#datepicker").datepicker();
-			$("#storage-datepicker").datepicker();
+			$("#datepicker").datepicker({
+				dateFormat: "m/d/yy"
+			});
+			$("#storage-datepicker").datepicker({
+				dateFormat: "m/d/yy"
+			});
 			$("#details-phone").mask("(999) 999-9999");
 		});
 	</script>
