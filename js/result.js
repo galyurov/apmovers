@@ -2,14 +2,29 @@ let obj = {};
 let prices = {};
 let dates = {}
 
+let resultForm = document.querySelector('.result-form')
 const moveDate = document.querySelector('.move-date')
 window.addEventListener('load', () => {
 	if (localStorage.savedInfo) {
 		obj = JSON.parse(localStorage.savedInfo);
 		getPricesFromDb();
+		setTypeOfButton()
 	}
 })
 
+function setTypeOfButton() {
+	if (obj.searchParam.status === 'Accepted') {
+		resultForm.innerHTML = '<button data-type="Accepted" class="acceptOrder ok" type="submit">Accepted</button><button data-type="Completed" class="completeOrder" type="submit">Complete</button>'
+	} else if(obj.searchParam.status === 'Completed') {
+		resultForm.innerHTML = '<button data-type="Completed" class="completeOrder  ok" type="submit">Completed</button>'
+
+	} else if(obj.searchParam.status === 'New') {
+		resultForm.innerHTML = '<button data-type="Accepted" class="acceptOrder" type="submit">Accept</button><button data-type="Completed" class="completeOrder" type="submit">Complete</button>'
+	}
+	else{
+		resultForm.innerHTML = '<button class="saveOrder" type="submit">Book</button>'
+	}
+}
 function getWeekDay(date) {
 	let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	date = new Date(date)
@@ -34,7 +49,7 @@ function calculateTotalSum(total) {
 		arr.push(value.textContent.replace(' ', '').replace('$', ''))
 	})
 	arr = arr.reduce((sum, current) => +sum + (+current), 0).toFixed(2)
-
+	obj.searchParam.totalPrice = arr;
 	return total.textContent = arr + " $"
 
 }
@@ -86,9 +101,10 @@ async function setParametersInHtml() {
 
 	moveDate.textContent = obj.searchParam.datepicker
 	moveDay.textContent = getWeekDay(moveDate.textContent)
-	estimateDate.textContent = new Date().toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' });
+	estimateDate.textContent = obj.searchParam.estimateDate ? obj.searchParam.estimateDate: new Date().toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' });
+	obj.searchParam.estimateDate = estimateDate.textContent;
 	estimateVolume.textContent = `${volSum()} cf. (${volSum() * 7} lbs)`
-
+	obj.searchParam.volume = estimateVolume.textContent;
 
 	// add block with stairs in info to location
 	if (obj.searchParam['select-stairs-from'] !== '0' && obj.searchParam['select-stairs-from'] !== 'e') {
@@ -189,6 +205,7 @@ async function setParametersInHtml() {
 		}
 	}
 
+
 	//Add Coi price if true
 	if (obj.searchParam['coi-building-from']) {
 		totalMoving = +totalMoving + +prices['COI']
@@ -201,13 +218,13 @@ async function setParametersInHtml() {
 
 	// Calculate additional price for floor
 	if (obj.searchParam['select-stairs-from'] > 2) {
-		totalMoving = +totalMoving + (+prices['chargePerFlight'] * volSum()) * (+obj.searchParam['select-stairs-from'] - 2).toFixed(2)
+		totalMoving = (+totalMoving + (+prices['chargePerFlight'] * volSum()) * (+obj.searchParam['select-stairs-from'] - 2)).toFixed(2)
 	}
 	if (obj.searchParam['select-stairs-to'] > 2) {
-		totalMoving = +totalMoving + (+prices['chargePerFlight'] * volSum()) * (+obj.searchParam['select-stairs-to'] - 2).toFixed(2)
+		totalMoving = (+totalMoving + (+prices['chargePerFlight'] * volSum()) * (+obj.searchParam['select-stairs-to'] - 2)).toFixed(2)
 	}
 	//
-
+	console.log(totalMoving)
 	// Insert block with additional price for minimum cf price, and calculate total price
 	if (volSum() < prices.cfLocal) {
 		moving.parentElement.insertAdjacentHTML('afterend', `<tr class="result-tr">
@@ -263,44 +280,91 @@ async function setParametersInHtml() {
 	calculateTotalSum(total)
 
 }
-
-document.forms.writeOrderInDb.addEventListener('submit', () => {
+let animation = `<div class="windows8">
+                        <div class="wBall" id="wBall_1">
+                            <div class="wInnerBall"></div>
+                        </div>
+                        <div class="wBall" id="wBall_2">
+                            <div class="wInnerBall"></div>
+                        </div>
+                        <div class="wBall" id="wBall_3">
+                            <div class="wInnerBall"></div>
+                        </div>
+                        <div class="wBall" id="wBall_4">
+                            <div class="wInnerBall"></div>
+                        </div>
+                        <div class="wBall" id="wBall_5">
+                            <div class="wInnerBall"></div>
+                        </div>
+                    </div>`
+document.forms.writeOrderInDb.addEventListener('click', (event) => {
 	event.preventDefault();
-	writeOrderToDB(obj);
+	let saveButton = document.querySelector('.saveOrder')
+	if(event.target == saveButton){
+		obj.searchParam.status = 'New';
+		saveOrderToUser(obj,Date.now(),obj.searchParam['details-name'], obj.searchParam['details-email']);
+		saveButton.textContent = '';
+		saveButton.innerHTML = animation
+	}
+	let acceptButton = document.querySelector('.acceptOrder')
+	let completeButton = document.querySelector('.completeOrder')
+	if(event.target == acceptButton){
+		acceptButton.innerHTML = animation
+
+		changeStatusOfOrder(acceptButton)
+	}
+	if(event.target == completeButton){
+		acceptButton.style.display = 'none'
+		completeButton.innerHTML = animation
+		changeStatusOfOrder(completeButton)
+	}
 })
 
-async function writeOrderToDB(values) {
-	await fetch('https://apcalculator-2b184.firebaseio.com/orders.json', {
+function changeStatusOfOrder(button) {
+	button.setAttribute('type','button')
+	obj.searchParam.status = button.dataset.type;
+	let order = localStorage.orderId
+	fetch('updateOrderStatus.php', {
 		method: 'POST',
-		body: JSON.stringify(values),
-		headers: {
-			'Content-type': 'application/json'
-		}
+		body: JSON.stringify({obj, order})
 	})
-		.then(response => response.json())
-		.then(response => {
-			console.log(response.name)
-			document.cookie = `aporder = ${response.name}; path=/;max-age=259200`
-			let hash = getCookie('aphash')
-			saveOrderToUser(response.name,values.searchParam['details-name'], values.searchParam['details-email']);
-
+		.then(() => {
+			button.textContent = button.dataset.type
+			button.classList.add('ok')
 		})
+		.catch((error) => {
+			resultForm.innerHTML = `<div class="result-save-info">
+                        <h2>Error!</h2>
+                        <div>${error}</div>
+                        <div>Update page and try again</div>
+                    </div>`
+		})
+
 }
 
-// function getOrderFromDb() {
-// 	fetch(`https://apcalculator-2b184.firebaseio.com/orders/-MEDDaOJoC3m7nTXzuDk.json`)
-// 		.then(response => response.json())
-// 		.then(response => {
-// 			console.log(response);
-
-// 		})
-// }
-function saveOrderToUser(order, name, email) {
+function saveOrderToUser(values,order, name, email) {
 	fetch('saveOrderToUser.php', {
 		method: 'POST',
-		body: JSON.stringify({ order, name, email })
+		body: JSON.stringify({values, order, name, email })
 	})
-		.then((promise) => console.log(promise))
-		.catch((error) => console.log(error))
+		.then((promise) => {
+			let saveButton = document.querySelector('.saveOrder')
+			saveButton.style.display = 'none'
+			resultForm.innerHTML = `<div class="result-save-info">
+                        <h2>Your order save!</h2>
+                        <div>You can change your items and parameters in <a class="save-link" href="/profile">Profile Page</a></div>
+                    </div>`
+		})
+	.then(()=>{
+		localStorage.clear()
+	})
+		.catch((error) => {
+			resultForm.innerHTML = `<div class="result-save-info">
+                        <h2>Error!</h2>
+                        <div>Update page and try again</div>
+                    </div>`
+		})
 
 }
+
+

@@ -1,0 +1,41 @@
+.orders{
+  &-list,&-wrap{
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  &-wrap{
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+  }
+  &-table{
+    width: 65%;
+    background: #f8f8f8;
+    border: 1px solid #bdbdbd;
+    border-collapse: collapse;
+    & th {
+      padding: 5px 15px;
+    }
+    & tr, & th, & td {
+      border: 1px solid #bdbdbd;
+    }
+    & tr, & td {
+      & a {
+        text-decoration: underline;
+      }
+      font-size: 18px;
+      padding: 5px;
+    }
+  }
+  &-header{
+    font-size: 26px;
+  }
+}
+.completed{
+  background: #0dea1e24;
+}
+.accepted{
+  background: #fbff002e;
+}

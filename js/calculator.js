@@ -1831,6 +1831,7 @@ document.forms['details-form'].addEventListener('submit', (event) => {
 	}
 	const finalParams = { searchParam, choisedItems }
 	localStorage.savedInfo = JSON.stringify(finalParams)
+	window.location.href = 'order.html';
 })
 
 

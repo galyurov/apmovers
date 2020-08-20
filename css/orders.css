@@ -1,0 +1,43 @@
+.orders-list, .orders-wrap {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.orders-wrap {
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+.orders-table {
+  width: 65%;
+  background: #f8f8f8;
+  border: 1px solid #bdbdbd;
+  border-collapse: collapse;
+}
+.orders-table th {
+  padding: 5px 15px;
+}
+.orders-table tr, .orders-table th, .orders-table td {
+  border: 1px solid #bdbdbd;
+}
+.orders-table tr, .orders-table td {
+  font-size: 18px;
+  padding: 5px;
+}
+.orders-table tr a, .orders-table td a {
+  text-decoration: underline;
+}
+.orders-header {
+  font-size: 26px;
+}
+
+.completed {
+  background: #0dea1e24;
+}
+
+.accepted {
+  background: #fbff002e;
+}
+
+/*# sourceMappingURL=orders.css.map */
