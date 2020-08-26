@@ -1,9 +1,3 @@
-<?php
-		  session_start();
-		  if(!$_COOKIE['aphash']){
-			header('Location: /');
-		  }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +7,7 @@
 	<title>My profile</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/profile.css">
+	<link rel="stylesheet" href="css/orders.css">
 	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -33,8 +28,8 @@
 							<i class='bx bx-grid-alt nav__icon'></i>
 							<span class="nav__text">My moves</span>
 						</a>
-						<a href="#" class="nav__link">
-							<i class='bx bx-user nav__icon'></i>
+						<a href="/calculator" class="nav__link">
+							<i class='bx bx-plus nav__icon'></i>
 							<span class="nav__text">Start new move</span>
 						</a>
 					</ul>
@@ -51,9 +46,25 @@
 				</div>
 			</nav>
 		</div>
+		<div class="orders-wrap">
+			<h2 class="orders-header">Orders</h2>
+			<div class="orders-list">
+				<table class="orders-table">
+					<tr class="orders-table-tr">
+						<th>Order №</th>
+						<th>Move Date</th>
+						<th>Distance</th>
+						<th>Volume</th>
+						<th>Price</th>
+						<th>Status</th>
+					</tr>
+				</table>
+
+			</div>
+		</div>
 	</main>
-	<script src="js/auth.js"></script>
 	<script src="js/profile.js"></script>
+	<script src="js/user-orders.js"></script>
 </body>
 
 </html>

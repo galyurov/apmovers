@@ -3,6 +3,7 @@ let prices = {};
 let dates = {}
 
 let resultForm = document.querySelector('.result-form')
+
 const moveDate = document.querySelector('.move-date')
 window.addEventListener('load', () => {
 	if (localStorage.savedInfo) {
@@ -22,12 +23,22 @@ function setTypeOfButton() {
 		resultForm.innerHTML = '<button data-type="Accepted" class="acceptOrder" type="submit">Accept</button><button data-type="Completed" class="completeOrder" type="submit">Complete</button>'
 	}
 	else{
-		resultForm.innerHTML = '<button class="saveOrder" type="submit">Book</button>'
+		if(localStorage.saved == '1'){
+			resultForm.innerHTML = ''
+				resultForm.insertAdjacentHTML("afterend",`<div class="result-save-info">
+                        <h2>Your order save!</h2>
+                        <div>You can change your items and parameters in <a class="save-link" href="/profile-admin">Profile Page</a></div>
+                    </div>`)
+		} else {
+			resultForm.innerHTML = '<button class="saveOrder" type="submit">Book</button>'
+		}
+
 	}
 }
 function getWeekDay(date) {
 	let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	date = new Date(date)
+	obj.searchParam.dayName = days[date.getDay()]
 	return days[date.getDay()]
 }
 let volSum = function (items = obj.choisedItems) {
@@ -53,7 +64,6 @@ function calculateTotalSum(total) {
 	return total.textContent = arr + " $"
 
 }
-
 async function getPricesFromDb() {
 	await fetch('getPricesinDB.php?get', {
 		method: 'GET'
@@ -98,6 +108,7 @@ async function setParametersInHtml() {
 	const clientName = document.querySelector('#client-name')
 	const clientPhone = document.querySelector('#client-phone')
 	const clientEmail = document.querySelector('#client-email')
+	const relocationBlock = document.getElementById('relocation')
 
 	moveDate.textContent = obj.searchParam.datepicker
 	moveDay.textContent = getWeekDay(moveDate.textContent)
@@ -105,7 +116,14 @@ async function setParametersInHtml() {
 	obj.searchParam.estimateDate = estimateDate.textContent;
 	estimateVolume.textContent = `${volSum()} cf. (${volSum() * 7} lbs)`
 	obj.searchParam.volume = estimateVolume.textContent;
-
+if (obj.searchParam['details-request'] != ''){
+	relocationBlock.insertAdjacentHTML('afterend',` <div class="result-estimate">
+                <div class="title-wrap">
+                    <h2 class="result-title">Special request & instructions</h2>
+                </div>
+                <div class="result-block request">${obj.searchParam['details-request']}</div>
+            </div>`)
+}
 	// add block with stairs in info to location
 	if (obj.searchParam['select-stairs-from'] !== '0' && obj.searchParam['select-stairs-from'] !== 'e') {
 		stairsFrom.innerHTML = `Stairs, Floor: ${obj.searchParam['select-stairs-from']}`
@@ -121,20 +139,29 @@ async function setParametersInHtml() {
 		moveType.textContent = `Long Distance Move, ${obj.searchParam.range} mile`
 	}
 
-	await fetch('getDatesFromDB.php?get', {
-		method: 'GET'
-	})
-		.then((response) => response.json()
-		)
-		.then((result)=>{
-			dates = result
-			if (dates[moveDate.textContent]){
-			 	return percent = (dates[moveDate.textContent][0] ? dates[moveDate.textContent][0] : dates['calendar-rate'][0] )/100
-			} else {
-				return percent = (dates['calendar-rate'][0])/100
-			}
-
+	if(!obj.searchParam.percent){
+		await fetch('getDatesFromDB.php?get', {
+			method: 'GET'
 		})
+			.then((response) => response.json()
+			)
+			.then((result)=>{
+				dates = result
+				if (dates[moveDate.textContent]){
+					percent = (dates[moveDate.textContent][0] ? dates[moveDate.textContent][0] : dates['calendar-rate'][0] )/100
+					obj.searchParam.percent = percent
+					return percent
+				} else {
+					percent = (dates['calendar-rate'][0])/100
+					obj.searchParam.percent = percent
+					return percent
+				}
+
+			})
+	} else {
+		percent = obj.searchParam.percent
+	}
+
 
 	// insert items in inventory block
 	for (let key in obj.choisedItems) {
@@ -224,7 +251,6 @@ async function setParametersInHtml() {
 		totalMoving = (+totalMoving + (+prices['chargePerFlight'] * volSum()) * (+obj.searchParam['select-stairs-to'] - 2)).toFixed(2)
 	}
 	//
-	console.log(totalMoving)
 	// Insert block with additional price for minimum cf price, and calculate total price
 	if (volSum() < prices.cfLocal) {
 		moving.parentElement.insertAdjacentHTML('afterend', `<tr class="result-tr">
@@ -302,7 +328,7 @@ document.forms.writeOrderInDb.addEventListener('click', (event) => {
 	let saveButton = document.querySelector('.saveOrder')
 	if(event.target == saveButton){
 		obj.searchParam.status = 'New';
-		saveOrderToUser(obj,Date.now(),obj.searchParam['details-name'], obj.searchParam['details-email']);
+		saveOrderToUser(obj,prices,Date.now(),obj.searchParam['details-name'], obj.searchParam['details-email']);
 		saveButton.textContent = '';
 		saveButton.innerHTML = animation
 	}
@@ -342,25 +368,28 @@ function changeStatusOfOrder(button) {
 
 }
 
-function saveOrderToUser(values,order, name, email) {
+function saveOrderToUser(values,prices,order, name, email) {
 	fetch('saveOrderToUser.php', {
 		method: 'POST',
-		body: JSON.stringify({values, order, name, email })
+		body: JSON.stringify({values,prices, order, name, email })
 	})
 		.then((promise) => {
 			let saveButton = document.querySelector('.saveOrder')
+			localStorage.saved = 1
 			saveButton.style.display = 'none'
-			resultForm.innerHTML = `<div class="result-save-info">
+			resultForm.insertAdjacentHTML('afterend', `<div class="result-save-info">
                         <h2>Your order save!</h2>
                         <div>You can change your items and parameters in <a class="save-link" href="/profile">Profile Page</a></div>
-                    </div>`
+                    </div>`)
+			resultForm.remove();
 		})
-	.then(()=>{
-		localStorage.clear()
-	})
+		.then(()=>{
+			localStorage.removeItem('savedInfo')
+		})
 		.catch((error) => {
 			resultForm.innerHTML = `<div class="result-save-info">
                         <h2>Error!</h2>
+                        <div>${error}</div>
                         <div>Update page and try again</div>
                     </div>`
 		})

@@ -11,7 +11,7 @@
     padding-top: 30px;
   }
   &-table{
-    width: 65%;
+    width: 80%;
     background: #f8f8f8;
     border: 1px solid #bdbdbd;
     border-collapse: collapse;
@@ -26,11 +26,12 @@
         text-decoration: underline;
       }
       font-size: 18px;
-      padding: 5px;
+      padding: 10px;
     }
   }
   &-header{
     font-size: 26px;
+    margin-bottom: 10px;
   }
 }
 .completed{
@@ -38,4 +39,8 @@
 }
 .accepted{
   background: #fbff002e;
+}
+
+.filter-label{
+  margin-right: 5px;
 }

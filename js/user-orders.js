@@ -1,6 +1,6 @@
 let orders = {};
 window.addEventListener('load',()=> {
-    fetch('getOrdersFromDB.php?get', {
+    fetch('getUserOrders.php?get', {
         method: 'GET'
     })
         .then((response) => response.json())
@@ -14,27 +14,24 @@ window.addEventListener('load',()=> {
         })
 })
 let ordersTable = document.querySelector('.orders-table')
-
 function render(orders) {
     for(let order of orders) {
         let params = JSON.parse(order[3])
         let orderRow = document.createElement('tr')
         orderRow.innerHTML = `  
-        <td><a class="order-link" data-id="${order[0]}" href="order.html?${params.searchParam.estimateDate}-${order[1]}">${params.searchParam.estimateDate}- ${order[1]}</a></td>
-        <td>${params.searchParam['details-name']}</td>
-        <td>${params.searchParam['details-phone']}</td>
+        <td><a class="order-link" data-id="${order[0]}" href="orderInfo.html?${params.searchParam.estimateDate}-${order[1]}">${params.searchParam.estimateDate}- ${order[1]}</a></td>
         <td>${params.searchParam.datepicker}</td>
         <td>${params.searchParam.range} mi</td>
         <td>${params.searchParam.volume}</td>
         <td>${params.searchParam.totalPrice} $</td>
         <td>${params.searchParam.status}</td>`
-            if (params.searchParam.status === 'Completed') {
-                orderRow.classList.add('completed')
-            }
-            if (params.searchParam.status === 'Accepted') {
-                orderRow.classList.add('accepted')
-            }
-            ordersTable.appendChild(orderRow)
+        if (params.searchParam.status === 'Completed') {
+            orderRow.classList.add('completed')
+        }
+        if (params.searchParam.status === 'Accepted') {
+            orderRow.classList.add('accepted')
+        }
+        ordersTable.appendChild(orderRow)
     }
 }
 
@@ -50,13 +47,6 @@ function setListenerOnLinks() {
         })
     })
 }
-let filter = document.querySelector('.filter-orders')
-filter.addEventListener('click',(event)=> {
-    if(event.target.classList.contains('filter') && event.target.dataset.value != 'All') {
-        ordersTable.innerHTML = ''
-        render(orders.filter(item => JSON.parse(item[3]).searchParam.status === event.target.dataset.value))
-    } else if(event.target.classList.contains('filter') && event.target.dataset.value === 'All') {
-        ordersTable.innerHTML = ''
-        render(orders)
-    }
-})
+
+
+

@@ -11,6 +11,7 @@ if(mysqli_num_rows($check_users) > 0){
 	$user = mysqli_fetch_assoc($check_users);
 	setcookie('apuser',$user['name'],time()+3600*48);
 	setcookie('aphash',md5($user['email']),time()+3600*48);
+	setcookie('apmail',$user['email'],time()+3600*48);
 	header('Location: /');
 } else {
 	echo 'error';

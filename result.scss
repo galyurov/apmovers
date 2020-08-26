@@ -8,6 +8,7 @@
 		display: flex;
 		position: relative;
 		justify-content: space-around;
+		padding-bottom: 20px;
 	}
 	&-wrap {
 		margin-top: 30px;
@@ -243,6 +244,12 @@
 .info-wrap{
 	margin: 0 5px;
 }
+
+.request {
+	display: block;
+	padding: 10px;
+}
+
 .windows8 {
 	position: relative;
 	width: 18px;
