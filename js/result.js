@@ -9,30 +9,18 @@ window.addEventListener('load', () => {
 	if (localStorage.savedInfo) {
 		obj = JSON.parse(localStorage.savedInfo);
 		getPricesFromDb();
-		setTypeOfButton()
+
 	}
+	setTypeOfButton()
 })
 
 function setTypeOfButton() {
-	if (obj.searchParam.status === 'Accepted') {
-		resultForm.innerHTML = '<button data-type="Accepted" class="acceptOrder ok" type="submit">Accepted</button><button data-type="Completed" class="completeOrder" type="submit">Complete</button>'
-	} else if(obj.searchParam.status === 'Completed') {
-		resultForm.innerHTML = '<button data-type="Completed" class="completeOrder  ok" type="submit">Completed</button>'
-
-	} else if(obj.searchParam.status === 'New') {
-		resultForm.innerHTML = '<button data-type="Accepted" class="acceptOrder" type="submit">Accept</button><button data-type="Completed" class="completeOrder" type="submit">Complete</button>'
-	}
-	else{
-		if(localStorage.saved == '1'){
-			resultForm.innerHTML = ''
-				resultForm.insertAdjacentHTML("afterend",`<div class="result-save-info">
+	if(localStorage.saved == '1'){
+		resultForm.innerHTML = ''
+		resultForm.insertAdjacentHTML("afterend",`<div class="result-save-info">
                         <h2>Your order save!</h2>
                         <div>You can change your items and parameters in <a class="save-link" href="/profile-admin">Profile Page</a></div>
                     </div>`)
-		} else {
-			resultForm.innerHTML = '<button class="saveOrder" type="submit">Book</button>'
-		}
-
 	}
 }
 function getWeekDay(date) {
@@ -92,6 +80,7 @@ function calculateMovePrice() {
 async function setParametersInHtml() {
 	let percent= 0;
 	const moveDay = document.querySelector('.move-day')
+	const moveTime = document.querySelector('.move-time')
 	const estimateDate = document.querySelector('.estimate-date')
 	const estimateVolume = document.querySelector('.volume')
 	const addressFrom = document.querySelector('#result-adress-from')
@@ -116,14 +105,36 @@ async function setParametersInHtml() {
 	obj.searchParam.estimateDate = estimateDate.textContent;
 	estimateVolume.textContent = `${volSum()} cf. (${volSum() * 7} lbs)`
 	obj.searchParam.volume = estimateVolume.textContent;
-if (obj.searchParam['details-request'] != ''){
+
+	switch (true) {
+		case obj.searchParam['13pm'] :{
+			moveTime.textContent = '1-3 PM'
+			break;
+		}
+		case obj.searchParam['24pm'] :{
+			moveTime.textContent = '2-4 PM'
+			break;
+		}
+		case obj.searchParam['810am'] :{
+			moveTime.textContent = '8-10 AM'
+			break;
+		}
+		case obj.searchParam['911am'] :{
+			moveTime.textContent = '9-11 AM'
+			break;
+		}
+		default:
+			console.log('')
+	}
+
+	if (obj.searchParam['details-request'] != ''){
 	relocationBlock.insertAdjacentHTML('afterend',` <div class="result-estimate">
                 <div class="title-wrap">
                     <h2 class="result-title">Special request & instructions</h2>
                 </div>
                 <div class="result-block request">${obj.searchParam['details-request']}</div>
             </div>`)
-}
+	}
 	// add block with stairs in info to location
 	if (obj.searchParam['select-stairs-from'] !== '0' && obj.searchParam['select-stairs-from'] !== 'e') {
 		stairsFrom.innerHTML = `Stairs, Floor: ${obj.searchParam['select-stairs-from']}`
@@ -377,10 +388,19 @@ function saveOrderToUser(values,prices,order, name, email) {
 			let saveButton = document.querySelector('.saveOrder')
 			localStorage.saved = 1
 			saveButton.style.display = 'none'
-			resultForm.insertAdjacentHTML('afterend', `<div class="result-save-info">
+			if(promise.status > 200){
+				resultForm.innerHTML = `<div class="result-save-info">
+                        <h2>Error!</h2>
+                        <div>${promise.statusText}</div>
+                        <div>Update page and try again</div>
+                    </div>`
+			} else {
+				resultForm.insertAdjacentHTML('afterend', `<div class="result-save-info">
                         <h2>Your order save!</h2>
                         <div>You can change your items and parameters in <a class="save-link" href="/profile">Profile Page</a></div>
                     </div>`)
+			}
+
 			resultForm.remove();
 		})
 		.then(()=>{

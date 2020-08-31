@@ -57,6 +57,9 @@ class Calendar {
             } else {
                 let block = document.createElement('div');
                 block.classList.add('calendar-day');
+                if(datesRate[date] && datesRate[date][1] == '0') {
+                    block.classList.add('zero');
+                }
                 block.dataset.day = i - this.getFirstDayOfMonth().getDay();
                 if(block.dataset.day == new Date().getDate() && monthText.dataset.month == new Date().getMonth() && this.year == new Date().getFullYear()){
                     block.classList.add('currentDay');
@@ -65,7 +68,7 @@ class Calendar {
                     `<div data-date="${date}" class="calendar-day-number">${i - this.getFirstDayOfMonth().getDay()}</div>
 <div class="calendar-day-block">
 <div class="calendar-day-qty">${datesRate[date]? datesRate[date][1] : 3}</div>
- <div class="calendar-day-percent">${datesRate[date]? datesRate[date][0] : calendarRate}%</div>
+ <div class="calendar-day-percent">${datesRate[date] && datesRate[date][0]!== ''? datesRate[date][0] : calendarRate}%</div>
     </div>`;
                 calendar.appendChild(block);
             }

@@ -18,7 +18,7 @@ function changeBackground() {
     }
 
 }
-setInterval(changeBackground,3000)
+// setInterval(changeBackground,3000)
 
 movingHead.addEventListener("click", ()=>{
     event.preventDefault()
@@ -48,14 +48,11 @@ function showMovingPrices(param) {
 Element.prototype.appendAfter = function (element) {
     element.parentNode.insertBefore(this, element.nextSibling)
 }
-function _createModal(id) {
-    const modal = document.getElementById('vmodal')
-    return modal
-}
 
 my.modal = function (id) {
     const ANIMATION_SPEED = 300;
-    const $modal = _createModal(id);
+    const $modal = document.getElementById('vmodal');
+    $modal.firstElementChild.firstElementChild.lastElementChild.dataset.id = id
     const modal = {
         open() {
             $modal.classList.add('open');
@@ -63,10 +60,7 @@ my.modal = function (id) {
         close() {
             $modal.classList.remove('open');
             $modal.classList.add('hide');
-            if (modalOrderButton.innerText !== 'Send your order') {
-                modalOrderButton.innerText = 'Send your order';
-                modalOrderButton.classList.remove('send');
-            }
+
             setTimeout(() => {
                 $modal.classList.remove('hide');
             }, ANIMATION_SPEED)
@@ -92,79 +86,97 @@ orderNow.forEach(value => {
     })
 })
 
-let modalOrderButton = document.getElementById('modalButton');
-modalOrderButton.addEventListener('click',(event)=> {
-    event.preventDefault();
-    let modalInfo = {
-        Name: document.getElementById('modalName').value,
-        Phone: document.getElementById('modalPhone').value,
-        Email: document.getElementById('modalEmail').value,
-        From: document.getElementById('modal-input-from').value,
-        To: document.getElementById('modal-input-to').value,
-        Date: document.getElementById('modalDatepicker').value,
-    }
-    let text = `<b><i>ORDER</i></b>
-<b>${modalInfo.Name}</b>,
-${modalInfo.Phone},
-${modalInfo.Email},
-From: ${modalInfo.From};
-To: ${modalInfo.To};
-${modalInfo.Date},
 
-<a href="https://maps.google.com?saddr=${modalInfo.From}&daddr=${modalInfo.To}">Navi</a>`
-    if(modalInfo.Name && modalInfo.Phone && modalInfo.Email && modalInfo.From && modalInfo.To && modalInfo.Date) {
-        postData(text)
-            .then((data) => {
-                if (data.ok) {
-                    event.target.innerText = 'Your order send';
-                    event.target.classList.add('send')
-                    setTimeout(priceModal.close, 1000);
-                    document.getElementById('modalName').value = '';
-                    document.getElementById('modalPhone').value = '';
-                    document.getElementById('modalEmail').value = '';
-                    document.getElementById('modal-input-from').value = '';
-                    document.getElementById('modal-input-to').value = '';
-                    document.getElementById('modalDatepicker').value = '';
-                }
-            })
+document.forms.modalForm.addEventListener('submit',(event)=> {
+    const ordersType = {
+        '148597': {
+            name:'Economy',
+            type:'Local Moving',
+            price:460
+        },
+        '148503': {
+            name:'Standard',
+            type:'Local Moving',
+            price:540
+        },
+        '148561': {
+            name:'Premium',
+            type:'Local Moving',
+            price:660
+        },
+        '158241': {
+            name:'2 bedroom, <500 mi',
+            type:'Long Distance Moving',
+            price:1800
+        },
+        '158259': {
+            name:'2 bedroom, 500-1000 mi',
+            type:'Long Distance Moving',
+            price:2100
+        },
+        '158208': {
+            name:'2 bedroom, 1100-1600 mi',
+            type:'Long Distance Moving',
+            price:2600
+        },
+        '158277': {
+            name:'3 bedroom',
+            type:'Long Distance Moving',
+            price:2900
+        }
     }
+    event.preventDefault();
+    let values={};
+    for(let item of document.forms.modalForm){
+        values[item.id]=item.value
+    }
+    let options = {
+        month: 'numeric',
+        day: 'numeric',
+        year: 'numeric'
+    };
+    values.estimateDate = new Date().toLocaleString('en-US', options);
+    values.status = 'New'
+    fetch('/wp-content/themes/apmovers/saveOrderToUser.php', {
+        method: 'POST',
+        body: JSON.stringify({values,prices: ordersType[event.currentTarget.dataset.id], order: Date.now(),name:values['modalName'],email:values['modalEmail']})
+    })
+        .then((response)=>console.log(response))
 })
 async function postData(text) {
-    const response = await fetch('https://api.telegram.org/bot1192366179:AAEGgX1rrt12A1ZtuE_Gd2s9qadjeEqG3f8/sendMessage', {
+    const response = await fetch('/wp-content/themes/apmovers/sendContactMessage.php', {
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({"chat_id":375532873, "parse_mode":"HTML", "text":text})
+        body: JSON.stringify(text)
     });
-    return await response.json();
+    return  response;
 }
 let footerSubmit = document.getElementById('footerButton');
 footerSubmit.addEventListener('click', (event)=> {
     event.preventDefault()
+   setMessage(event)
+})
+
+function setMessage(event) {
     let submitInfo = {
-        Name: document.getElementById('footerInputName').value,
-        Email: document.getElementById('footerInputEmail').value,
-        Phone: document.getElementById('footerInputPhone').value,
-        Text: document.getElementById('footerInputText').value,
+        name: document.getElementById('footerInputName').value,
+        email: document.getElementById('footerInputEmail').value,
+        phone: document.getElementById('footerInputPhone').value,
+        text: document.getElementById('footerInputText').value,
     };
-    let text = `<b><i>CONTACT</i></b>
-<b>${submitInfo.Name}</b>,
-${submitInfo.Phone},
-${submitInfo.Email},
-${submitInfo.Text},`
-    if(submitInfo.Name && submitInfo.Phone && submitInfo.Email && submitInfo.Text) {
-        postData(text)
+    if(submitInfo.name && submitInfo.phone && submitInfo.email && submitInfo.text) {
+        postData(submitInfo)
             .then((data) => {
                 if (data.ok) {
                     event.target.innerText = 'Your message send';
                     event.target.classList.add('send')
-
+                    document.getElementById('footerInputName').value =  document.getElementById('footerInputEmail').value =  document.getElementById('footerInputPhone').value =  document.getElementById('footerInputText').value = ''
                 }
             })
     }
-})
-
+}
 
 
 

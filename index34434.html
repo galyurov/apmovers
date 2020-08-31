@@ -12,10 +12,9 @@
     <link type="text/css"  rel="stylesheet" href="css/footer.css">
     <link type="text/css"  rel="stylesheet" href="css/style.css">
     <link type="text/css" rel="stylesheet" href="css/modal.css">
+    <link type="text/css" rel="stylesheet" href="css/calendar.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Stylish&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/jquery-ui.css">
-    <script src="js/jquery-1.12.4.js"></script>
-    <script src="js/jquery-ui.js"></script>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 <body>
@@ -58,46 +57,15 @@
                 <div class="contact-details">
                     <a class="email-link" href="mailto:AlwaysProMove@Gmail.com">
                         <div class="contact-email">
-                            <div class="email-svg"><svg version="1.1" class="email-icon"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 512 512"  xml:space="preserve">
-    <g>
-        <g>
-            <path d="M467,61H45C20.218,61,0,81.196,0,106v300c0,24.72,20.128,45,45,45h422c24.72,0,45-20.128,45-45V106
+                            <div class="email-svg">
+                                <svg version="1.1" class="email-icon"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 512 512"  xml:space="preserve">
+    <g> <g><path d="M467,61H45C20.218,61,0,81.196,0,106v300c0,24.72,20.128,45,45,45h422c24.72,0,45-20.128,45-45V106
                 C512,81.28,491.872,61,467,61z M460.786,91L256.954,294.833L51.359,91H460.786z M30,399.788V112.069l144.479,143.24L30,399.788z
                  M51.213,421l144.57-144.57l50.657,50.222c5.864,5.814,15.327,5.795,21.167-0.046L317,277.213L460.787,421H51.213z M482,399.787
                 L338.213,256L482,112.212V399.787z"/>
-        </g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    <g>
-    </g>
-    </svg></div>
+        </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+                                </svg>
+                            </div>
                             <div class="email-text">
                                 <span>Email-Us Now</span>
                                 <p>AlwaysProMove@Gmail.com</p>
@@ -282,7 +250,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-head">
-                                    <h2 class="card-title">Standart</h2>
+                                    <h2 class="card-title">Standard</h2>
                                     <span class="card-subtitle">Package</span>
                                 </div>
                                 <div class="card-parameter">
@@ -930,7 +898,7 @@
                     </div>
                     <div class="footer-col footer-contact">
                         <h2 class="footer-title">Contact Us</h2>
-                        <form action="">
+                        <form name="contactForm" action="">
                             <div class="footer-item">
                                 <input type="text" id="footerInputName" required placeholder="Name"  class="footer-input">
                             </div>
@@ -956,7 +924,7 @@
                                 <span class="modal-title">Get your confirmation</span>
                                 <span class="modal-close" data-close="true">&times;</span>
                             </div>
-                            <form action="">
+                            <form name="modalForm" action="">
                                 <div class="modal-body" data-content>
                                     <div class="modal-info">
                                         <input id="modalName" required type="text" placeholder="Full Name" class="modal-input">
@@ -964,10 +932,32 @@
                                         <input id="modalEmail" required type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email" class="modal-input">
                                         <input id="modal-input-from" required type="text" placeholder="Moving From(ZIP)" class="modal-input" onfocus="geolocate()">
                                         <input id="modal-input-to" required type="text" placeholder="Moving To(ZIP)" class="modal-input" onfocus="geolocate()">
-                                        <input type="text" autocomplete="false" required placeholder="Move Date" id="modalDatepicker"  class="modal-input">
+                                        <input type="text" autocomplete="false" readonly required placeholder="Move Date" id="datepicker"  class="modal-input">
+                                        <div class="calendar-wrap wrap-small modal-calendar hide">
+                                            <div class="calendar-set">
+                                                <div class="calendar-month month-small">
+                                                    <i data-type="prev" class='calendar-month-prev bx bx-left-arrow'></i>
+                                                    <div class="calendar-month-text text-small"></div>
+                                                    <i data-type="next" class='calendar-month-next bx bx-right-arrow'></i>
+                                                </div>
+                                            </div>
+                                            <div class="calendar-block block-small">
+                                                <div class="calendar-week-day">Su</div>
+                                                <div class="calendar-week-day">Mo</div>
+                                                <div class="calendar-week-day">Tu</div>
+                                                <div class="calendar-week-day">We</div>
+                                                <div class="calendar-week-day">Th</div>
+                                                <div class="calendar-week-day">Fr</div>
+                                                <div class="calendar-week-day">Sa</div>
+                                            </div>
+                                            <div class="calendar-block block-small" id="calendar-block">
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="modal-footer"><button type="submit" id="modalButton" href="">Send your order</button></div>
+                                <div class="modal-footer"><button type="submit" id="modalButton">Send your order</button></div>
                             </form>
                         </div>
                     </div>
@@ -975,15 +965,11 @@
             </footer>
         </main>
     </div>
-    <script>
-        $( function() {
-            $( "#modalDatepicker" ).datepicker({dateFormat: "M dd"});
-        } );
-    </script>
+    <script src="js/calendar-small.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/calculator.js"></script>
-    <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwWXleWh8d8A2lS2TbRAqqGp5-HLKyTh4&libraries=places&callback=initAutocomplete"
-            async defer></script>
+<!--    <script src="js/calculator.js"></script>-->
+<!--    <script-->
+<!--            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwWXleWh8d8A2lS2TbRAqqGp5-HLKyTh4&libraries=places&callback=initAutocomplete"-->
+<!--            async defer></script>-->
 </body>
 </html>

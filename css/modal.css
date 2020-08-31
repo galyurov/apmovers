@@ -75,7 +75,7 @@
 
 .modal-body {
   display: flex;
-
+  position: relative;
   padding: 10px;
 }
 .modal-card{

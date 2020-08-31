@@ -105,7 +105,8 @@
 				Our moving professionals strive to make each moving project, whether large or small, commercial or
 				residential, as smooth and stress free as possible. Each member of our staff, from the helpful sales
 				consultants, experienced packers, skilled crews and vehicle operators, is fully trained and committed to
-				providing the highest standard of personalized service in the industry.</p>
+				providing the highest standard of personalized service in the industry.
+			</p>
 			<h2 class="long-subtitle mb">IN-HOME CONSULTATIONS</h2>
 			<p class="long-text m0">Always Professional Moving helps Elizabeth business and homeowners make important and
 				cost effective decisions for any local or long distance move and also provide flexible storage solutions.

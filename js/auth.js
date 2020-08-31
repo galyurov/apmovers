@@ -1,4 +1,4 @@
-let formElem = document.forms.signup;
+
 if (formElem) {
 	formElem.onsubmit = async (e) => {
 		e.preventDefault();
@@ -18,38 +18,7 @@ if (formElem) {
 				S0.001,285.469,0.001,183.903l0,0C-0.288,82.625,81.579,0.29,182.856,0.001C183.205,0,183.554,0,183.903,0.001z"/>
 			<polygon style="fill:#D4E1F4;" points="285.78,133.225 155.168,263.837 82.025,191.217 111.805,161.96 155.168,204.801 
 				256.001,103.968 	"/>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		</svg>
+		</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	<g>	</g>	</svg>
 		<p class="registr-text">Registration successful</p>
 			</div>`
 					setTimeout(() => {
@@ -130,6 +99,7 @@ name="pass">
 </div>
 </div>`)
 }
+
 function dropDownMenu(button, options) {
 	if (button) {
 		button.addEventListener('click', (event) => {
@@ -140,6 +110,7 @@ function dropDownMenu(button, options) {
 		})
 	}
 }
+let formElem = document.forms.signup;
 dropDownMenu(document.querySelector('.profile-menu'));
 dropDownMenu(document.querySelector('#signUpButton'), document.querySelector('#sign-inButton'));
 dropDownMenu(document.querySelector('#sign-inButton'), document.querySelector('#signUpButton'));
