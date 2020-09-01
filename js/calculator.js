@@ -5248,7 +5248,7 @@ class Calculator {
 				}
 
 			},
-		this.searchParam = {}
+			this.searchParam = {}
 		this.choisedItems = {}
 	}
 	editDatabaseWithUserParam(items) {
@@ -5712,8 +5712,8 @@ function inputListener(elem) {
 
 
 
-arrivalInputs.addEventListener('click',(event)=>{
-	if(event.target.type === 'radio' && !event.target.parentElement.parentElement.classList.contains('selected')) {
+arrivalInputs.addEventListener('click', (event) => {
+	if (event.target.type === 'radio' && !event.target.parentElement.parentElement.classList.contains('selected')) {
 		[...event.target.parentElement.parentElement.parentElement.children].forEach(value => {
 			value.classList.remove('selected')
 			value.children[2].classList.add('hide')
@@ -5721,7 +5721,7 @@ arrivalInputs.addEventListener('click',(event)=>{
 		event.target.parentElement.parentElement.classList.add('selected')
 		event.target.parentElement.nextElementSibling.classList.remove('hide')
 	}
-},true)
+}, true)
 
 
 function updateCounters() {

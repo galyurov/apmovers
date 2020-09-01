@@ -1,93 +1,127 @@
 @import url("fonts.css");
 body {
-	font-family: "Proxima Nova";
+  font-family: "Proxima Nova";
 }
 
 .container {
-	max-width: 1400px;
-	margin: 0 auto;
+  max-width: 1400px;
+  margin: 0 auto;
 }
-.hide {
-	display: none;
-}
+
 .header {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+.header-nav-wrap {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 .header-wrap {
-	background: #3477b5e6;
-	position: relative;
+  background: #3477b5e6;
+  position: relative;
 }
 .header-logo {
-	padding: 1px 0 0 10px;
+  padding: 1px 0 0 10px;
 }
 
 .nav-link {
-	color: #ffffff;
-	text-decoration: none;
-	font-size: 16px;
-	line-height: 19px;
-	font-weight: 600;
-	padding: 31px 0;
-	display: inline-block;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+  padding: 31px 0;
+  display: inline-block;
 }
 .nav-link:hover {
-	border-bottom: 3px #14b5f0 solid;
+  border-bottom: 3px #14b5f0 solid;
 }
 .nav-list {
-	display: flex;
+  display: flex;
 }
 .nav-item {
-	margin-right: 20px;
+  margin-right: 20px;
 }
-.nav-item:nth-last-child(-n + 1) {
-	margin-right: 0;
+.nav-item:nth-last-child(-n+1) {
+  margin-right: 0;
 }
 .nav-search {
-	vertical-align: center;
+  vertical-align: center;
+}
+
+.site-header {
+  position: relative;
+  width: 100%;
+  z-index: 30;
 }
 
 .header-call {
-	display: flex;
-	align-items: center;
-	padding-right: 20px;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
 }
 
 .call-circle {
-	background: #476ba7;
-	position: relative;
-	width: 45px;
-	height: 45px;
-	border-radius: 50%;
-	border: 3px #14b5f0 solid;
+  background: #476ba7;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 3px #14b5f0 solid;
 }
 
 .call-icon {
-	position: relative;
-	width: 16px;
-	color: #ffffff;
-	top: 14px;
-	left: 14px;
+  position: relative;
+  width: 16px;
+  color: #ffffff;
+  top: 14px;
+  left: 14px;
 }
 
 .number-text {
-	font-size: 24px;
-	display: block;
-	padding: 5px 0;
+  font-size: 24px;
+  display: block;
+  padding: 5px 0;
 }
 
 .number {
-	font-size: 14px;
-	font-weight: 600;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .call-number {
-	margin-left: 10px;
+  margin-left: 10px;
 }
 
 .call-number,
 .number-link {
-	color: #ffffff;
-	text-decoration: none;
-	border-radius: 50%;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50%;
 }
+
+@media screen and (max-width: 1225px) {
+  .nav-item {
+    margin-right: 10px;
+    height: 84px;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+@media screen and (max-width: 780px) {
+  .header-logo img {
+    height: 70px;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */

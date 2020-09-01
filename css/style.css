@@ -59,7 +59,8 @@ body {
   z-index: 999;
 }
 
-.contact-email, .contact-time {
+.contact-email,
+.contact-time {
   display: flex;
   background-color: #3477b5e6;
   opacity: 0.9;
@@ -71,7 +72,8 @@ body {
   opacity: 0.9;
 }
 
-.email-icon, .time-icon {
+.email-icon,
+.time-icon {
   width: 21px;
   color: #ffffff;
 }
@@ -81,18 +83,22 @@ body {
   color: #000000;
 }
 
-.email-svg, .time-svg {
+.email-svg,
+.time-svg {
   padding: 28px 15px;
 }
 
-.email-text, .time-text {
+.email-text,
+.time-text {
   padding: 20px 15px;
 }
-.email-text span, .time-text span {
+.email-text span,
+.time-text span {
   display: block;
   font-size: 24px;
 }
-.email-text p, .time-text p {
+.email-text p,
+.time-text p {
   font-size: 14px;
   letter-spacing: 1px;
 }
@@ -122,7 +128,9 @@ body {
   max-width: 55%;
 }
 
-.about-head, .move-head, .choice-head {
+.about-head,
+.move-head,
+.choice-head {
   border-bottom: 2px solid #3477b5e6;
   width: max-content;
 }
@@ -140,7 +148,8 @@ body {
   display: flex;
 }
 
-.about-title, .move-title {
+.about-title,
+.move-title {
   vertical-align: top;
   display: inline-block;
   font-size: 48px;
@@ -174,6 +183,7 @@ body {
 
 .move-with-us {
   margin-top: 40px;
+  padding: 0 10px;
 }
 
 .move-item {
@@ -249,9 +259,10 @@ body {
 }
 .services-block:hover {
   background-color: #8e8e8ea6;
-  border-color: #6D6E70;
+  border-color: #6d6e70;
 }
-.services-block:hover svg, .services-block:hover img {
+.services-block:hover svg,
+.services-block:hover img {
   transition: 1s;
   -webkit-transition: 0.7s;
   -moz-transition: 0.7s;
@@ -299,10 +310,10 @@ body {
 }
 .hourly-rate a {
   text-decoration: none;
-  color: #6D6E70;
+  color: #6d6e70;
 }
 .hourly-head {
-  color: #6D6E70;
+  color: #6d6e70;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
@@ -310,7 +321,7 @@ body {
 .hourly-title {
   padding: 15px 20px;
   font-size: 20px;
-  border: 2px #D3D3D4 solid;
+  border: 2px #d3d3d4 solid;
   margin-right: 20px;
 }
 .hourly-title:nth-child(2) {
@@ -336,7 +347,7 @@ body {
 }
 
 .card {
-  background: #F3F3F5;
+  background: #f3f3f5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -344,7 +355,7 @@ body {
   width: 298px;
   height: 540px;
   margin: 0 1px;
-  color: #6D6E70;
+  color: #6d6e70;
   transition: 250ms linear;
 }
 .card:hover {
@@ -352,8 +363,9 @@ body {
   background-color: #3477b5e6;
   color: #ffffff;
 }
-.card:hover .card-movers-img path, .card:hover polygon {
-  fill: #D1D3D4;
+.card:hover .card-movers-img path,
+.card:hover polygon {
+  fill: #d1d3d4;
 }
 .card:hover .card-price {
   color: #ffffff;
@@ -448,8 +460,9 @@ body {
   height: 30px;
   margin-bottom: 15px;
 }
-.card-movers-img path, .card-movers-img polygon {
-  fill: #6D6E71;
+.card-movers-img path,
+.card-movers-img polygon {
+  fill: #6d6e71;
 }
 
 .card-movers-text {
@@ -477,7 +490,7 @@ body {
 .custom-title {
   margin-top: 30px;
   margin-bottom: 30px;
-  color: #6D6E70;
+  color: #6d6e70;
   font-weight: 700;
   font-size: 22px;
 }
@@ -485,7 +498,7 @@ body {
 .custom-text {
   line-height: 18px;
   text-align: center;
-  color: #A7A9AB;
+  color: #a7a9ab;
   font-weight: 700;
   margin-bottom: 20px;
 }
@@ -503,12 +516,13 @@ body {
 .card-all {
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .long {
   position: absolute;
   top: 540px;
-  left: 0;
 }
 
 .slider-box {
@@ -584,6 +598,288 @@ body {
 
 .movers-icon {
   padding-right: 10px;
+}
+
+@media screen and (max-width: 1225px) {
+  .width-wrap {
+    max-width: 1000px;
+  }
+
+  .card {
+    width: 248px;
+  }
+
+  .about-title,
+.move-title {
+    font-size: 44px;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .width-wrap {
+    max-width: 900px;
+  }
+
+  .long .card .card-movers-miles {
+    font-size: 36px;
+  }
+
+  .long .card .card-title {
+    font-size: 34px;
+  }
+
+  .about-title,
+.move-title {
+    font-size: 36px;
+  }
+
+  .about-img img {
+    width: 300px;
+  }
+
+  .card-info-item {
+    font-size: 12px;
+  }
+
+  .card {
+    width: 225px;
+  }
+
+  .long .card .card-cf {
+    font-size: 14px;
+  }
+
+  .hourly-title {
+    font-size: 16px;
+  }
+
+  .services-block {
+    padding: 15px 10px;
+    margin: 5px 0px;
+  }
+
+  .services-name {
+    padding: 15px;
+  }
+
+  .services-svg {
+    width: unset;
+    height: unset;
+  }
+
+  .services-img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .services-blocks {
+    margin-top: 10px;
+  }
+
+  .services-head {
+    padding-top: 35px;
+  }
+
+  .services {
+    padding-bottom: 20px;
+    background-size: auto;
+  }
+
+  .move-items {
+    justify-content: space-around;
+  }
+
+  .move-item-text {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .move-item-title {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  .move-item-img img {
+    height: 80px;
+  }
+
+  .slider-title {
+    font-size: 42px;
+  }
+}
+@media screen and (max-width: 925px) {
+  .card {
+    width: 186px;
+    height: 480px;
+  }
+
+  .width-wrap {
+    max-width: 760px;
+  }
+
+  .card-info-item {
+    font-size: 10px;
+  }
+
+  .card-price {
+    font-size: 40px;
+  }
+
+  .long .card .card-cf {
+    font-size: 12px;
+  }
+
+  .long .card .card-miles-text {
+    font-size: 14px;
+  }
+
+  .long .card .card-movers-miles {
+    font-size: 26px;
+  }
+
+  .long .card .card-title {
+    font-size: 28px;
+    padding-top: 0;
+  }
+
+  .card-button {
+    font-size: 16px;
+    padding: 12px 25px;
+  }
+
+  .card-movers-text {
+    font-size: 9px;
+  }
+
+  .services-svg {
+    width: 32px;
+    height: 30px;
+  }
+
+  .about-title,
+.move-title {
+    font-size: 32px;
+  }
+
+  .about-img {
+    padding-top: 65px;
+  }
+  .about-img img {
+    width: 265px;
+  }
+
+  .services-name {
+    font-size: 22px;
+  }
+
+  .custom-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .email-text span,
+.time-text span {
+    font-size: 20px;
+  }
+
+  .email-text p,
+.time-text p {
+    font-size: 12px;
+  }
+
+  .slider-title {
+    font-size: 38px;
+    line-height: 40px;
+  }
+
+  .slider-box {
+    padding: 25px 40px 25px 30px;
+  }
+
+  .card-info {
+    padding-bottom: 5px;
+  }
+}
+@media screen and (max-width: 780px) {
+  .about-info {
+    font-size: 14px;
+    line-height: 28px;
+    margin-top: 10px;
+  }
+
+  .services-text {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .services-blocks {
+    margin-top: 0;
+  }
+
+  .move-item-text {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .move-item-title {
+    font-size: 18px;
+  }
+
+  .move-item-img img {
+    height: 70px;
+  }
+
+  .custom-button {
+    font-size: 16px;
+    padding: 15px 55px;
+    margin-bottom: 10px;
+  }
+
+  .email-svg,
+.time-svg {
+    padding: 28px 5px;
+  }
+
+  .slider-text {
+    font-size: 14px;
+  }
+
+  .slider-title {
+    font-size: 30px;
+    line-height: 32px;
+  }
+
+  .slider-info {
+    font-size: 14px;
+  }
+
+  .about-icon {
+    margin-right: 15px;
+    height: 30px;
+  }
+}
+@media screen and (max-width: 760px) {
+  .about-info {
+    font-size: 13px;
+    line-height: 26px;
+  }
+
+  .about-subtitle {
+    font-size: 18px;
+    line-height: 20px;
+    padding-top: 15px;
+    padding-bottom: 0px;
+  }
+
+  .about-title,
+.move-title {
+    font-size: 26px;
+  }
+
+  .time-text {
+    padding-top: 14px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,4 @@
-
+let formElem = document.forms.signup;
 if (formElem) {
 	formElem.onsubmit = async (e) => {
 		e.preventDefault();
@@ -110,7 +110,7 @@ function dropDownMenu(button, options) {
 		})
 	}
 }
-let formElem = document.forms.signup;
+
 dropDownMenu(document.querySelector('.profile-menu'));
 dropDownMenu(document.querySelector('#signUpButton'), document.querySelector('#sign-inButton'));
 dropDownMenu(document.querySelector('#sign-inButton'), document.querySelector('#signUpButton'));

@@ -96,6 +96,7 @@
 	align-items: center;
 	height: 81px;
 	cursor: pointer;
+	font-weight: normal;
 }
 .auth-profile:hover {
 	border-bottom: 3px solid #14b5f0;
@@ -112,6 +113,7 @@
 }
 .profile-menu {
 	position: relative;
+	padding-right: 10px;
 }
 .profile-items {
 	left: -84px;
@@ -143,4 +145,9 @@
 }
 .setting-button {
 	margin-top: 20px;
+}
+@media screen and (max-width: 925px) {
+	.auth-profile {
+		font-size: 14px;
+	}
 }
