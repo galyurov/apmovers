@@ -21,7 +21,7 @@ function render(orders) {
             if(params.searchParam){
             let orderRow = document.createElement('tr')
             orderRow.innerHTML = `  
-        <td><a class="order-link" data-id="${order[0]}" href="orderInfo.html?${params.searchParam.estimateDate}-${order[1]}">${params.searchParam.estimateDate}- ${order[1]}</a></td>
+        <td><a class="order-link" data-id="${order[0]}" href="orderInfo.html?${params.searchParam.estimateDate}-${order[1]}">${params.searchParam.estimateDate}-${order[1]}</a></td>
         <td>${params.searchParam['details-name']}</td>
         <td>${params.searchParam['details-phone']}</td>
         <td>${params.searchParam.datepicker}</td>
@@ -40,7 +40,7 @@ function render(orders) {
                 let info = JSON.parse(order[4])
                 let orderRow = document.createElement('tr')
                 orderRow.innerHTML = `  
-                <td><a class="order-link" data-id="${order[0]}" href="orderInfo.html?${params.estimateDate}-${order[1]}">${params.estimateDate}- ${order[1]}</a></td>
+                <td><a class="order-link" data-id="${order[0]}" href="orderInfo.html?${params.estimateDate}-${order[1]}">${params.estimateDate}-${order[1]}</a></td>
                 <td>${params['modalName']}</td>
                 <td>${params['modalPhone']}</td>
                 <td>${params['datepicker']}</td>
@@ -64,6 +64,7 @@ function setListenerOnLinks() {
     links.forEach(value => {
         value.addEventListener('click', ()=>{
             localStorage.orderId = value.dataset.id
+            localStorage.orderNumber = value.textContent
             localStorage.admin = '1';
             let result = orders.find(item => item[0]===value.dataset.id)[3].replace(/u0027/g,'\'').replace(/u0026/g,'\&')
             let prices = orders.find(item => item[0]===value.dataset.id)[4].replace(/u0027/g,'\'').replace(/u0026/g,'\&')

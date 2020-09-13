@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="google-site-verification" content="H05VeKz68f3-nerKd3Cqy7xI0qTFqucgXReNxttFWhc" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>Title</title>
 	<link rel="stylesheet" href="css/calculator.css">
 	<link rel="stylesheet" href="css/2.css">
@@ -27,16 +28,23 @@
 					<div class="header-logo">
 						<a href="#"><img src="img/logo.png" alt=""></a>
 					</div>
-					<nav class="nav-menu">
-						<ul class="nav-list">
-							<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-							<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-							<li class="nav-item"><a href="long-distance.html" class="nav-link">Long Distance</a></li>
-							<li class="nav-item"><a href="local-move.html" class="nav-link">Local</a></li>
-							<li class="nav-item"><a href="comercial.html" class="nav-link">Commercial Move</a></li>
-							<li class="nav-item"><a href="pack-unpack.html" class="nav-link">Packing & Unpacking</a></li>
-						</ul>
-					</nav>
+					<div class="menu__icon icon-menu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div class="header-nav-wrap">
+						<nav class="nav-menu">
+							<ul class="nav-list">
+								<li class="nav-item"><a href="index.html" class="nav-link">!Home</a></li>
+								<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+								<li class="nav-item"><a href="long-distance.html" class="nav-link">Long Distance</a></li>
+								<li class="nav-item"><a href="local-move.html" class="nav-link">Local</a></li>
+								<li class="nav-item"><a href="comercial.html" class="nav-link">Commercial Move</a></li>
+								<li class="nav-item"><a href="pack-unpack.html" class="nav-link">Packing & Unpacking</a></li>
+							</ul>
+						</nav>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -100,6 +108,250 @@
 									<option value="6">Stairs - 6th floor</option>
 								</select>
 								<input type="text" name="apt-from" id="apt-from" placeholder="Apt" class="detail-apt">
+							</div>
+							<div id="detailsSetsFrom" class="details-add-sets">
+								<div class="add-sets">
+									<label for="coi-building-from" class="toggle coi">
+										<span class="add-checkbox time-restr">
+											<input class="checkbox-toggle" id="coi-building-from" name="coi-building-from"
+												   type="checkbox">
+										</span>
+										<span class="checkbox-label coi">Does this building require a COI?</span>
+									</label>
+								</div>
+								<div class="add-sets">
+									<label for="time-restr-from" class="toggle restr">
+										<span class="add-checkbox time-restr">
+											<input class="checkbox-toggle time-restr-from" id="time-restr-from" type="checkbox"
+												   name="time-restr-from">
+										</span>
+										<span class="checkbox-label time-restr">Is there a time window
+											restriction?</span>
+									</label>
+								</div>
+								<div class="add-sets">
+									<label for="special_handling" class="toggle handling">
+										<span class="add-checkbox time-restr">
+											<input class="checkbox-toggle time-restr-from" id="special_handling" type="checkbox"
+												   name="special_handling">
+										</span>
+										<span class="checkbox-label time-restr">Add special handling?</span>
+									</label>
+								</div>
+								<div class="add-sets">
+									<label id="add-checkbox-label" data-type="toggle-inputs" for="add-checkbox"
+										   class="toggle add">
+										<span class="add-checkbox">
+											<input data-id="pick-up" data-value="Pick Up" class="checkbox-toggle add"
+												   id="add-checkbox" name="add-checkbox" type="checkbox">
+										</span>
+										<span class="checkbox-label add">Additional pick up stop</span>
+									</label>
+									<div class="detail-inputs hide">
+										<h3 class="detail-title">Extra Pick Up:</h3>
+										<div class="detail-inputs-wrap">
+											<input id="inputAdd-pick-up" type="text" placeholder="Address, city, or zip"
+												   class="detail-input" onfocus="geolocate()">
+											<input id="apt-add-pick-up" type="text" placeholder="Apt" class="detail-apt">
+										</div>
+										<select form="params" id="select-Add-pick-up" class="detail-stairs">
+											<option value="e">Elevator</option>
+											<option value="0" selected="">No stairs - ground floor</option>
+											<option value="2">Stairs - 2nd floor</option>
+											<option value="3">Stairs - 3rd floor</option>
+											<option value="4">Stairs - 4th floor</option>
+											<option value="5">Stairs - 5th floor</option>
+											<option value="6">Stairs - 6th floor</option>
+										</select>
+										<div class="add-sets">
+											<label for="coi-building-add-pick-up" class="toggle coi-add-pick-up">
+												<span class="add-checkbox time-restr">
+													<input class="checkbox-toggle" id="coi-building-add-pick-up"
+														   name="coi-building-from" type="checkbox">
+												</span>
+												<span class="checkbox-label coi">Does this building require a COI?</span>
+											</label>
+										</div>
+										<div class="add-sets">
+											<label for="time-restr-add-pick-up" class="toggle restr-add-pick-up">
+												<span class="add-checkbox time-restr">
+													<input class="checkbox-toggle time-restr-from" id="time-restr-add-pick-up"
+														   type="checkbox" name="time-restr-from">
+												</span>
+												<span class="checkbox-label time-restr">Is there a time window
+													restriction?</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="add-sets">
+									<label data-type="toggle-storage" for="storage-checkbox" class="toggle storage">
+										<span class="add-checkbox">
+											<input class="checkbox-toggle storage" id="storage-checkbox" name="storage-checkbox"
+												   type="checkbox">
+										</span>
+										<span class="checkbox-label storage">Would You like to add storage?</span>
+									</label>
+									<div class="storage-wrap hide">
+										<div class="storage-control">
+											<label class="move-to-storage">
+												<input id="radioLong" onclick="choiceStorageType('long')" value="long"
+													   class="storage-input" type="radio" name="choice-storage">
+												<span>Move to storage</span><br>
+												<span class="storage-label">Includes moving in and first month storage</span>
+											</label>
+										</div>
+										<div class="storage-control">
+											<label class="move-to-storage">
+												<input id="radioShort" onclick="choiceStorageType('short')" value="short"
+													   class="storage-input" type="radio" name="choice-storage" checked="true">
+												<span>Move to storage for a short time (up to 45 days)</span><br>
+												<span class="storage-label">Includes moving in, storage and moving out</span>
+											</label>
+										</div>
+										<div class="storage-date">
+											<span class="storage-date-text">Out of storage delivery date</span>
+											<div class="input-date">
+												<svg version="1.1" class=" location-icon date-icon storage-date-icon" id="calendar"
+													 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+													 x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+													 xml:space="preserve">
+													<g>
+														<g>
+															<path d="M452,40h-24V0h-40v40H124V0H84v40H60C26.916,40,0,66.916,0,100v352c0,33.084,26.916,60,60,60h392
+				c33.084,0,60-26.916,60-60V100C512,66.916,485.084,40,452,40z M472,452c0,11.028-8.972,20-20,20H60c-11.028,0-20-8.972-20-20V188
+				h432V452z M472,148H40v-48c0-11.028,8.972-20,20-20h24v40h40V80h264v40h40V80h24c11.028,0,20,8.972,20,20V148z" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="76" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="156" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="236" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="316" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="396" y="230" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="76" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="156" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="236" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="316" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="76" y="390" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="156" y="390" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="236" y="390" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="316" y="390" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+														<g>
+															<rect x="396" y="310" width="40" height="40" />
+														</g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+													<g>
+													</g>
+												</svg>
+												<input readonly class="date-input" type="text" name="storage-datepicker"
+													   id="storage-datepicker">
+												<div class="calendar-wrap storage-wrap wrap-small hide">
+													<div class="calendar-set">
+														<div class="storage-month month-small">
+															<i data-type="prev" class='calendar-month-prev bx bx-left-arrow'></i>
+															<div class="storage-month-text text-small"></div>
+															<i data-type="next" class='calendar-month-next bx bx-right-arrow'></i>
+														</div>
+													</div>
+													<div class="calendar-block block-small">
+														<div class="calendar-week-day">Su</div>
+														<div class="calendar-week-day">Mo</div>
+														<div class="calendar-week-day">Tu</div>
+														<div class="calendar-week-day">We</div>
+														<div class="calendar-week-day">Th</div>
+														<div class="calendar-week-day">Fr</div>
+														<div class="calendar-week-day">Sa</div>
+													</div>
+													<div class="calendar-block block-small" id="storage-block">
+
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="detail-inputs-wrap size-and-date-block">
 								<div class="size-and-date-wrap">
@@ -357,241 +609,6 @@
 									</div>
 								</div>
 							</div>
-							<div id="detailsSetsFrom" class="details-add-sets">
-								<div class="add-sets">
-									<label for="coi-building-from" class="toggle coi">
-										<span class="add-checkbox time-restr">
-											<input class="checkbox-toggle" id="coi-building-from" name="coi-building-from"
-												type="checkbox">
-										</span>
-										<span class="checkbox-label coi">Does this building require a COI?</span>
-									</label>
-								</div>
-								<div class="add-sets">
-									<label for="time-restr-from" class="toggle restr">
-										<span class="add-checkbox time-restr">
-											<input class="checkbox-toggle time-restr-from" id="time-restr-from" type="checkbox"
-												name="time-restr-from">
-										</span>
-										<span class="checkbox-label time-restr">Is there a time window
-											restriction?</span>
-									</label>
-								</div>
-								<div class="add-sets">
-									<label id="add-checkbox-label" data-type="toggle-inputs" for="add-checkbox"
-										class="toggle add">
-										<span class="add-checkbox">
-											<input data-id="pick-up" data-value="Pick Up" class="checkbox-toggle add"
-												id="add-checkbox" name="add-checkbox" type="checkbox">
-										</span>
-										<span class="checkbox-label add">Additional pick up stop</span>
-									</label>
-									<div class="detail-inputs hide">
-										<h3 class="detail-title">Extra Pick Up:</h3>
-										<div class="detail-inputs-wrap">
-											<input id="inputAdd-pick-up" type="text" placeholder="Address, city, or zip"
-												class="detail-input" onfocus="geolocate()">
-											<input id="apt-add-pick-up" type="text" placeholder="Apt" class="detail-apt">
-										</div>
-										<select form="params" id="select-Add-pick-up" class="detail-stairs">
-											<option value="e">Elevator</option>
-											<option value="0" selected="">No stairs - ground floor</option>
-											<option value="2">Stairs - 2nd floor</option>
-											<option value="3">Stairs - 3rd floor</option>
-											<option value="4">Stairs - 4th floor</option>
-											<option value="5">Stairs - 5th floor</option>
-											<option value="6">Stairs - 6th floor</option>
-										</select>
-										<div class="add-sets">
-											<label for="coi-building-add-pick-up" class="toggle coi-add-pick-up">
-												<span class="add-checkbox time-restr">
-													<input class="checkbox-toggle" id="coi-building-add-pick-up"
-														name="coi-building-from" type="checkbox">
-												</span>
-												<span class="checkbox-label coi">Does this building require a COI?</span>
-											</label>
-										</div>
-										<div class="add-sets">
-											<label for="time-restr-add-pick-up" class="toggle restr-add-pick-up">
-												<span class="add-checkbox time-restr">
-													<input class="checkbox-toggle time-restr-from" id="time-restr-add-pick-up"
-														type="checkbox" name="time-restr-from">
-												</span>
-												<span class="checkbox-label time-restr">Is there a time window
-													restriction?</span>
-											</label>
-										</div>
-									</div>
-								</div>
-								<div class="add-sets">
-									<label data-type="toggle-storage" for="storage-checkbox" class="toggle storage">
-										<span class="add-checkbox">
-											<input class="checkbox-toggle storage" id="storage-checkbox" name="storage-checkbox"
-												type="checkbox">
-										</span>
-										<span class="checkbox-label storage">Would You like to add storage?</span>
-									</label>
-									<div class="storage-wrap hide">
-										<div class="storage-control">
-											<label class="move-to-storage">
-												<input id="radioLong" onclick="choiceStorageType('long')" value="long"
-													class="storage-input" type="radio" name="choice-storage">
-												<span>Move to storage</span><br>
-												<span class="storage-label">Includes moving in and first month storage</span>
-											</label>
-										</div>
-										<div class="storage-control">
-											<label class="move-to-storage">
-												<input id="radioShort" onclick="choiceStorageType('short')" value="short"
-													class="storage-input" type="radio" name="choice-storage" checked="true">
-												<span>Move to storage for a short time (up to 45 days)</span><br>
-												<span class="storage-label">Includes moving in, storage and moving out</span>
-											</label>
-										</div>
-										<div class="storage-date">
-											<span class="storage-date-text">Out of storage delivery date</span>
-											<div class="input-date">
-												<svg version="1.1" class=" location-icon date-icon storage-date-icon" id="calendar"
-													xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-													x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
-													xml:space="preserve">
-													<g>
-														<g>
-															<path d="M452,40h-24V0h-40v40H124V0H84v40H60C26.916,40,0,66.916,0,100v352c0,33.084,26.916,60,60,60h392
-				c33.084,0,60-26.916,60-60V100C512,66.916,485.084,40,452,40z M472,452c0,11.028-8.972,20-20,20H60c-11.028,0-20-8.972-20-20V188
-				h432V452z M472,148H40v-48c0-11.028,8.972-20,20-20h24v40h40V80h264v40h40V80h24c11.028,0,20,8.972,20,20V148z" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="76" y="230" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="156" y="230" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="236" y="230" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="316" y="230" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="396" y="230" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="76" y="310" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="156" y="310" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="236" y="310" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="316" y="310" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="76" y="390" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="156" y="390" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="236" y="390" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="316" y="390" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-														<g>
-															<rect x="396" y="310" width="40" height="40" />
-														</g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-													<g>
-													</g>
-												</svg>
-												<input readonly class="date-input" type="text" name="storage-datepicker"
-													id="storage-datepicker">
-												<div class="calendar-wrap storage-wrap wrap-small hide">
-													<div class="calendar-set">
-														<div class="storage-month month-small">
-															<i data-type="prev" class='calendar-month-prev bx bx-left-arrow'></i>
-															<div class="storage-month-text text-small"></div>
-															<i data-type="next" class='calendar-month-next bx bx-right-arrow'></i>
-														</div>
-													</div>
-													<div class="calendar-block block-small">
-														<div class="calendar-week-day">Su</div>
-														<div class="calendar-week-day">Mo</div>
-														<div class="calendar-week-day">Tu</div>
-														<div class="calendar-week-day">We</div>
-														<div class="calendar-week-day">Th</div>
-														<div class="calendar-week-day">Fr</div>
-														<div class="calendar-week-day">Sa</div>
-													</div>
-													<div class="calendar-block block-small" id="storage-block">
-
-
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
 						<div class="input-from-wrap">
 							<h3 class="detail-title moving-to-title">Moving To:</h3>
@@ -727,7 +744,7 @@
 				</form>
 			</div>
 		</div>
-		<div id="inventory-block" class="inventory-wrap hide">
+		<div id="inventory-block" class="inventory-wrap ">
 			<div class="inventory-head">
 				<div>
 					<h2 class="head-title">Tell us what you're moving </h2>
@@ -738,6 +755,9 @@
 				<div class="inventory-sidebar">
 
 					<ul class="sidebar-list">
+						<div class="search-block">
+							<input placeholder="Search for an item..." id="inventory-search" class="inventory-search" type="text">
+						</div>
 						<div class="counter">
 							<div class="counter-items"><span class="qty"></span> Items <span class="all-sizes"></span> c.f.
 							</div>
@@ -843,7 +863,7 @@
 									<path fill="url(#h)" d="M27.89 26.452l-5.519-6.689 18.834-1.606 6.202 5.95z" />
 								</svg>
 								<div class="sidebar-title">Boxes</div>
-								<span class="sidebar-number">0</span>
+								<span id="Boxes" class="sidebar-number">0</span>
 							</div>
 						</li>
 						<li class="sidebar-item dropdown">
@@ -939,7 +959,7 @@
 										d="M24.208 32.442v3.295s-.277 1.437 2.562 1.01l19.612-2.942s.904.045.953-1.105V29l-23.127 3.442z" />
 								</svg>
 								<div class="sidebar-title">Living Room</div>
-								<span class="sidebar-number">0</span>
+								<span id="LivingRoom" class="sidebar-number">0</span>
 							</div>
 							<ul class="categories-list hide" data-name="Living Room">
 								<li class="sidebar-subitem"><span class="subitem-text">Sofas and Couches</span></li>
@@ -985,7 +1005,7 @@
 										d="M35.576 7.315c-.002.66-4.707 1.198-10.512 1.198-5.804 0-10.51-.538-10.51-1.199 0-.054.043-.109.105-.16l-.105.02-2.529 17.723c1.68.227 6.81 1.377 12.873 1.377 6.25 0 11.504-1.161 13.016-1.398L35.576 7.315z" />
 								</svg>
 								<div class="sidebar-title">Bedroom</div>
-								<span class="sidebar-number">0</span>
+								<span id="Bedroom" class="sidebar-number">0</span>
 							</div>
 							<ul class="categories-list hide" data-name="Bedroom">
 								<li class="sidebar-subitem"><span class="subitem-text">Beds</span></li>
@@ -1053,7 +1073,7 @@
 									<path fill="#909090" d="M1 11.148l18.021 3.698 29.66-2.374L28.479 9.15z" />
 								</svg>
 								<div class="sidebar-title">Dining Room</div>
-								<span class="sidebar-number">0</span>
+								<span id="DiningRoom" class="sidebar-number">0</span>
 							</div>
 							<ul class="categories-list hide" data-name="Dining Room">
 								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
@@ -1134,7 +1154,7 @@
 										d="M36.503 12.069s-7.162 2.926-18.263.807" />
 								</svg>
 								<div class="sidebar-title">Kitchen</div>
-								<span class="sidebar-number">0</span>
+								<span id="Kitchen" class="sidebar-number">0</span>
 							</div>
 							<ul class="categories-list hide" data-name="Kitchen">
 								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
@@ -1230,7 +1250,7 @@
 										d="M1.91 9.998v22.623l.416.512v-7.719l8.303 4.283v8.861l.83.672V14.162c-.001 0-2.907-6.455-9.549-4.164z" />
 								</svg>
 								<div class="sidebar-title">Kids Room</div>
-								<span class="sidebar-number">0</span>
+								<span id="KidsRoom" class="sidebar-number">0</span>
 							</div>
 							<ul class="categories-list hide" data-name="Kids Room">
 								<li class="sidebar-subitem"><span class="subitem-text">Beds</span></li>
@@ -1302,7 +1322,7 @@
 									<ellipse fill="url(#g)" cx="44.884" cy="21.101" rx=".516" ry=".752" />
 								</svg>
 								<div class="sidebar-title">Office</div>
-								<span class="sidebar-number">0</span>
+								<span id="Office" class="sidebar-number">0</span>
 							</div>
 							<ul class="categories-list hide" data-name="Office">
 								<li class="sidebar-subitem"><span class="subitem-text">Tables & Desks</span></li>
@@ -1422,7 +1442,7 @@
 										d="M8.464 7.32c-2.199 0-3.98 2.922-3.98 6.527 0 3.604 1.781 6.527 3.98 6.527 2.197 0 3.979-2.924 3.979-6.527-.001-3.605-1.782-6.527-3.979-6.527zm-.227 3.738c-.512 0-.924-.643-.924-1.436s.412-1.436.924-1.436c.51 0 .922.643.922 1.436s-.412 1.436-.922 1.436z" />
 								</svg>
 								<div class="sidebar-title">Outdoor</div>
-								<span class="sidebar-number">0</span>
+								<span id="Outdoor" class="sidebar-number">0</span>
 							</div>
 							<ul class="categories-list hide" data-name="Outdoor">
 								<li class="sidebar-subitem"><span class="subitem-text">Tables</span></li>
@@ -1471,7 +1491,7 @@
 										d="M27.153 20.636c0 .372-.34 1.013-.034 1.567.854 1.556 1.937 3.167 2.938 3.958l1.318-.051s-2.156-2.829-3.436-4.742c3.059.435 3.396-.813 3.396-.813.248-.38-.094-1.377-.094-1.377-.967 1.547-3.92.404-3.92.404l-.168 1.054z" />
 								</svg>
 								<div class="sidebar-title">Other</div>
-								<span class="sidebar-number">0</span>
+								<span id="Other" class="sidebar-number">0</span>
 							</div>
 							<ul class="categories-list hide" data-name="Other">
 								<li class="sidebar-subitem"><span class="subitem-text">Instruments</span></li>
@@ -1488,18 +1508,20 @@
 								<li class="sidebar-subitem"><span class="subitem-text">Travel & Storage</span></li>
 							</ul>
 						</li>
+						<button class="remove-button" type="button">Remove Typical Items</button>
 					</ul>
-				</div>
-				<div class="inventory-items">
-					<div class="items-wrap">
-						<ul class="items">
 
-						</ul>
+				</div>
+				<div class="inventory-items ">
+
+					<div class="items-wrap">
+
+
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="details-wrap hide">
+		<div class="details-wrap ">
 			<form name="details-form" id="details-form">
 				<div class="details-content">
 					<div class="details-requests">
@@ -1520,19 +1542,13 @@
 			</form>
 		</div>
 	</div>
-
-	<script>
-		$(function () {
-			$("#details-phone").mask("(999) 999-9999");
-		});
-	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABGi9gfbW6nshb8NaWMoZzeZcprGDypXI&libraries=places&callback=initAutocomplete" async="" defer=""></script>
+	<script src="js/geolocate.js"></script>
 	<script src="js/calculator.js"></script>
 	<script src="js/calendar-small.js"></script>
-	<script src="js/jquerymaskedinpumin.js"></script>
-	<script src="js/auth.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwWXleWh8d8A2lS2TbRAqqGp5-HLKyTh4&libraries=places&callback=initAutocomplete"
-		async defer></script>
+
+	<script src="js/header__menu.js"></script>
+
 </body>
 
 </html>

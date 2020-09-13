@@ -3,7 +3,7 @@ let prices = {};
 let dates = {}
 
 let resultForm = document.querySelector('.result-form')
-
+const headTitle = document.getElementById('head__title')
 const moveDate = document.querySelector('.move-date')
 window.addEventListener('load', () => {
 	if (localStorage.savedInfo) {
@@ -21,7 +21,44 @@ function setTypeOfButton() {
                         <h2>Your order save!</h2>
                         <div>You can change your items and parameters in <a class="save-link" href="/profile-admin">Profile Page</a></div>
                     </div>`)
+	} else {
+		resultForm.innerHTML = '<button data-name="edit" class="editOrder" type="submit">Edit</button>';
+		let editOrder = document.querySelector('.editOrder');
+		if (sessionStorage.update) {
+			editOrder.textContent = 'Update order'
+			editOrder.dataset.name = 'update'
+			editOrder.addEventListener('click', () => {
+				if (editOrder.dataset.name === 'update') {
+					editOrder.textContent = ''
+					editOrder.innerHTML = animation
+					fetch('updateUserOrder.php', {
+						method: 'POST',
+						body: JSON.stringify({
+							obj,
+							prices,
+							order,
+							email
+						})
+					})
+						.then(() => {
+							editOrder.textContent = 'Updated'
+						})
+						.then(() => {
+							window.location.href = `/profile`;
+						})
+						.catch((error) => {
+							editOrder.textContent = 'Error!'
+							console.error(error)
+						})
+						.catch(() => {
+							window.location.href = `/profile`;
+						})
+				}
+			})
+			sessionStorage.removeItem('update')
+		}
 	}
+
 }
 function getWeekDay(date) {
 	let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -70,7 +107,7 @@ function calculateMovePrice() {
 	if (+obj.searchParam.range <= +prices['local-max-distance'] && +obj.searchParam.range > 10) {
 		var movePrice = (+prices['truckCharges'] + +prices['localTollCharge'] + (+prices['chargesPerMile'] * (+obj.searchParam.range - +prices['freeMile'])))
 	} else if (+obj.searchParam.range > +prices['local-max-distance']) {
-		var movePrice = (+prices['truckCharges'] + +(prices['chargesPerMile'] * (+obj.searchParam.range - prices['freeMile'])))
+		var movePrice = (+prices['truckCharges'] + +(prices['chargesPerMile'] * (+obj.searchParam.range - prices['freeMile'])) + (volSum() * +prices[`${obj.searchParam.stateTo}__price`]))
 	} else {
 		var movePrice = +prices['truckCharges'] + +prices['localTollCharge']
 	}
@@ -105,7 +142,7 @@ async function setParametersInHtml() {
 	obj.searchParam.estimateDate = estimateDate.textContent;
 	estimateVolume.textContent = `${volSum()} cf. (${volSum() * 7} lbs)`
 	obj.searchParam.volume = estimateVolume.textContent;
-
+	headTitle.textContent = 'Binding Moving Estimate'
 	switch (true) {
 		case obj.searchParam['13pm'] :{
 			moveTime.textContent = '1-3 PM'
@@ -135,6 +172,18 @@ async function setParametersInHtml() {
                 <div class="result-block request">${obj.searchParam['details-request']}</div>
             </div>`)
 	}
+	if (obj.choisedItems){
+		relocationBlock.insertAdjacentHTML('afterend',` <div class="result-estimate">
+                <div class="title-wrap">
+						<h2 class="result-title">Understanding Your Estimate</h2>
+					</div>
+					<div class="result-block request">
+						<p>Moving price is based on inventory list only. The total cost of the move may increase if additional items are moved. Should there be any other services requested, additional costs will be charged. <br><br>
+This is an agreement for your upcoming move. Please review the details below including your address and inventory list. Please notify us if you have any changes. <br><br>
+We wold like to thank you for choosing Always Professional Moving for your upcoming move. The Always Professional Moving is designed to help you, our valued customer avoid any hidden charges. We truly believe that when you are moving, you need to deal with a Company that does it all! Please take a few moments to visit us at <a href="http://www.alwayspromove.com"> www.alwayspromove.com</a></p>
+						</div>
+				</div>`)
+	}
 	// add block with stairs in info to location
 	if (obj.searchParam['select-stairs-from'] !== '0' && obj.searchParam['select-stairs-from'] !== 'e') {
 		stairsFrom.innerHTML = `Stairs, Floor: ${obj.searchParam['select-stairs-from']}`
@@ -148,9 +197,15 @@ async function setParametersInHtml() {
 		moveType.textContent = `Local Move, ${obj.searchParam.range} mile`
 	} else {
 		moveType.textContent = `Long Distance Move, ${obj.searchParam.range} mile`
+		let stateDays = `${obj.searchParam.stateTo}__days`
+		let deliveryDate = prices[stateDays].split('-')[1]
+		moveTime.parentElement.insertAdjacentHTML('afterend', `<tr class="result-tr">
+                                <td>Delivery date:</td>
+                                <td class="delivery-time">up to ${deliveryDate} business days</td>
+                            </tr>`)
 	}
 
-	if(!obj.searchParam.percent){
+	if(obj.searchParam){
 		await fetch('getDatesFromDB.php?get', {
 			method: 'GET'
 		})
@@ -169,8 +224,6 @@ async function setParametersInHtml() {
 				}
 
 			})
-	} else {
-		percent = obj.searchParam.percent
 	}
 
 
@@ -222,7 +275,17 @@ async function setParametersInHtml() {
 	// Additional price if add Pick Up Or Drop Off
 	if (obj.searchParam['add-checkbox']) {
 		if (obj.searchParam['coi-building-add-pick-up']) {
-			totalMoving = +totalMoving + +prices['COI']
+
+			let coiSum = document.querySelector('.result-total-coi')
+			if(coiSum){
+				let resCoi = +coiSum.textContent.replace(' ','').replace('$','')
+				coiSum.textContent = `${+prices['COI'] + +resCoi} $`
+			} else {
+				moving.parentElement.insertAdjacentHTML('afterend', `<tr class="result-tr">
+                                <td>COI:</td>
+                                <td class="result-total-coi sum-price">${prices['COI']}$</td>
+                            </tr>`)
+			}
 		}
 		if (obj.searchParam['select-Add-pick-up'] > 2) {
 			totalMoving = +totalMoving + (+prices['chargePerFlight'] * volSum()) * (+obj.searchParam['select-Add-pick-up'] - 2).toFixed(2)
@@ -233,7 +296,16 @@ async function setParametersInHtml() {
 	}
 	if (obj.searchParam['add-drop-checkbox']) {
 		if (obj.searchParam['coi-building-add-drop']) {
-			totalMoving = +totalMoving + +prices['COI']
+			let coiSum = document.querySelector('.result-total-coi')
+			if(coiSum){
+				let resCoi = +coiSum.textContent.replace(' ','').replace('$','')
+				coiSum.textContent = `${+prices['COI'] + +resCoi} $`
+			} else {
+				moving.parentElement.insertAdjacentHTML('afterend', `<tr class="result-tr">
+                                <td>COI:</td>
+                                <td class="result-total-coi sum-price">${prices['COI']}$</td>
+                            </tr>`)
+			}
 		}
 		if (obj.searchParam['select-Add-drop'] > 2) {
 			totalMoving = +totalMoving + (+prices['chargePerFlight'] * volSum()) * (+obj.searchParam['select-Add-drop'] - 2).toFixed(2)
@@ -246,10 +318,28 @@ async function setParametersInHtml() {
 
 	//Add Coi price if true
 	if (obj.searchParam['coi-building-from']) {
-		totalMoving = +totalMoving + +prices['COI']
+		let coiSum = document.querySelector('.result-total-coi')
+		if(coiSum){
+			let resCoi = +coiSum.textContent.replace(' ','').replace('$','')
+			coiSum.textContent = `${+prices['COI'] + +resCoi} $`
+		} else {
+			moving.parentElement.insertAdjacentHTML('afterend', `<tr class="result-tr">
+                                <td>COI:</td>
+                                <td class="result-total-coi sum-price">${prices['COI']}$</td>
+                            </tr>`)
+		}
 	}
 	if (obj.searchParam['coi-building-to']) {
-		totalMoving = +totalMoving + +prices['COI']
+		let coiSum = document.querySelector('.result-total-coi')
+		if(coiSum){
+			let resCoi = +coiSum.textContent.replace(' ','').replace('$','')
+			coiSum.textContent = `${+prices['COI'] + +resCoi} $`
+		} else {
+			moving.parentElement.insertAdjacentHTML('afterend', `<tr class="result-tr">
+                                <td>COI:</td>
+                                <td class="result-total-coi sum-price">${prices['COI']}$</td>
+                            </tr>`)
+		}
 	}
 
 
@@ -263,10 +353,17 @@ async function setParametersInHtml() {
 	}
 	//
 	// Insert block with additional price for minimum cf price, and calculate total price
-	if (volSum() < prices.cfLocal) {
+	if (volSum() < prices.cfLocal && +obj.searchParam.range <= +prices['local-max-distance']) {
+
 		moving.parentElement.insertAdjacentHTML('afterend', `<tr class="result-tr">
                                 <td  data-description="We charges for a minimum of ${prices.cfLocal} cubic feet."  class="tooltip minimum-feet">Minimum cubic feet surcharge:</td>
                                 <td class="sum-price">${((prices.cfLocal - volSum()) * prices.costByVol).toFixed(2)} $</td>
+                            </tr>`)
+		moving.textContent = totalMoving + ' $'
+	} else if(volSum() < prices.cfLong && +obj.searchParam.range > +prices['local-max-distance']) {
+		moving.parentElement.insertAdjacentHTML('afterend', `<tr class="result-tr">
+                                <td  data-description="We charges for a minimum of ${prices.cfLong} cubic feet."  class="tooltip minimum-feet">Minimum cubic feet surcharge:</td>
+                                <td class="sum-price">${((prices.cfLong - volSum()) * prices.costByVol).toFixed(2)} $</td>
                             </tr>`)
 		moving.textContent = totalMoving + ' $'
 	} else {
@@ -274,7 +371,7 @@ async function setParametersInHtml() {
 	}
 	//
 	// Calculate and insert travel price
-	travel.textContent = `${travelPrice+(travelPrice*percent)} $`
+	travel.textContent = `${(travelPrice+(travelPrice*percent)).toFixed(2)} $`
 
 	// Insert location image and info
 
@@ -308,9 +405,9 @@ async function setParametersInHtml() {
 
 
 	// insert client info
-	clientName.textContent = `Name: ${obj.searchParam['details-name']}`
-	clientPhone.innerHTML = `<a class="client-phone" href="tel:${obj.searchParam['details-phone']}">Phone: ${obj.searchParam['details-phone']}</a>`
-	clientEmail.innerHTML = `<a class="client-email" href="mailto:${obj.searchParam['details-email']}">Email: ${obj.searchParam['details-email']}</a>`
+	clientName.innerHTML = `<u>Name:</u><b> ${obj.searchParam['details-name']}</b>`
+	clientPhone.innerHTML = `<a class="client-phone" href="tel:${obj.searchParam['details-phone']}"><u>Phone:</u> ${obj.searchParam['details-phone']}</a>`
+	clientEmail.innerHTML = `<a class="client-email" href="mailto:${obj.searchParam['details-email']}"><u>Email:</u> ${obj.searchParam['details-email']}</a>`
 
 
 

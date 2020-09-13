@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Order Info</title>
     <link type="text/css" rel="stylesheet" href="css/reset.css">
     <link type="text/css" rel="stylesheet" href="css/header.css">
@@ -21,25 +23,37 @@
                 <div class="header-logo">
                     <a href="#"><img src="img/logo.png" alt=""></a>
                 </div>
-                <nav class="nav-menu">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="main" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="longdistance" class="nav-link">Long Distance</a></li>
-                        <li class="nav-item"><a href="local" class="nav-link">Local</a></li>
-                        <li class="nav-item"><a href="commercial" class="nav-link">Commercial Move</a></li>
-                        <li class="nav-item"><a href="pack-unpack" class="nav-link">Packing & Unpacking</a></li>
-                    </ul>
-                </nav>
+                <div class="menu__icon icon-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="header-nav-wrap">
+                    <nav class="nav-menu">
+                        <ul class="nav-list">
+                            <li class="nav-item"><a href="main" class="nav-link">Home</a></li>
+                            <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
+                            <li class="nav-item"><a href="longdistance" class="nav-link">Long Distance</a></li>
+                            <li class="nav-item"><a href="local" class="nav-link">Local</a></li>
+                            <li class="nav-item"><a href="commercial" class="nav-link">Commercial Move</a></li>
+                            <li class="nav-item"><a href="pack-unpack" class="nav-link">Packing & Unpacking</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
 </header>
 <main>
     <div class="result-container">
+        <div class="result-logo"><img src="img/logo_order.png" alt=""></div>
         <div class="result-wrap">
             <div class="result-estimate">
-                <h2 class="result-title">Binding Moving Estimate</h2>
+                <div class="head__block">
+                    <h2 class="result-title" id="head__title"></h2>
+                    <h3 class="result-title" id="head__number"></h3>
+                </div>
+
                 <div class="result-block">
                     <div class="result-info-title">
                         <p class="title-text text-head">Always Professional Moving Inc</p>
@@ -76,11 +90,11 @@
                         <div class="result-about-text">
                             <div class="result-client">
                                 <p id="client-name" class="result-about-title"></p>
+                                <p id="result-adress-from" class="result-about-title"></p>
+                                <p id="result-stairs-from" class="result-about-title"></p>
                                 <p id="client-phone" class="result-about-title"></p>
                                 <p id="client-email" class="result-about-title"></p>
                             </div>
-                            <p id="result-adress-from" class="result-about-title"></p>
-                            <p id="result-stairs-from" class="result-about-title"></p>
                         </div>
 
                         <div class="from-img"></div>
@@ -102,6 +116,10 @@
                 <div class="result-block">
                     <div class="result-about">
                         <table class="result-table">
+                            <tr class="result-tr">
+                                <td>Job №:</td>
+                                <td style="color: #de1b1b;" class="estimate-job"></td>
+                            </tr>
                             <tr class="result-tr">
                                 <td>Estimate Date:</td>
                                 <td class="estimate-date"></td>
@@ -174,6 +192,11 @@
                 </form>
 
             </div>
+            <div class="result-sticky-sign">
+                <div class="sticky-sign">Customer Name</div>
+                <div class="sticky-sign">Customer Signature</div>
+                <div class="sticky-sign sign__date">Date</div>
+            </div>
         </div>
     </div>
 </main>
@@ -181,5 +204,6 @@
 </body>
 <script src="/js/auth.js"></script>
 <script src="/js/orderInfo.js"></script>
+<script src="/js/header__menu.js"></script>
 
 </html>

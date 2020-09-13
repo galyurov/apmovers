@@ -21,7 +21,36 @@
   white-space: pre-wrap;
 }
 .site-main figure {
-  margin-left: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 760px) {
+  .site-main .page-title {
+    margin: 18px 0;
+    text-align: center;
+  }
+
+  .site-main .post {
+    padding: 0;
+  }
+
+  .site-main .entry-header {
+    margin: 0;
+  }
+
+  .site-main .entry-content {
+    margin-left: 0;
+  }
+
+  .site-main {
+    overflow: hidden;
+    padding: 0 10px;
+  }
+
+  .site-main img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /*# sourceMappingURL=blog.css.map */

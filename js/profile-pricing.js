@@ -33,7 +33,7 @@ allForms.forEach(form => {
 })
 
 async function sendDataToDB(values) {
-	await fetch('wp-content/themes/apmovers/sendPriceToDB.php', {
+	await fetch('sendPriceToDB.php', {
 		method: 'POST',
 		body: JSON.stringify(values)
 	})

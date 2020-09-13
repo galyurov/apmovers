@@ -43,7 +43,7 @@
 }
 
 .modal-window {
-	width: 600px;
+	width: 400px;
 	border-radius: 5px;
 	background: #fff;
 	margin: 0 auto;
@@ -115,4 +115,21 @@
 .modal-footer button.send {
 	background: #34b57b;
 	border: 2px #34b57b solid;
+}
+
+@media screen and (max-width: 400px) {
+	.vmodal.open .modal-window{
+		width: 365px;
+	}
+	.modal-title {
+		font-size: 26px;
+	}
+}
+@media screen and (max-width: 365px) {
+	.vmodal.open .modal-window{
+		width: 315px;
+	}
+	.modal-title {
+		font-size: 22px;
+	}
 }

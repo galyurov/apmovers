@@ -22,7 +22,7 @@ body {
 		display: flex;
 		justify-content: center;
 		align-items: flex-end;
-		background-image: url("wp-content/themes/apmovers/img/slide1.jpg");
+		background-image: url("../img/slide1.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
@@ -556,6 +556,13 @@ body {
 .movers-icon {
 	padding-right: 10px;
 }
+.image-block{
+	display: flex;
+	& img {
+		width: 50%;
+	}
+
+}
 
 @media screen and (max-width: 1225px) {
 	.width-wrap {
@@ -611,6 +618,9 @@ body {
 		height: unset;
 	}
 	.services-img {
+		& img {
+			width: 30px;
+		}
 		height: 30px;
 		width: 30px;
 	}
@@ -766,6 +776,12 @@ body {
 	}
 }
 @media screen and(max-width: 760px) {
+	.width-wrap {
+		max-width: 680px;
+	}
+	.long{
+		width: 680px;
+	}
 	.about-info {
 		font-size: 13px;
 		line-height: 26px;
@@ -783,4 +799,128 @@ body {
 	.time-text {
 		padding-top: 14px;
 	}
+	.services{
+		background: linear-gradient(180deg, rgba(75,133,189,1) 40%, transparent 100%)
+	}
+
 }
+@media screen and (max-width: 700px){
+	.width-wrap {
+		max-width: 400px;
+	}
+	.menu-open,.menu-close{
+		position: absolute;
+		left: 13px;
+		top: 23px;
+		font-size: 30px;
+	}
+	.contact-details{
+		display: none;
+	}
+	.slider-box{
+		top: 48%;
+		max-width: 63%;
+	}
+	.move-with-us{
+		margin-top: 25px;
+	}
+	.move-items{
+		padding-top: 30px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+	.move-item{
+		max-width: unset;
+	}
+	.hourly-head .hourly-title{
+		padding: 10px 15px;
+	}
+	.cards {
+		flex-wrap: wrap;
+		grid-gap: 5px;
+	}
+	.long {
+		width: unset;
+		top:965px;
+	}
+	.services-block {
+		width: 41%;
+	}
+	.about-img {
+		padding-top: 35px;
+	}
+	.about-us {
+		flex-direction: column;
+		align-items: center;
+	}
+	.about-text {
+		padding: 10px;
+		max-width: unset;
+	}
+	.image-block {
+		flex-direction: column;
+
+		& img {
+			width: 100%;
+			height: 90px;
+		}
+	}
+	.about-title, .move-title {
+		font-size: 22px;
+	}
+}
+@media screen and (max-width: 400px) {
+	.width-wrap {
+		max-width: 360px;
+	}
+	.card {
+		width: 245px;
+	}
+	.card-info-item {
+		font-size: 12px;
+	}
+	.card-movers-text {
+		font-size: 11px;
+	}
+	.long {
+		top: 1500px;
+	}
+
+}
+@media screen and (max-width: 360px) {
+	.width-wrap {
+		max-width: 320px;
+	}
+	.slider-box {
+		top: 54%;
+		max-width: 65%;
+		padding: 13px 34px 13px 20px;
+	}
+	.slider-title {
+		font-size: 20px;
+		line-height: 28px;
+	}
+	.slider-info {
+		font-size: 13px;
+	}
+	.hourly-head {
+		flex-direction: column;
+	& .hourly-title {
+		width: 89%;
+	}
+	}
+	.custom-title {
+		font-size: 18px;
+	}
+	.custom-text {
+		font-size: 14px;
+		padding: 5px;
+	}
+	.image-block img {
+		height: 75px;
+	}
+	.about-title, .move-title {
+		font-size: 19px;
+	}
+}
+

@@ -1,6 +1,7 @@
 .pricing-container {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 40px auto;
+  padding: 0 5px;
 }
 .pricing-list {
   box-shadow: 4px 4px 7px 1px rgba(0, 0, 0, 0.44);
@@ -160,6 +161,22 @@ td {
 
 .table {
   margin-left: 30px;
+}
+
+.states {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.disassemble {
+  display: block;
+}
+
+@media screen and (max-width: 700px) {
+  .pricing-item-block {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+  }
 }
 
 /*# sourceMappingURL=admin.css.map */

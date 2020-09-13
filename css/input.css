@@ -19,7 +19,6 @@
 	background: none;
 }
 .auth-sign {
-	display: grid;
 	width: 200px;
 	padding: 10px 10px;
 	background: #ffffff;
@@ -34,6 +33,7 @@
 	transition: 0.25s;
 }
 .auth-input {
+	width: 100%;
 	box-sizing: border-box;
 	padding: 8px 15px;
 	font-size: 16px;
@@ -149,5 +149,39 @@
 @media screen and (max-width: 925px) {
 	.auth-profile {
 		font-size: 14px;
+	}
+}
+@media screen and (max-width: 700px) {
+	.auth-link{
+		font-size: 14px;
+		color: #000000;
+	}
+	.auth-profile{
+		height: 50px;
+		color: #000000;
+	}
+	.auth-profile::after{
+		border-color: #000000;
+	}
+	.profile-items{
+		left: -10px;
+		top: 51px;
+		padding: 5px;
+		box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.75);
+	}
+	.profile-menu {
+		position: absolute;
+		z-index: 4;
+		right: 0;
+		top: 0;
+	}
+	.auth{
+		position: absolute;
+		z-index: 4;
+		right: 0;
+		top: 10px;
+	}
+	.sign-in {
+		left: -155px;
 	}
 }

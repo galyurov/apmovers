@@ -4,17 +4,79 @@ const list = document.querySelectorAll('.sidebar-content')
 const moveSize = document.querySelector('.size-choice')
 const dropDownSize = document.querySelector('.dropdown-size')
 const dropDownItem = document.querySelectorAll('.dropdown-item')
-const toggles = [document.querySelector('.toggle.coi'), document.querySelector('.toggle.restr'), document.querySelector('.toggle.add'), document.querySelector('.toggle.coi-to'), document.querySelector('.toggle.restr-to'), document.querySelector('.toggle.add-drop'), document.querySelector('.toggle.storage')]
+const toggles = [document.querySelector('.toggle.coi'), document.querySelector('.toggle.restr'),document.querySelector('.toggle.handling'), document.querySelector('.toggle.add'), document.querySelector('.toggle.coi-to'), document.querySelector('.toggle.restr-to'), document.querySelector('.toggle.add-drop'), document.querySelector('.toggle.storage')]
 const itemsForCountInDOM = document.querySelector('.qty')
 const countInDOM = document.querySelector('.all-sizes')
 const subItems = document.querySelectorAll('.sidebar-subitem')
 const searchButton = document.querySelector('#searchButton')
 const orderButton = document.querySelector('.order-move')
 const arrivalInputs = document.querySelector('.arrival-time-wrap')
-
+const removeButton = document.querySelector('.remove-button')
+const inventorySearch = document.querySelector('.inventory-search')
+let inputFrom = document.querySelector('#origin')
+let inputTo = document.querySelector('#destination')
+let cachePrice={};
 class Calculator {
 	constructor() {
 		this.database = {
+			'Packing Boxes': {
+				"817888": {
+					'cat': '',
+					'name': 'Small Box',
+					"size": 2,
+					"class": 'Book_Box',
+					"id": 817888,
+					"qty": 0
+				},
+				"817889": {
+					'cat': '',
+					'name': 'Medium Box',
+					"size": 3,
+					"class": 'Linen_Box',
+					"id": 817889,
+					"qty": 0
+				},
+				"817890": {
+					'cat': '',
+					'name': 'Large Box',
+					"size": 5,
+					"class": 'Large_Linen_Box',
+					"id": 817890,
+					"qty": 0
+				},
+				"817891": {
+					'cat': '',
+					'name': 'China Box',
+					"size": 6,
+					"class": 'China_Box',
+					"id": 817891,
+					"qty": 0
+				},
+				"817892": {
+					'cat': '',
+					'name': 'Wardrobe Box',
+					"size": 16,
+					"class": 'Wardrobe_Box',
+					"id": 817892,
+					"qty": 0
+				},
+				"817893": {
+					'cat': '',
+					'name': 'File Box',
+					"size": 2,
+					"class": 'Letter_File_Box',
+					"id": 817893,
+					"qty": 0
+				},
+				"817894": {
+					'cat': '',
+					'name': 'Legal File Box',
+					"size": 3,
+					"class": 'Legal_File_Box',
+					"id": 817894,
+					"qty": 0
+				}
+			},
 			'Boxes': {
 				"417888": {
 					'cat': '',
@@ -246,7 +308,7 @@ class Calculator {
 						'cat': 'Chairs,Papasan Chair',
 						'name': 'Papasan Chair',
 						"size": 25,
-						"class": 'Papasan_Chair',
+						"class": 'Papason_Chair',
 						"id": 418536,
 						"qty": 0
 					},
@@ -5248,7 +5310,7 @@ class Calculator {
 				}
 
 			},
-			this.searchParam = {}
+		this.searchParam = {}
 		this.choisedItems = {}
 	}
 	editDatabaseWithUserParam(items) {
@@ -5272,25 +5334,30 @@ class Calculator {
 		}
 	}
 	searchChoisedItems() {
-		let searchItems = (obj) => {
-			for (let cat in obj) {
-				if (obj[cat].size) {
-					if (obj[cat].qty > 0) {
-						createCard({
-							elem: obj[cat],
-							title: obj[cat].name,
-							text: obj[cat].subname ? obj[cat].subname : null,
-							class: obj[cat].class,
-							id: obj[cat].id
-						});
-						buttonListener(obj[cat], obj)
+		for (let category in this.database){
+
+			let searchItems = (obj) => {
+				for (let cat in obj) {
+					if (obj[cat].size) {
+						if (obj[cat].qty > 0) {
+							createCard({
+								elem: obj[cat],
+								title: obj[cat].name,
+								text: obj[cat].subname ? obj[cat].subname : null,
+								class: obj[cat].class,
+								id: obj[cat].id,
+								category
+							});
+							buttonListener(obj[cat], obj)
+						}
+					} else {
+						searchItems(obj[cat])
 					}
-				} else {
-					searchItems(obj[cat])
 				}
 			}
+			searchItems(this.database[category]);
 		}
-		searchItems(this.database);
+
 	}
 	saveChoisedItems(elem) {
 		if (elem && elem.qty === 0 && this.choisedItems[elem.id]) {
@@ -5300,6 +5367,7 @@ class Calculator {
 		}
 	}
 	resetDatabase() {
+		this.choisedItems={}
 		let resetDataBase = (db) => {
 			for (let value in db) {
 				if (typeof db[value] === 'object' && !db[value].qty) {
@@ -5339,8 +5407,8 @@ class Calculator {
 		countInDOM.textContent = count
 		itemsForCountInDOM.textContent = items
 	}
-	getQTYValue(obj, counter) {
-		let count = 0;
+	getQTYValue(obj, counter,ifBoxes) {
+		let count = 0
 
 		let getProp = (o) => {
 			for (var prop in o) {
@@ -5363,10 +5431,46 @@ class Calculator {
 		}
 
 	}
+	searchItems(word) {
+		clearCards()
+		updateCounters()
+		let reg = new RegExp(word,'i');
+
+		let findName = (db,category,counter) => {
+			for (let value in db) {
+				if (typeof db[value] === 'object' && !db[value].qty) {
+					if(reg.test(db[value].name) && db[value].name != undefined){
+						createCard({
+							elem: db[value],
+							title:db[value].name,
+							text: db[value].subname ? db[value].subname : '',
+							class: db[value].class,
+							id: db[value].id,
+							category,
+						});
+						buttonListener(db[value],db, counter)
+					}
+					findName(db[value],category,counter)
+				}
+			}
+		}
+		for (let category in this.database){
+			let counter = document.querySelectorAll('.sidebar-title')
+			counter.forEach(value => {
+				value.textContent === category ? findName(this.database[category],category,value.nextElementSibling) : null
+			})
+
+		}
+	}
 }
 let calculator = new Calculator();
 
-
+inputFrom.addEventListener('focusout',()=> {
+	codeAddress(inputFrom.value,'From')
+})
+inputTo.addEventListener('focusout',()=> {
+	codeAddress(inputTo.value,'To')
+})
 
 if (localStorage.edit === '101') {
 	searchButton.textContent = 'Edit items'
@@ -5393,23 +5497,43 @@ if (localStorage.edit === '101') {
 
 	document.forms.params.addEventListener('submit', (event) => {
 		event.preventDefault();
-		calculator.searchParam.update = true
-		for (let item of document.forms.params) {
-			if (item.type === 'checkbox' || item.type === 'radio') {
-				calculator.searchParam[item.id] = item.checked
-			} else {
-				calculator.searchParam[item.id] = item.value
+		if(cachePrice[`${calculator.searchParam.stateFrom}__price`] ==0){
+			if(!inputFrom.classList.contains('not__work')) {
+				inputFrom.classList.add('not__work')
+				inputFrom.insertAdjacentHTML('afterend', "<p style='color: #6b6a6a;position: absolute;font-size: 14px;bottom: -8px;'>Sorry.We do not service this area.</p>")
+				inputFrom.addEventListener('focus', () => {
+					inputFrom.classList.remove('not__work')
+					inputFrom.nextElementSibling.remove()
+				})
 			}
-		}
-		calculator.searchParam.sizeId = moveSize.dataset.id;
+		} else if(cachePrice[`${calculator.searchParam.stateTo}__price`]==0){
+			if(!inputTo.classList.contains('not__work')) {
+				inputTo.classList.add('not__work')
+				inputTo.insertAdjacentHTML('afterend', "<p style='color: #6b6a6a;position: absolute;font-size: 14px;bottom: -8px;'>Sorry.We do not service this area.</p>")
+				inputTo.addEventListener('focus', () => {
+					inputTo.classList.remove('not__work')
+					inputTo.nextElementSibling.remove()
+				})
+			}
+		} else {
+			calculator.searchParam.update = true
+			for (let item of document.forms.params) {
+				if (item.type === 'checkbox' || item.type === 'radio') {
+					calculator.searchParam[item.id] = item.checked
+				} else {
+					calculator.searchParam[item.id] = item.value
+				}
+			}
+			calculator.searchParam.sizeId = moveSize.dataset.id;
 
-		if (!calculator.searchParam['storage-checkbox'] || calculator.searchParam['storage-checkbox'] && calculator.searchParam['radioShort']) {
-			searchDistance([document.querySelector('#origin').value], [document.querySelector('#destination').value]);
+			if (!calculator.searchParam['storage-checkbox'] || calculator.searchParam['storage-checkbox'] && calculator.searchParam['radioShort']) {
+				searchDistance([inputFrom.value], [inputTo.value]);
+			}
+			calculator.editDatabaseWithUserParam(calculator.choisedItems)
+			calculator.searchChoisedItems();
+			updateCounters();
+			displayHideBlock()
 		}
-		calculator.editDatabaseWithUserParam(calculator.choisedItems)
-		calculator.searchChoisedItems();
-		updateCounters();
-		displayHideBlock()
 	})
 	addListenerToForm('orderInfo')
 
@@ -5429,29 +5553,62 @@ if (localStorage.edit === '101') {
 
 	document.forms.params.addEventListener('submit', (event) => {
 		event.preventDefault();
-		for (let item of document.forms.params) {
-			if (item.type === 'checkbox' || item.type === 'radio') {
-				calculator.searchParam[item.id] = item.checked
-			} else {
-				calculator.searchParam[item.id] = item.value
+		if(cachePrice[`${calculator.searchParam.stateFrom}__price`] ==0){
+			if(!inputFrom.classList.contains('not__work')) {
+				inputFrom.classList.add('not__work')
+				inputFrom.insertAdjacentHTML('afterend', "<p style='color: #6b6a6a;position: absolute;font-size: 14px;bottom: -8px;'>Sorry.We do not service this area.</p>")
+				inputFrom.addEventListener('focus', () => {
+					inputFrom.classList.remove('not__work')
+					inputFrom.nextElementSibling.remove()
+				})
 			}
-		}
-		calculator.searchParam.sizeId = moveSize.dataset.id;
-		if (calculator.searchParam.sizeId && !localStorage.edit) {
-			calculator.resetDatabase()
-			calculator.editDatabaseWithUserParam(calculator.defaultItems[calculator.searchParam.sizeId])
-		}
-		if (!calculator.searchParam['storage-checkbox'] || calculator.searchParam['storage-checkbox'] && calculator.searchParam['radioShort']) {
-			searchDistance([document.querySelector('#origin').value], [document.querySelector('#destination').value]);
+		} else if(cachePrice[`${calculator.searchParam.stateTo}__price`]==0){
+			if(!inputTo.classList.contains('not__work')) {
+				inputTo.classList.add('not__work')
+				inputTo.insertAdjacentHTML('afterend', "<p style='color: #6b6a6a;position: absolute;font-size: 14px;bottom: -8px;'>Sorry.We do not service this area.</p>")
+				inputTo.addEventListener('focus', () => {
+					inputTo.classList.remove('not__work')
+					inputTo.nextElementSibling.remove()
+				})
+			}
+		} else {
+			for (let item of document.forms.params) {
+				if (item.type === 'checkbox' || item.type === 'radio') {
+					calculator.searchParam[item.id] = item.checked
+				} else {
+					calculator.searchParam[item.id] = item.value
+				}
+			}
+			calculator.searchParam.sizeId = moveSize.dataset.id;
+			if (calculator.searchParam.sizeId && !localStorage.edit) {
+				calculator.resetDatabase()
+				calculator.editDatabaseWithUserParam(calculator.defaultItems[calculator.searchParam.sizeId])
+			}
+			if (!calculator.searchParam['storage-checkbox'] || calculator.searchParam['storage-checkbox'] && calculator.searchParam['radioShort']) {
+				searchDistance([inputFrom.value], [inputTo.value]);
+			}
+			calculator.searchChoisedItems();
+			updateCounters();
+			displayHideBlock()
 		}
 
-		calculator.searchChoisedItems();
-		updateCounters();
-		displayHideBlock()
 	})
 	addListenerToForm('order')
 }
 
+async function getPricesFromDb() {
+	await fetch('getPricesinDB.php?get', {
+		method: 'GET'
+	})
+		.then((response) => response.json())
+		.then((result) => {
+			cachePrice = result
+		})
+		.catch((error) => console.error(error))
+}
+window.addEventListener('load',()=> {
+	getPricesFromDb()
+})
 moveSize.addEventListener("click", dropdownMoveSize)
 
 function dropdownMoveSize() {
@@ -5546,7 +5703,17 @@ function displayHideBlock() {
 
 }
 
+function boxesForPacking(method) {
+	let itemWrap = document.querySelector('.items-wrap')
+	if(method === 'add'){
+		itemWrap.lastElementChild.insertAdjacentHTML('afterend',`<div class="category__block pack__block">Boxes Provided and Packed By Movers</div>`)
+	}
+	if (method === 'remove'){
+		itemWrap.children[itemWrap.children.length-2].remove()
+		itemWrap.children[itemWrap.children.length-1].remove()
 
+	}
+}
 
 for (let item of list) {
 
@@ -5561,17 +5728,106 @@ for (let item of list) {
 			event.currentTarget.nextElementSibling.classList.toggle('hide')
 		}
 		if (item.dataset.name === 'Boxes') {
-
+			let itemWrap = document.querySelector('.items-wrap')
+			itemWrap.innerHTML = `<h2 class="box__title">Need to add packing services?</h2>
+<div class="choice__packing">
+<div class="packing__info">
+<h2 class="radio__title">Packing services</h2>
+<div class="radio__wrap">
+<div class="radio__container">
+<input id="pack" name="packType" type="radio">
+<label class="pack__label" for="pack">Professional packing</label>
+</div>
+<div class="radio__container">
+<input id="pack__unpack" name="packType" type="radio">
+<label class="pack__label"  for="pack__unpack">Professional packing & unpacking</label>
+</div>
+<div class="radio__container">
+<input id="pack__self" checked name="packType" type="radio">
+<label class="pack__label" for="pack__self">Pack yourself</label>
+</div>
+<div class="radio__container">
+<input class="order__box" id="order__box"  name="packType" type="checkbox">
+<label class="pack__label" for="order__box">Order boxes</label>
+</div>
+</div>
+</div>
+<div class="packing__view">
+<div class="table__wrap">
+<table>
+<tr>
+<th class="table__info"></th>
+<th class="table__column">Boxes included</th>
+<th class="table__column">Packing included</th>
+<th class="table__column">Unpacking included</th>
+</tr>
+<tr>
+<td class="table__info">Professional Packing</td>
+<td class="available">✓</td>
+<td class="available">✓</td>
+<td class="disabled">✘</td>
+</tr>
+<tr>
+<td class="table__info">Professional Packing & Unpacking</td>
+<td class="available">✓</td>
+<td class="available">✓</td>
+<td class="available">✓</td>
+</tr>
+<tr>
+<td class="table__info">Pack Yourself</td>
+<td class="disabled">✘</td>
+<td class="disabled">✘</td>
+<td class="disabled">✘</td>
+</tr>
+<tr>
+<td class="table__info">Order boxes</td>
+<td class="available">✓</td>
+<td class="disabled">✘</td>
+<td class="disabled">✘</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="category__block">Boxes I Provide and Packed Myself</div>`
 			for (let elem in calculator.database.Boxes) {
 				createCard({
 					elem: calculator.database.Boxes[elem],
 					title: calculator.database.Boxes[elem].name,
 					text: '',
-					class: calculator.database.Boxes[elem].class,
+					class: `${calculator.database.Boxes[elem].class}`,
 					id: calculator.database.Boxes[elem].id
 				});
 				buttonListener(calculator.database.Boxes[elem], calculator.database.Boxes, item.lastElementChild)
+
 			}
+			let radioWrap = document.querySelector('.radio__wrap')
+			let orderBox = document.querySelector('#order__box')
+			radioWrap.addEventListener('click',(event)=>{
+				if(event.target.name === 'packType' && event.target.id !== 'pack__self' && event.target.type === 'radio'){
+					orderBox.setAttribute('disabled','')
+					if(!itemWrap.children[itemWrap.children.length-2].classList.contains('pack__block')){
+						boxesForPacking('add')
+						for (let elem in calculator.database['Packing Boxes']) {
+							createCard({
+								elem: calculator.database['Packing Boxes'][elem],
+								title: calculator.database['Packing Boxes'][elem].name,
+								text: '',
+								class: `${calculator.database['Packing Boxes'][elem].class}`,
+								id: `${calculator.database['Packing Boxes'][elem].id}`
+							});
+							buttonListener(calculator.database['Packing Boxes'][elem], calculator.database['Packing Boxes'], item.lastElementChild)
+						}
+					}
+
+				} else if(event.target.name === 'packType' && event.target.id === 'pack__self'){
+					orderBox.removeAttribute('disabled')
+					boxesForPacking('remove')
+				}
+				if(event.target.id === 'order__box'){
+					console.log('order box')
+				}
+			})
 		}
 		if (item.dataset.name === 'inventory') {
 			clearCards();
@@ -5605,10 +5861,21 @@ subItems.forEach(value => {
 })
 
 function createCard(value) {
-	let ul = document.querySelector('.items')
-	let li = document.createElement('li')
-	let button;
-	let inputButton = `<button style="display: none" id="${value.elem.id}" class="add-item">Add Item</button>
+	let ulWrap = document.querySelector('.items-wrap')
+
+	if(value.category && !document.querySelector(`.${value.category.replace(' ','_')}`)){
+		let ulBlock = document.createElement('ul')
+		let div = document.createElement('div')
+		div.classList.add('category__block')
+		div.classList.add(value.category.replace(' ','_'))
+		div.textContent = value.category
+		ulWrap.appendChild(div)
+		ulBlock.classList.add('items')
+		ulWrap.appendChild(ulBlock)
+		let ul = document.querySelectorAll('.items')[document.querySelectorAll('.items').length-1]
+		let li = document.createElement('li')
+		let button;
+		let inputButton = `<button style="display: none" id="${value.elem.id}" class="add-item">Add Item</button>
 							<div class="plus-minus-holder">
 								<input id="value${value.elem.id}" value="${value.elem.qty}" class="count-input">
 								<div class="btns-counter">
@@ -5617,13 +5884,23 @@ function createCard(value) {
 									<span class="plus-right" id='plus${value.elem.id}'>+</span>
 								</div>
 							</div>`
-	if (!value.elem.qty) {
-		button = `<button id="${value.id}" class="add-item">Add Item</button>`
-	} else {
-		button = inputButton
-	}
-	li.classList.add('item');
-	li.innerHTML = `
+		if (!value.elem.qty) {
+			button = `<button id="${value.id}" class="add-item">Add Item</button>`
+		} else {
+			button = inputButton
+		}
+		li.classList.add('item');
+		if (window.matchMedia("(max-width: 920px)").matches){
+			li.innerHTML = `
+			 <div class="item-img ${value.class}_small"></div>
+			 <div class="item-content">
+				 <div class="item-title">${value.title}</div>
+				 <div class="item-text">${value.text || ''}</div>
+			 </div>
+			 <div class="item-control">${button}</div>
+	 	`;
+		} else {
+			li.innerHTML = `
 			 <div class="item-img ${value.class}"></div>
 			 <div class="item-content">
 				 <div class="item-title">${value.title}</div>
@@ -5631,11 +5908,146 @@ function createCard(value) {
 			 </div>
 			 <div class="item-control">${button}</div>
 	 	`;
-	ul.appendChild(li)
+		}
+
+
+		ul.appendChild(li)
+	} else {
+		if(ulWrap.lastElementChild ){
+			if(ulWrap.lastElementChild.classList.contains('items'))	{
+				let ul = document.querySelectorAll('.items')[document.querySelectorAll('.items').length-1]
+				let li = document.createElement('li')
+				let button;
+				let inputButton = `<button style="display: none" id="${value.elem.id}" class="add-item">Add Item</button>
+							<div class="plus-minus-holder">
+								<input id="value${value.elem.id}" value="${value.elem.qty}" class="count-input">
+								<div class="btns-counter">
+									<span class="minus-left"  id='minus${value.elem.id}'>-</span>
+									<span class="separator"></span>
+									<span class="plus-right" id='plus${value.elem.id}'>+</span>
+								</div>
+							</div>`
+				if (!value.elem.qty) {
+					button = `<button id="${value.id}" class="add-item">Add Item</button>`
+				} else {
+					button = inputButton
+				}
+				li.classList.add('item');
+				if (window.matchMedia("(max-width: 920px)").matches){
+					li.innerHTML = `
+			 <div class="item-img ${value.class}_small"></div>
+			 <div class="item-content">
+				 <div class="item-title">${value.title}</div>
+				 <div class="item-text">${value.text || ''}</div>
+			 </div>
+			 <div class="item-control">${button}</div>
+	 	`;
+				} else {
+					li.innerHTML = `
+			 <div class="item-img ${value.class}"></div>
+			 <div class="item-content">
+				 <div class="item-title">${value.title}</div>
+				 <div class="item-text">${value.text || ''}</div>
+			 </div>
+			 <div class="item-control">${button}</div>
+	 	`;
+				}
+
+				ul.appendChild(li)
+			}  else {
+
+				let ul = document.createElement('ul')
+				ul.classList.add('items')
+				ulWrap.appendChild(ul)
+				let li = document.createElement('li')
+				let button;
+				let inputButton = `<button style="display: none" id="${value.elem.id}" class="add-item">Add Item</button>
+							<div class="plus-minus-holder">
+								<input id="value${value.elem.id}" value="${value.elem.qty}" class="count-input">
+								<div class="btns-counter">
+									<span class="minus-left"  id='minus${value.elem.id}'>-</span>
+									<span class="separator"></span>
+									<span class="plus-right" id='plus${value.elem.id}'>+</span>
+								</div>
+							</div>`
+				if (!value.elem.qty) {
+					button = `<button id="${value.id}" class="add-item">Add Item</button>`
+				} else {
+					button = inputButton
+				}
+				li.classList.add('item');
+				if (window.matchMedia("(max-width: 920px)").matches){
+					li.innerHTML = `
+			 <div class="item-img ${value.class}_small"></div>
+			 <div class="item-content">
+				 <div class="item-title">${value.title}</div>
+				 <div class="item-text">${value.text || ''}</div>
+			 </div>
+			 <div class="item-control">${button}</div>
+	 	`;
+				} else {
+					li.innerHTML = `
+			 <div class="item-img ${value.class}"></div>
+			 <div class="item-content">
+				 <div class="item-title">${value.title}</div>
+				 <div class="item-text">${value.text || ''}</div>
+			 </div>
+			 <div class="item-control">${button}</div>
+	 	`;
+				}
+
+				ul.appendChild(li)
+			}
+		} else {
+
+			let ul = document.createElement('ul')
+			ul.classList.add('items')
+			ulWrap.appendChild(ul)
+			let li = document.createElement('li')
+			let button;
+			let inputButton = `<button style="display: none" id="${value.elem.id}" class="add-item">Add Item</button>
+							<div class="plus-minus-holder">
+								<input id="value${value.elem.id}" value="${value.elem.qty}" class="count-input">
+								<div class="btns-counter">
+									<span class="minus-left"  id='minus${value.elem.id}'>-</span>
+									<span class="separator"></span>
+									<span class="plus-right" id='plus${value.elem.id}'>+</span>
+								</div>
+							</div>`
+			if (!value.elem.qty) {
+				button = `<button id="${value.id}" class="add-item">Add Item</button>`
+			} else {
+				button = inputButton
+			}
+			li.classList.add('item');
+			if (window.matchMedia("(max-width: 920px)").matches){
+				li.innerHTML = `
+			 <div class="item-img ${value.class}_small"></div>
+			 <div class="item-content">
+				 <div class="item-title">${value.title}</div>
+				 <div class="item-text">${value.text || ''}</div>
+			 </div>
+			 <div class="item-control">${button}</div>
+	 	`;
+			} else {
+				li.innerHTML = `
+			 <div class="item-img ${value.class}"></div>
+			 <div class="item-content">
+				 <div class="item-title">${value.title}</div>
+				 <div class="item-text">${value.text || ''}</div>
+			 </div>
+			 <div class="item-control">${button}</div>
+	 	`;
+			}
+
+			ul.appendChild(li)
+		}
+	}
+
 }
 
 function clearCards() {
-	let ul = document.querySelector('.items')
+	let ul = document.querySelector('.items-wrap')
 	ul.innerHTML = ''
 }
 
@@ -5650,15 +6062,16 @@ function buttonListener(elem, cat, counter) {
 				div.setAttribute('data-name', 'plus-minus')
 				div.innerHTML = `<input id="value${elem.id}" value="1" class="count-input">
 									<div class="btns-counter">
-									<span class="minus-left"  id='minus${elem.id}'>-</span>
-									<span class="separator"></span>
-									<span class="plus-right" id='plus${elem.id}'>+</span>
+										<span class="minus-left"  id='minus${elem.id}'>-</span>
+										<span class="separator"></span>
+										<span class="plus-right" id='plus${elem.id}'>+</span>
 									</div>
 									`
 				elem.qty = 1;
 				button.parentElement.appendChild(div);
 				calculator.getQTYValue(cat, counter);
-				inputListener(elem, cat, counter)
+				updateCounters()
+				inputListener(elem)
 			} else {
 				button.parentElement.lastElementChild.style.display = 'flex'
 			}
@@ -5672,8 +6085,9 @@ function buttonListener(elem, cat, counter) {
 			calculator.getQTYValue(cat, counter)
 			button.parentElement.lastElementChild.style.display = 'flex';
 			button.parentElement.lastElementChild.firstElementChild.value = elem.qty
+			updateCounters()
 		})
-		inputListener(elem, cat, counter)
+		inputListener(elem)
 	}
 
 }
@@ -5725,9 +6139,15 @@ arrivalInputs.addEventListener('click', (event) => {
 
 
 function updateCounters() {
-	counters.forEach(value => {
-		calculator.getQTYValue(calculator.database[value.previousElementSibling.textContent], value)
-	})
+		for(let category in calculator.database){
+			if(category === 'Packing Boxes'){
+				calculator.getQTYValue(calculator.database['Packing Boxes'], counters[0],true)
+			} else if(category === 'Boxes') {
+				calculator.getQTYValue(calculator.database['Boxes'], counters[0],true)
+			} else {
+				calculator.getQTYValue(calculator.database[category],document.getElementById(category.replace(' ','')))
+			}
+		}
 }
 updateCounters()
 
@@ -5748,3 +6168,12 @@ function addListenerToForm(param) {
 
 	})
 }
+removeButton.addEventListener('click',()=> {
+	calculator.resetDatabase()
+	clearCards()
+	updateCounters()
+})
+
+inventorySearch.addEventListener('input',()=>{
+	calculator.searchItems(inventorySearch.value);
+})

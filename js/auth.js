@@ -59,10 +59,6 @@ if (cookies) {
 <div class="form hide">
 <form autocomplete="on" name="signup" class="auth-sign">
 <div class="inputs-wrap">
-<input class="auth-input" id='reg-login' required type="text" minlength="4" name="login">
-<label class="label" for="reg-login">Login</label>
-</div>
-<div class="inputs-wrap">
 <input class="auth-input" id="reg-name" required type="text" minlength="2" name="name">
 <label class="label" for="reg-name">Name</label>
 </div>
@@ -84,8 +80,8 @@ name="pass">
 <div class="sign-in form hide">
 <form autocomplete="on" method="POST" action="signin.php" name="signin" class="auth-sign">
 <div class="inputs-wrap">
-<input class="auth-input" id='auth-login' required type="text" minlength="4" name="login">
-<label class="label" for="auth-login">Login</label>
+<input class="auth-input" id='auth-email' required type="email" minlength="4" name="login">
+<label class="label" for="auth-email">Email</label>
 </div>
 <div class="inputs-wrap">
 <input class="auth-input" required id="auth-pass" type="password" minlength="4"

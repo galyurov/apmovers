@@ -6,6 +6,7 @@ let email;
 
 
 const estimateDate = document.querySelector('.estimate-date')
+const estimateJob = document.querySelector('.estimate-job')
 const moveDay = document.querySelector('.move-day')
 const addressFrom = document.querySelector('#result-adress-from')
 const addressTo = document.querySelector('#result-adress-to')
@@ -18,9 +19,14 @@ const toImg = document.querySelector('.to-img')
 const total = document.querySelector('.result-total-total')
 const moveTime = document.querySelector('.move-time')
 const estimateVolume = document.querySelector('.volume')
-
-let resultForm = document.querySelector('.result-form')
+const relocationBlock = document.getElementById('relocation')
+const resultForm = document.querySelector('.result-form')
 const moveDate = document.querySelector('.move-date')
+const headTitle = document.getElementById('head__title')
+const headNumber = document.getElementById('head__number')
+
+const moving = document.querySelector('.result-total-moving')
+const travel = document.querySelector('.result-total-travel')
 let animation = `<div class="windows8">
                         <div class="wBall" id="wBall_1">
                             <div class="wInnerBall"></div>
@@ -65,6 +71,8 @@ if (localStorage.savedInfo) {
 	}
 
 }
+headNumber.innerHTML =  `<span>Job №: </span><span style="color: #de1b1b;">${localStorage.orderNumber}</span>`
+estimateJob.textContent = localStorage.orderNumber
 if(obj.searchParam) {
 	setParametersInHtml()
 	if (obj.searchParam.status === 'Accepted' && localStorage.admin === '1') {
@@ -110,12 +118,11 @@ if(obj.searchParam) {
 			})
 			sessionStorage.removeItem('update')
 		} else {
-			let editOrder = document.querySelector('.editOrder')
 			if (editOrder) {
 				editOrder.addEventListener('click', () => {
 					if (editOrder.dataset.name === 'edit') {
 						localStorage.edit = '101'
-						window.location.href = '/';
+						window.location.href = '/calculator';
 					}
 				})
 			}
@@ -161,10 +168,6 @@ if(obj.searchParam) {
 		const stairsFrom = document.querySelector('#result-stairs-from')
 		const stairsTo = document.querySelector('#result-stairs-to')
 		const inventory = document.querySelector('.result-inventory')
-		const moving = document.querySelector('.result-total-moving')
-		const travel = document.querySelector('.result-total-travel')
-
-		const relocationBlock = document.getElementById('relocation')
 
 		moveDate.textContent = obj.searchParam.datepicker
 		moveDay.textContent = getWeekDay(moveDate.textContent)
@@ -176,6 +179,7 @@ if(obj.searchParam) {
 		obj.searchParam.estimateDate = estimateDate.textContent;
 		estimateVolume.textContent = `${volSum()} cf. (${volSum() * 7} lbs)`
 		obj.searchParam.volume = estimateVolume.textContent;
+		headTitle.textContent = 'Binding Moving Estimate'
 
 		switch (true) {
 			case obj.searchParam['13pm'] : {
@@ -198,13 +202,26 @@ if(obj.searchParam) {
 				console.log('')
 		}
 
-		if (obj.searchParam['details-request'] != '') {
-			relocationBlock.insertAdjacentHTML('afterend', ` <div class="result-estimate">
+		if (obj.searchParam['details-request'] != ''){
+			relocationBlock.insertAdjacentHTML('afterend',` <div class="result-estimate">
                 <div class="title-wrap">
                     <h2 class="result-title">Special request & instructions</h2>
                 </div>
                 <div class="result-block request">${obj.searchParam['details-request']}</div>
             </div>`)
+		}
+		if (obj.searchParam){
+			relocationBlock.insertAdjacentHTML('afterend',` <div class="result-estimate">
+                <div class="title-wrap">
+						<h2 class="result-title">Understanding Your Estimate</h2>
+					</div>
+					<div class="result-block request">
+						<h4></h4>
+						<p>Moving price is based on inventory list only. The total cost of the move may increase if additional items are moved. Should there be any other services requested, additional costs will be charged. <br><br>
+This is an agreement for your upcoming move. Please review the details below including your address and inventory list. Please notify us if you have any changes. <br><br>
+We wold like to thank you for choosing Always Professional Moving for your upcoming move. The Always Professional Moving is designed to help you, our valued customer avoid any hidden charges. We truly believe that when you are moving, you need to deal with a Company that does it all! Please take a few moments to visit us at <a href="http://www.alwayspromove.com"> www.alwayspromove.com</a></p>
+						</div>
+				</div>`)
 		}
 		// add block with stairs in info to location
 		if (obj.searchParam['select-stairs-from'] !== '0' && obj.searchParam['select-stairs-from'] !== 'e') {
@@ -377,10 +394,9 @@ if(obj.searchParam) {
 
 
 		// insert client info
-		clientName.textContent = `Name: ${obj.searchParam['details-name']}`
-		clientPhone.innerHTML = `<a class="client-phone" href="tel:${obj.searchParam['details-phone']}">Phone: ${obj.searchParam['details-phone']}</a>`
-		clientEmail.innerHTML = `<a class="client-email" href="mailto:${obj.searchParam['details-email']}">Email: ${obj.searchParam['details-email']}</a>`
-
+		clientName.innerHTML = `<u>Name:</u><b> ${obj.searchParam['details-name']}</b>`
+		clientPhone.innerHTML = `<a class="client-phone" href="tel:${obj.searchParam['details-phone']}"><u>Phone:</u> ${obj.searchParam['details-phone']}</a>`
+		clientEmail.innerHTML = `<a class="client-email" href="mailto:${obj.searchParam['details-email']}"><u>Email:</u> ${obj.searchParam['details-email']}</a>`
 
 		calculateTotalSum(total)
 
@@ -436,16 +452,64 @@ if(obj.searchParam) {
 	moveType.textContent = prices['type']
 	moveDate.textContent = obj['datepicker']
 	moveTime.textContent = 'Not set'
+	estimateVolume.previousElementSibling.textContent = 'Package:'
 	estimateVolume.textContent =  prices['name']
-	total.textContent = `${prices['price']} $`
+	total.textContent = `Total: ${prices['price']} $`
 	addressFrom.innerHTML = parseAddress(obj['modal-input-from'])
 	fromImg.innerHTML = `<img src="https://maps.googleapis.com/maps/api/staticmap?markers=color:blue%7C${obj['modal-input-from']}&size=200x150&zoom=15&maptype=roadmap&key=AIzaSyAwWXleWh8d8A2lS2TbRAqqGp5-HLKyTh4" alt="Image From">`
 	addressTo.innerHTML = parseAddress(obj['modal-input-to'])
 	toImg.innerHTML = `<img src="https://maps.googleapis.com/maps/api/staticmap?markers=color:red%7C${obj['modal-input-to']}&size=200x150&zoom=15&maptype=roadmap&key=AIzaSyAwWXleWh8d8A2lS2TbRAqqGp5-HLKyTh4" alt="Image To">`
-	clientName.textContent = obj['modalName']
-	clientPhone.textContent = obj['modalPhone']
-	clientEmail.textContent = obj['modalEmail']
+	clientName.innerHTML = `<u>Name:</u><b> ${obj['modalName']}</b>`
+	clientPhone.innerHTML = `<a class="client-phone" href="tel:${obj['modalPhone']}"><u>Phone:</u> ${obj['modalPhone']}</a>`
+	clientEmail.innerHTML = `<a class="client-email" href="mailto:${obj['modalEmail']}"><u>Email:</u> ${obj['modalEmail']}</a>`
+	headTitle.textContent = 'Moving Estimate'
+	if (prices['type']==='Local Moving'){
+		relocationBlock.nextElementSibling.remove()
+		relocationBlock.insertAdjacentHTML('afterend',` <div class="result-estimate">
+                <div class="title-wrap">
+						<h2 class="result-title">Understanding Your Estimate</h2>
+					</div>
+					<div class="result-block request">
+						<h4>THE PRICE ABOVE IS AN HOURLY RATE ONLY, 3 HOURS MINIMUM CHARGE, ANY ADDITIONAL HOUR WILL BE CHARGED PER THE RATE ABOVE.</h4>
+						<p>Should there be any other services requested, additional costs will be charged. All fragile items that require special packing will incur additional charges (Glass, Mirrors, T.V.'s, Paintings, Washer/Dryer, Refrigerators, Piano, Grand Father Clock). If any special packaging is rejected, company will NOT be held liable for any damages. Toll prices are not included in estimate.
+	<br>
+	<br>
+	This is an agreement for your upcoming move. Please review the details below including your address and inventory list. Please notify us if you have any changes.
+	<br>
+	<br>
+	Once again we wold like to thank you for choosing Always Professional Moving for your upcoming move. The Always Professional Moving is designed to help you, our valued customer avoid any hidden charges. We truly believe that when you are moving, you need to deal with a Company that does it all! Please take a few moments to visit us at <a href="http://www.alwayspromove.com">www.alwayspromove.com</a></p>
+					</div>
+				</div>`)
+	} else {
+		relocationBlock.nextElementSibling.remove()
+		relocationBlock.insertAdjacentHTML('afterend',` <div class="result-estimate">
+                <div class="title-wrap">
+						<h2 class="result-title">Understanding Your Estimate</h2>
+					</div>
+					<div class="result-block request">
+						<h4></h4>
+						<p>Moving price is based on inventory list only. The total cost of the move may increase if additional items are moved. Should there be any other services requested, additional costs will be charged. <br><br>
+This is an agreement for your upcoming move. Please review the details below including your address and inventory list. Please notify us if you have any changes. <br><br>
+We wold like to thank you for choosing Always Professional Moving for your upcoming move. The Always Professional Moving is designed to help you, our valued customer avoid any hidden charges. We truly believe that when you are moving, you need to deal with a Company that does it all! Please take a few moments to visit us at <a href="http://www.alwayspromove.com"> www.alwayspromove.com</a></p>
+						</div>
+				</div>`)
+	}
+	total.previousElementSibling.remove()
+	moving.previousElementSibling.remove()
+	travel.previousElementSibling.remove()
+	if(prices['price'] == 460){
 
+		moving.textContent = '1 Truck/s, 2 Workers'
+		travel.innerHTML = 'First 3 hours $460, each additional $115 per hour'
+	}
+	if(prices['price'] == 540){
+		moving.textContent = '1 Truck/s, 3 Workers'
+		travel.innerHTML = 'First 3 hours $540, each additional $135 per hour'
+	}
+	if(prices['price'] == 660){
+		moving.textContent = '1 Truck/s, 4 Workers'
+		travel.innerHTML = 'First 3 hours $660, each additional $165 per hour'
+	}
 	document.forms.writeOrderInDb.addEventListener('click', (event) => {
 		event.preventDefault();
 		let acceptButton = document.querySelector('.acceptOrder')

@@ -20,7 +20,7 @@ function render(orders) {
         if (params.searchParam) {
             let orderRow = document.createElement('tr')
             orderRow.innerHTML = `  
-        <td><a class="order-link" data-id="${order[0]}" href="orderInfo.html?${params.searchParam.estimateDate}-${order[1]}">${params.searchParam.estimateDate}- ${order[1]}</a></td>
+        <td><a class="order-link" data-id="${order[0]}" href="orderInfo.html?${params.searchParam.estimateDate}-${order[1]}">${params.searchParam.estimateDate}-${order[1]}</a></td>
         <td>${params.searchParam.datepicker}</td>
         <td>${params.searchParam.range} mi</td>
         <td>${params.searchParam.volume}</td>
@@ -38,7 +38,7 @@ function render(orders) {
             let info = JSON.parse(order[4])
             let orderRow = document.createElement('tr')
             orderRow.innerHTML = `  
-            <td><a class="order-link" data-id="${order[0]}" href="orderInfo.html?${params.estimateDate}-${order[1]}">${params.estimateDate}- ${order[1]}</a></td>     
+            <td><a class="order-link" data-id="${order[0]}" href="orderInfo.html?${params.estimateDate}-${order[1]}">${params.estimateDate}-${order[1]}</a></td>     
             <td>${params['datepicker']}</td>
             <td>${info['type']}</td>
             <td>${info['name']}</td>

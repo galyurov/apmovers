@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Order Info</title>
     <link type="text/css" rel="stylesheet" href="css/reset.css">
     <link type="text/css" rel="stylesheet" href="css/header.css">
@@ -20,25 +22,35 @@
                 <div class="header-logo">
                     <a href="#"><img src="img/logo.png" alt=""></a>
                 </div>
-                <nav class="nav-menu">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="long-distance.html" class="nav-link">Long Distance</a></li>
-                        <li class="nav-item"><a href="local-move.html" class="nav-link">Local</a></li>
-                        <li class="nav-item"><a href="comercial.html" class="nav-link">Commercial Move</a></li>
-                        <li class="nav-item"><a href="pack-unpack.html" class="nav-link">Packing & Unpacking</a></li>
-                    </ul>
-                </nav>
+                <div class="menu__icon icon-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="header-nav-wrap">
+                    <nav class="nav-menu">
+                        <ul class="nav-list">
+                            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                            <li class="nav-item"><a href="long-distance.html" class="nav-link">Long Distance</a></li>
+                            <li class="nav-item"><a href="local-move.html" class="nav-link">Local</a></li>
+                            <li class="nav-item"><a href="comercial.html" class="nav-link">Commercial Move</a></li>
+                            <li class="nav-item"><a href="pack-unpack.html" class="nav-link">Packing & Unpacking</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
 </header>
 <main>
     <div class="result-container">
+        <div class="result-logo"><img src="img/logo_order.png" alt=""></div>
         <div class="result-wrap">
             <div class="result-estimate">
-                <h2 class="result-title">Binding Moving Estimate</h2>
+                <div class="head__block">
+                    <h2 class="result-title" id="head__title"></h2>
+                </div>
                 <div class="result-block">
                     <div class="result-info-title">
                         <p class="title-text text-head">Always Professional Moving Inc</p>
@@ -75,11 +87,12 @@
                         <div class="result-about-text">
                             <div class="result-client">
                                 <p id="client-name" class="result-about-title"></p>
+                                <p id="result-adress-from" class="result-about-title"></p>
+                                <p id="result-stairs-from" class="result-about-title"></p>
                                 <p id="client-phone" class="result-about-title"></p>
                                 <p id="client-email" class="result-about-title"></p>
                             </div>
-                            <p id="result-adress-from" class="result-about-title"></p>
-                            <p id="result-stairs-from" class="result-about-title"></p>
+
                         </div>
 
                         <div class="from-img"></div>
@@ -182,4 +195,5 @@
 <script src="js/auth.js"></script>
 <script src="js/result.js"></script>
 
+<script src="js/header__menu.js"></script>
 </html>

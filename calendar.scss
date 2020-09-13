@@ -8,13 +8,14 @@
 	&-wrap {
 		color: #000000;
 		padding: 10px;
+		margin: 40px 0;
 		max-width: 1100px;
 		position: relative;
 		&.wrap-small {
 			position: absolute;
-			z-index: 5;
-			top: 85px;
-			left: -25px;
+			z-index: 6;
+			top: 0;
+			left: 160px;
 			border: 1px solid #bdbdbd;
 			border-radius: 10px;
 			background: #ffffff;
@@ -30,6 +31,10 @@
 		display: grid;
 		grid-template-columns: repeat(7, minmax(50px, 120px));
 		grid-gap: 1px;
+		&-wraper{
+			display: flex;
+			align-items: flex-start;
+		}
 		&.block-small{
 			grid-template-columns: repeat(7, minmax(30px, 30px));
 		}
@@ -39,7 +44,7 @@
 		display: flex;
 		justify-content: space-between;
 		width: 215px;
-		margin: 0 auto 30px;
+		margin: 33px auto 30px;
 		&.month-small{
 			margin: 0;
 		}
@@ -118,10 +123,10 @@
 	}
 	&-day {
 		&-rate{
-			position: absolute;
 			top: 135px;
 			right: 0;
 			padding: 10px;
+			margin: 0 10px;
 			border: 2px solid #808080 ;
 			border-radius: 10px;
 			display: flex;
@@ -236,5 +241,33 @@
 	cursor: default;
 	&:hover{
 		background: #b5b5b5;
+	}
+}
+@media screen and (max-width: 1075px) {
+	.calendar-block-wraper{
+		flex-direction: column;
+	}
+}
+@media screen and (max-width: 920px) {
+	.calendar-wrap.wrap-small {
+		z-index: 6;
+		left: 10px;
+	}
+}
+@media screen and (max-width: 760px) {
+	.calendar-wrap.storage-wrap.wrap-small {
+		top: 50px;
+		right: unset;
+		left: unset;
+	}
+}
+@media screen and (max-width: 650px)  {
+	.calendar-day-block {
+		padding: 5px;
+		flex-direction: column;
+		align-items: center;
+	}
+	.calendar-day-qty{
+		margin-bottom: 10px;
 	}
 }

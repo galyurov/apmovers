@@ -38,10 +38,14 @@ function showMovingPrices(param) {
     if (param === 'long'){
         localCards.style.transform=`translateY(-${localCards.offsetHeight}px)`;
         longCards.style.top='0'
+        if (window.matchMedia("(max-width: 400px)").matches){
+            longCards.parentElement.style.height = '1940px';
+        }
     }
     if (param === 'local') {
         localCards.style.transform=`translateY(0px)`;
         longCards.style.top=`${longCards.offsetHeight}px`
+        longCards.parentElement.style.height = '100%';
     }
 }
 
@@ -177,8 +181,6 @@ function setMessage(event) {
             })
     }
 }
-
-
 
 
 
