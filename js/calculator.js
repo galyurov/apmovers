@@ -5366,7 +5366,7 @@ class Calculator {
 			this.choisedItems[elem.id] = elem
 		}
 	}
-	resetDatabase() {
+	resetDatabase(database = this.database) {
 		this.choisedItems={}
 		let resetDataBase = (db) => {
 			for (let value in db) {
@@ -5382,7 +5382,7 @@ class Calculator {
 
 			}
 		}
-		resetDataBase(this.database)
+		resetDataBase(database)
 	}
 	getAllSizes() {
 		let count = 0;
@@ -5407,9 +5407,8 @@ class Calculator {
 		countInDOM.textContent = count
 		itemsForCountInDOM.textContent = items
 	}
-	getQTYValue(obj, counter,ifBoxes) {
+	getQTYValue(obj, counter) {
 		let count = 0
-
 		let getProp = (o) => {
 			for (var prop in o) {
 				if (typeof (o[prop]) === 'object') {
@@ -5735,11 +5734,11 @@ for (let item of list) {
 <h2 class="radio__title">Packing services</h2>
 <div class="radio__wrap">
 <div class="radio__container">
-<input id="pack" name="packType" type="radio">
+<input ${cachePrice.packing !=='1' ? 'disabled': '' } id="pack" name="packType" type="radio">
 <label class="pack__label" for="pack">Professional packing</label>
 </div>
 <div class="radio__container">
-<input id="pack__unpack" name="packType" type="radio">
+<input ${cachePrice.unpacking !=='1' ? 'disabled': '' } id="pack__unpack" name="packType" type="radio">
 <label class="pack__label"  for="pack__unpack">Professional packing & unpacking</label>
 </div>
 <div class="radio__container">
@@ -5747,7 +5746,7 @@ for (let item of list) {
 <label class="pack__label" for="pack__self">Pack yourself</label>
 </div>
 <div class="radio__container">
-<input class="order__box" id="order__box"  name="packType" type="checkbox">
+<input ${cachePrice['box-delivery'] !=='1' ? 'disabled': '' } class="order__box" id="order__box"  name="packType" type="checkbox">
 <label class="pack__label" for="order__box">Order boxes</label>
 </div>
 </div>
@@ -5801,11 +5800,17 @@ for (let item of list) {
 				buttonListener(calculator.database.Boxes[elem], calculator.database.Boxes, item.lastElementChild)
 
 			}
+
 			let radioWrap = document.querySelector('.radio__wrap')
 			let orderBox = document.querySelector('#order__box')
+			let packCounter = document.getElementById('PackBoxes')
 			radioWrap.addEventListener('click',(event)=>{
 				if(event.target.name === 'packType' && event.target.id !== 'pack__self' && event.target.type === 'radio'){
-					orderBox.setAttribute('disabled','')
+					packCounter.style.display = 'block'
+					if(cachePrice['box-delivery'] !== '0'){
+						orderBox.checked = false
+						orderBox.setAttribute('disabled','')
+					}
 					if(!itemWrap.children[itemWrap.children.length-2].classList.contains('pack__block')){
 						boxesForPacking('add')
 						for (let elem in calculator.database['Packing Boxes']) {
@@ -5816,15 +5821,20 @@ for (let item of list) {
 								class: `${calculator.database['Packing Boxes'][elem].class}`,
 								id: `${calculator.database['Packing Boxes'][elem].id}`
 							});
-							buttonListener(calculator.database['Packing Boxes'][elem], calculator.database['Packing Boxes'], item.lastElementChild)
+							buttonListener(calculator.database['Packing Boxes'][elem], calculator.database['Packing Boxes'], packCounter)
 						}
 					}
 
 				} else if(event.target.name === 'packType' && event.target.id === 'pack__self'){
-					orderBox.removeAttribute('disabled')
+					packCounter.style.display = 'none'
+					calculator.resetDatabase(calculator.database["Packing Boxes"])
+					updateCounters()
+					if(cachePrice['box-delivery'] !== '0') {
+						orderBox.removeAttribute('disabled')
+					}
 					boxesForPacking('remove')
 				}
-				if(event.target.id === 'order__box'){
+				if(event.target.id === 'order__box' && event.target.checked ){
 					console.log('order box')
 				}
 			})
@@ -5847,6 +5857,7 @@ subItems.forEach(value => {
 		let name = value.textContent
 		let cat = value.parentElement.dataset.name
 		let catForCounter = value.parentElement.parentElement.firstElementChild.lastElementChild
+		console.log(catForCounter)
 		for (let key in calculator.database[cat][name]) {
 			createCard({
 				elem: calculator.database[cat][name][key],
@@ -6139,12 +6150,11 @@ arrivalInputs.addEventListener('click', (event) => {
 
 
 function updateCounters() {
+	let packCounter = document.getElementById('PackBoxes')
 		for(let category in calculator.database){
 			if(category === 'Packing Boxes'){
-				calculator.getQTYValue(calculator.database['Packing Boxes'], counters[0],true)
-			} else if(category === 'Boxes') {
-				calculator.getQTYValue(calculator.database['Boxes'], counters[0],true)
-			} else {
+				calculator.getQTYValue(calculator.database['Packing Boxes'], packCounter)
+			}  else {
 				calculator.getQTYValue(calculator.database[category],document.getElementById(category.replace(' ','')))
 			}
 		}
